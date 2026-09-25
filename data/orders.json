@@ -1,0 +1,129 @@
+[
+  {
+    "id": "EV-1028",
+    "date": "2026-09-22T19:30:00Z",
+    "customer": {
+      "name": "Sofía Benítez",
+      "whatsapp": "+54 9 11 5823-4412",
+      "email": "sofia.benitez@gmail.com",
+      "address": "Palermo Soho, CABA",
+      "notes": "Por favor envolver para regalo si es posible"
+    },
+    "items": [
+      {
+        "id": "pantalon-sol-naciente",
+        "name": "Pantalón Palazzo Sol Naciente",
+        "price": 54000,
+        "size": "S",
+        "color": "Teja y Mostaza",
+        "quantity": 1,
+        "image": "assets/product-sunset-stripes.jpg"
+      },
+      {
+        "id": "remera-sardine",
+        "name": "Remera Estampada \"Sardine al Pomodoro\"",
+        "price": 28000,
+        "size": "M",
+        "color": "Blanco Óptico",
+        "quantity": 1,
+        "image": "assets/remera-sardine.jpg"
+      }
+    ],
+    "total": 82000,
+    "status": "En preparación",
+    "history": [
+      {
+        "date": "2026-09-22T19:30:00Z",
+        "status": "Pendiente",
+        "note": "Pedido recibido por la web"
+      },
+      {
+        "date": "2026-09-22T20:15:00Z",
+        "status": "En preparación",
+        "note": "Pago verificado por transferencia"
+      }
+    ]
+  },
+  {
+    "id": "EV-1027",
+    "date": "2026-09-21T15:45:00Z",
+    "customer": {
+      "name": "Valentina Rossi",
+      "whatsapp": "+54 9 11 4190-8831",
+      "email": "v.rossi@outlook.com",
+      "address": "Palermo, Buenos Aires",
+      "notes": "Horario de entrega por la tarde"
+    },
+    "items": [
+      {
+        "id": "conjunto-polka-indigo",
+        "name": "Conjunto Ecléctico Lunares Índigo",
+        "price": 68000,
+        "size": "M",
+        "color": "Azul Marino y Lunares",
+        "quantity": 1,
+        "image": "assets/product-polka-dot.jpg"
+      }
+    ],
+    "total": 68000,
+    "status": "Enviado",
+    "history": [
+      {
+        "date": "2026-09-21T15:45:00Z",
+        "status": "Pendiente",
+        "note": "Pedido recibido"
+      },
+      {
+        "date": "2026-09-21T16:20:00Z",
+        "status": "En preparación",
+        "note": "Embalado y planchado en taller"
+      },
+      {
+        "date": "2026-09-22T11:00:00Z",
+        "status": "Enviado",
+        "note": "Despachado por mensajería express"
+      }
+    ]
+  },
+  {
+    "id": "EV-1026",
+    "date": "2026-09-20T11:10:00Z",
+    "customer": {
+      "name": "Camila Morales",
+      "whatsapp": "+54 9 351 682-1102",
+      "email": "camimorales@live.com",
+      "address": "Córdoba Capital",
+      "notes": "Envío a sucursal Andreani"
+    },
+    "items": [
+      {
+        "id": "chaleco-tweed-crema",
+        "name": "Chaleco Tweed y Lino Arena",
+        "price": 48000,
+        "size": "S",
+        "color": "Arena y Marfil",
+        "quantity": 1,
+        "image": "assets/chaleco-tweed-crema.jpg"
+      }
+    ],
+    "total": 48000,
+    "status": "Entregado",
+    "history": [
+      {
+        "date": "2026-09-20T11:10:00Z",
+        "status": "Pendiente",
+        "note": "Pedido recibido"
+      },
+      {
+        "date": "2026-09-21T09:00:00Z",
+        "status": "Enviado",
+        "note": "Guía Andreani generada"
+      },
+      {
+        "date": "2026-09-22T14:30:00Z",
+        "status": "Entregado",
+        "note": "Cliente retiró en sucursal"
+      }
+    ]
+  }
+]

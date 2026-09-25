@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evangelina Atelier — Panel Administrativo & Backoffice</title>
+  <meta name="description" content="Panel de administración integral y gestión de stock de Evangelina Atelier" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+
+  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=5.4" />
+</head>
+<body class="admin-page">
+
+    <!-- ==========================================================================
+       COMPLETE BACKOFFICE SUITE — EVANGELINA ATELIER
+       8 Management Modules + GitHub API Persistence Layer
+       ========================================================================== -->
+  <div class="modal-overlay backoffice-overlay" id="admin-modal-overlay">
+    <div class="backoffice-window" id="admin-modal-card">
+      
+      <!-- Top Action Bar -->
+      <header class="backoffice-topbar">
+        <div class="backoffice-brand">
+          <img src="assets/logo.png" alt="Evangelina Atelier" class="backoffice-logo-mini" />
+          <div>
+            <div class="backoffice-title">Evangelina Atelier · Backoffice</div>
+            <div class="backoffice-subtitle">Centro de Gestión Integral & Despacho</div>
+          </div>
+        </div>
+
+        <div class="backoffice-top-actions">
+          <!-- GitHub Connection Badge -->
+          <div class="backoffice-status-pill" id="backoffice-status-pill">
+            <span class="status-pulse local" id="backoffice-status-dot"></span>
+            <span id="backoffice-status-text">Modo Local (Navegador)</span>
+          </div>
+
+          <!-- Quick GitHub Sync Trigger -->
+          <button type="button" class="btn-top-bar" id="btn-sync-github" onclick="syncAllDataWithGitHub()" title="Sincronizar cambios en GitHub">
+            <span class="sync-icon">🔄</span> <span class="sync-text">Sincronizar GitHub</span>
+          </button>
+
+          <!-- Store preview button -->
+          <a href="index.html" class="btn-top-bar" title="Volver a la tienda online" style="text-decoration: none;">
+            <span>🏪</span> <span>Ver Tienda</span>
+          </a>
+
+          <!-- Close / Logout -->
+          <button type="button" class="btn-top-bar btn-logout" onclick="handleAdminLogout()" title="Cerrar sesión de administración">
+            <span>🔒</span> <span>Salir</span>
+          </button>
+
+          <!-- Window close X -->
+          <a href="index.html" class="modal-close-btn-clean" aria-label="Volver a la tienda" title="Volver a la tienda" style="text-decoration: none;">✕</a>
+        </div>
+      </header>
+
+      <!-- 1. LOGIN VIEW (Unauthenticated state) -->
+      <div id="admin-login-view" class="admin-login-screen">
+        <div class="admin-login-card">
+          <div class="admin-login-icon">🗝️</div>
+          <span class="admin-badge">Atelier Backoffice</span>
+          <h2 class="admin-login-title">Acceso de Administración</h2>
+          <p class="admin-login-sub">Ingresa para gestionar productos, pedidos, agenda, contenidos CMS y sincronización con GitHub.</p>
+
+          <div class="login-tabs">
+            <button type="button" class="login-tab-btn active" id="tab-login-pass" onclick="switchLoginAuthMode('pass')">Clave de Atelier</button>
+            <button type="button" class="login-tab-btn" id="tab-login-github" onclick="switchLoginAuthMode('github')">Token de GitHub (PAT)</button>
+          </div>
+
+          <!-- Mode A: Password -->
+          <form id="admin-login-form" class="admin-auth-form" onsubmit="event.preventDefault(); handleAdminLogin();">
+            <div class="form-group">
+              <label for="admin-pass-input">Contraseña de Administrador</label>
+              <div class="pass-input-wrapper">
+                <input type="password" id="admin-pass-input" placeholder="••••••••" required autocomplete="current-password" />
+                <button type="button" class="btn-toggle-pass" onclick="toggleAdminPassVisibility()" title="Mostrar contraseña">👁️</button>
+              </div>
+              <div id="admin-login-error" class="admin-error-text" style="display: none;"></div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" style="padding: 0.9rem;">Ingresar al Backoffice</button>
+            <div class="admin-hint-text">
+              <span>Clave por defecto: <strong>evangelina2026</strong></span>
+            </div>
+          </form>
+
+          <!-- Mode B: GitHub Token -->
+          <form id="admin-github-login-form" class="admin-auth-form" style="display: none;" onsubmit="event.preventDefault(); handleGitHubLogin();">
+            <div class="form-group">
+              <label for="gh-login-token">Personal Access Token (PAT) *</label>
+              <input type="password" id="gh-login-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" required />
+              <span class="input-helper">Requiere permisos de repositorio (repo scope). Se guarda únicamente en sessionStorage.</span>
+            </div>
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="gh-login-owner">Usuario / Organización *</label>
+                <input type="text" id="gh-login-owner" placeholder="martingallara" required />
+              </div>
+              <div class="form-group">
+                <label for="gh-login-repo">Repositorio *</label>
+                <input type="text" id="gh-login-repo" placeholder="evangelina-atelier" required />
+              </div>
+            </div>
+            <div id="gh-login-error" class="admin-error-text" style="display: none;"></div>
+            <button type="submit" class="btn btn-primary btn-block" style="padding: 0.9rem;">Conectar con GitHub</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- 2. MAIN BACKOFFICE VIEW (Authenticated) -->
+      <div id="admin-dashboard-view" class="backoffice-main-layout" style="display: none;">
+        
+        <!-- Left Navigation Sidebar -->
+        <aside class="backoffice-sidebar">
+          <nav class="backoffice-nav" aria-label="Navegación del Backoffice">
+            <button type="button" class="nav-item active" data-tab="dashboard" onclick="switchBackofficeTab('dashboard')">
+              <span class="nav-icon">📊</span>
+              <span class="nav-label">Dashboard & Métricas</span>
+            </button>
+
+            <button type="button" class="nav-item" data-tab="products" onclick="switchBackofficeTab('products')">
+              <span class="nav-icon">👗</span>
+              <span class="nav-label">Productos & Stock</span>
+              <span class="nav-badge" id="badge-products-count">11</span>
+            </button>
+
+            <button type="button" class="nav-item" data-tab="orders" onclick="switchBackofficeTab('orders')">
+              <span class="nav-icon">🛍️</span>
+              <span class="nav-label">Pedidos & Ventas</span>
+              <span class="nav-badge alert" id="badge-orders-pending">1</span>
+            </button>
+
+            <button type="button" class="nav-item" data-tab="agenda" onclick="switchBackofficeTab('agenda')">
+              <span class="nav-icon">📅</span>
+              <span class="nav-label">Agenda del Atelier</span>
+              <span class="nav-badge" id="badge-agenda-count">3</span>
+            </button>
+
+            <button type="button" class="nav-item" data-tab="cms" onclick="switchBackofficeTab('cms')">
+              <span class="nav-icon">✍️</span>
+              <span class="nav-label">Contenido de la Tienda</span>
+            </button>
+
+            <button type="button" class="nav-item" data-tab="media" onclick="switchBackofficeTab('media')">
+              <span class="nav-icon">🖼️</span>
+              <span class="nav-label">Galería Multimedia</span>
+            </button>
+
+            <button type="button" class="nav-item" data-tab="custom" onclick="switchBackofficeTab('custom')">
+              <span class="nav-icon">✂️</span>
+              <span class="nav-label">Personalizados</span>
+              <span class="nav-badge" id="badge-custom-count">2</span>
+            </button>
+
+            <button type="button" class="nav-item" data-tab="settings" onclick="switchBackofficeTab('settings')">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-label">Configuración & Sync</span>
+            </button>
+          </nav>
+
+          <div class="sidebar-footer">
+            <div class="sync-status-card">
+              <div class="sync-status-header">
+                <span class="status-indicator-dot" id="sidebar-sync-dot"></span>
+                <span class="sync-status-title" id="sidebar-sync-title">Modo Local</span>
+              </div>
+              <p class="sync-status-desc" id="sidebar-sync-desc">Los cambios se guardan en el navegador. Conecta GitHub en Configuración para persistir en tu repositorio.</p>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Right Main Viewport with the 8 Panels -->
+        <main class="backoffice-viewport">
+
+          <!-- ==========================================
+               PANEL 1: DASHBOARD & MÉTRICAS REALES
+               ========================================== -->
+          <section id="panel-dashboard" class="backoffice-panel active">
+            <div class="panel-header stats-panel-header">
+              <div>
+                <h2 class="panel-title">Estadísticas & Analítica</h2>
+                <p class="panel-subtitle">Panel analítico integral de ventas, conversión, audiencia y desempeño comercial.</p>
+              </div>
+              <div class="panel-actions stats-header-actions">
+                <div class="stats-time-filter" role="group" aria-label="Filtro de período">
+                  <button type="button" class="btn-time-filter active" onclick="setStatsPeriod('30d', this)">Últimos 30 días</button>
+                  <button type="button" class="btn-time-filter" onclick="setStatsPeriod('month', this)">Este mes</button>
+                  <button type="button" class="btn-time-filter" onclick="setStatsPeriod('7d', this)">7 días</button>
+                  <button type="button" class="btn-time-filter" onclick="setStatsPeriod('year', this)">Año 2026</button>
+                </div>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="refreshAllBackofficeData()">🔄 Actualizar Métricas</button>
+              </div>
+            </div>
+
+            <!-- KPI Cards Grid — 6 Executive Business Metrics -->
+            <div class="dashboard-kpi-grid">
+              <div class="kpi-box kpi-box-sales">
+                <div class="kpi-header-row">
+                  <div class="kpi-icon-wrap" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 6v12M15 9.5a2.5 2.5 0 0 0-5 0c0 2.5 5 2 5 4.5a2.5 2.5 0 0 1-5 0"/></svg>
+                  </div>
+                  <span class="kpi-badge kpi-badge-sales">Facturación Neta</span>
+                </div>
+                <div class="kpi-details">
+                  <span class="kpi-title">Ventas Totales</span>
+                  <div class="kpi-num" id="dash-total-sales">$0</div>
+                  <div class="kpi-footer-row">
+                    <span class="kpi-status-dot kpi-dot-sales"></span>
+                    <span class="kpi-hint" id="dash-sales-count">0 transacciones registradas</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="kpi-box kpi-box-orders">
+                <div class="kpi-header-row">
+                  <div class="kpi-icon-wrap" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                  </div>
+                  <span class="kpi-badge kpi-badge-orders">Volumen de Órdenes</span>
+                </div>
+                <div class="kpi-details">
+                  <span class="kpi-title">Pedidos Totales</span>
+                  <div class="kpi-num" id="dash-total-orders">0</div>
+                  <div class="kpi-footer-row">
+                    <span class="kpi-status-dot kpi-dot-orders"></span>
+                    <span class="kpi-hint warning" id="dash-pending-orders">0 pendientes de entrega</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="kpi-box kpi-box-products">
+                <div class="kpi-header-row">
+                  <div class="kpi-icon-wrap" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                  </div>
+                  <span class="kpi-badge kpi-badge-products">Efectividad Web</span>
+                </div>
+                <div class="kpi-details">
+                  <span class="kpi-title">Tasa de Conversión</span>
+                  <div class="kpi-num" id="dash-conversion-rate">3.8%</div>
+                  <div class="kpi-footer-row">
+                    <span class="kpi-status-dot kpi-dot-products"></span>
+                    <span class="kpi-hint" id="dash-conversion-hint">54 compras / 1.420 sesiones</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="kpi-box kpi-box-ticket">
+                <div class="kpi-header-row">
+                  <div class="kpi-icon-wrap" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m16 8-8 8"/><path d="M9 8h7v7"/></svg>
+                  </div>
+                  <span class="kpi-badge kpi-badge-ticket">Rendimiento Medio</span>
+                </div>
+                <div class="kpi-details">
+                  <span class="kpi-title">Ticket Promedio</span>
+                  <div class="kpi-num" id="dash-avg-ticket">$0</div>
+                  <div class="kpi-footer-row">
+                    <span class="kpi-status-dot kpi-dot-ticket"></span>
+                    <span class="kpi-hint" id="dash-avg-ticket-hint">1.8 prendas promedio por orden</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="kpi-box kpi-box-visits">
+                <div class="kpi-header-row">
+                  <div class="kpi-icon-wrap" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                  </div>
+                  <span class="kpi-badge kpi-badge-visits">Audiencia Real</span>
+                </div>
+                <div class="kpi-details">
+                  <span class="kpi-title">Visitas Totales</span>
+                  <div class="kpi-num" id="dash-real-visits">0</div>
+                  <div class="kpi-footer-row">
+                    <span class="kpi-status-dot kpi-dot-visits"></span>
+                    <span class="kpi-hint" id="dash-unique-visitors">0 clientas únicas registradas</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="kpi-box kpi-box-alert">
+                <div class="kpi-header-row">
+                  <div class="kpi-icon-wrap" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                  </div>
+                  <span class="kpi-badge kpi-badge-alert">Fidelización</span>
+                </div>
+                <div class="kpi-details">
+                  <span class="kpi-title">Tasa de Recompra</span>
+                  <div class="kpi-num" id="dash-retention-rate">32.4%</div>
+                  <div class="kpi-footer-row">
+                    <span class="kpi-status-dot kpi-dot-alert"></span>
+                    <span class="kpi-hint alert" id="dash-retention-hint">Clientas con más de 1 compra</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hidden compatibility anchors so existing legacy getters don't error -->
+            <div style="display:none !important;" aria-hidden="true">
+              <span id="dash-active-products">0</span>
+              <span id="dash-total-stock">0</span>
+              <span id="dash-low-stock-num">0</span>
+              <span id="dash-low-stock-desc"></span>
+              <span id="dash-critical-badge">0</span>
+              <div id="dash-top-products-list"></div>
+              <div id="dash-critical-stock-list"></div>
+            </div>
+
+            <!-- Analytics Row 1: Revenue Evolution & Conversion Funnel -->
+            <div class="analytics-grid-2">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <div>
+                    <h3 class="dash-card-title">📈 Evolución y Proyección de Facturación</h3>
+                    <span class="dash-item-meta" style="display:block; margin-top: 0.2rem;">Tendencia mensual de ingresos y cumplimiento de metas</span>
+                  </div>
+                  <span class="badge-subtle">+24.8% vs período anterior</span>
+                </div>
+                <div id="dash-sales-evolution-chart" class="sales-chart-wrap">
+                  <!-- Populated by JS -->
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <div>
+                    <h3 class="dash-card-title">⚡ Embudo de Conversión E-Commerce</h3>
+                    <span class="dash-item-meta" style="display:block; margin-top: 0.2rem;">Del primer impacto a la compra confirmada</span>
+                  </div>
+                  <span class="badge-subtle">Funnel 3.8%</span>
+                </div>
+                <div id="dash-conversion-funnel" class="funnel-container">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Analytics Row 2: Categories, Acquisition Channels & Payment Distribution -->
+            <div class="analytics-grid-3">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">👗 Ventas por Categoría</h3>
+                  <span class="badge-subtle">Volumen</span>
+                </div>
+                <div id="dash-category-stats" class="cat-stat-list">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">📱 Canales & Dispositivos</h3>
+                  <span class="badge-subtle">Tráfico</span>
+                </div>
+                <div id="dash-channel-stats" class="channels-stat-list">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">💳 Métodos de Pago & Envíos</h3>
+                  <span class="badge-subtle">Finanzas</span>
+                </div>
+                <div id="dash-payment-stats" class="payments-stat-list">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Analytics Row 3: Product Statistical Performance Table -->
+            <div class="dash-card stats-table-card">
+              <div class="dash-card-header">
+                <div>
+                  <h3 class="dash-card-title">📊 Desempeño Comercial por Prenda</h3>
+                  <span class="dash-item-meta" style="display:block; margin-top: 0.2rem;">Métricas de rotación, facturación y tasa de éxito del catálogo</span>
+                </div>
+                <span class="badge-subtle">Métricas del Catálogo</span>
+              </div>
+              <div class="stats-table-wrapper">
+                <table class="stats-table" aria-label="Tabla de métricas de prendas">
+                  <thead>
+                    <tr>
+                      <th style="width: 40px;">#</th>
+                      <th>Prenda de Colección</th>
+                      <th>Categoría</th>
+                      <th style="text-align: right;">Precio</th>
+                      <th style="text-align: right;">Vendidas</th>
+                      <th style="text-align: right;">Facturación</th>
+                      <th style="text-align: right;">Stock Actual</th>
+                      <th style="text-align: center;">Rendimiento</th>
+                    </tr>
+                  </thead>
+                  <tbody id="dash-stats-products-table">
+                    <!-- Populated via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Analytics Row 4: Live Activity & Operational Log -->
+            <div class="dash-card" style="margin-top: 1.5rem;">
+              <div class="dash-card-header">
+                <h3 class="dash-card-title">🕒 Resumen de Actividad Reciente & Auditoría</h3>
+                <span class="badge-subtle">En Vivo</span>
+              </div>
+              <div id="dash-activity-log" class="activity-timeline">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+          </section>
+
+          <!-- ==========================================
+               PANEL 2: PRODUCTOS & INVENTARIO
+               ========================================== -->
+          <section id="panel-products" class="backoffice-panel">
+            <div class="panel-header">
+              <div>
+                <h2 class="panel-title">Productos & Inventario</h2>
+                <p class="panel-subtitle">Catálogo de prendas, precios, fotos, talles y stock en tiempo real.</p>
+              </div>
+              <div class="panel-actions">
+                <button type="button" class="btn btn-primary" onclick="openProductEditorModal()">+ Nueva Prenda de Atelier</button>
+              </div>
+            </div>
+
+            <!-- Toolbar & Filters -->
+            <div class="panel-toolbar">
+              <div class="search-input-group">
+                <span class="search-icon-symbol">🔍</span>
+                <input type="text" id="admin-stock-search" placeholder="Buscar por nombre, SKU, categoría o descripción..." oninput="filterInventoryTable()" />
+              </div>
+              <div class="toolbar-filter-group">
+                <select id="admin-stock-filter-cat" onchange="filterInventoryTable()">
+                  <option value="all">Todas las categorías</option>
+                  <option value="Pantalones">Pantalones</option>
+                  <option value="Remeras">Remeras</option>
+                  <option value="Chalecos">Chalecos</option>
+                  <option value="Conjuntos">Conjuntos</option>
+                </select>
+
+                <select id="admin-stock-filter-status" onchange="filterInventoryTable()">
+                  <option value="all">Todos los estados</option>
+                  <option value="active">Activos en tienda</option>
+                  <option value="low">Bajo Stock (≤ 3)</option>
+                  <option value="out">Agotados (0)</option>
+                  <option value="paused">Pausados</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Product Table -->
+            <div class="table-responsive-wrapper">
+              <table class="backoffice-table" id="inventory-table">
+                <thead>
+                  <tr>
+                    <th>Prenda</th>
+                    <th>Categoría</th>
+                    <th>Precio / Oferta</th>
+                    <th style="min-width: 170px;">Stock en Almacén</th>
+                    <th>Estado</th>
+                    <th>Vistas / Ventas</th>
+                    <th style="text-align: right;">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-inventory-tbody">
+                  <!-- Injected via JS -->
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- ==========================================
+               PANEL 3: PEDIDOS & VENTAS
+               ========================================== -->
+          <section id="panel-orders" class="backoffice-panel">
+            <div class="panel-header">
+              <div>
+                <h2 class="panel-title">Pedidos & Ventas</h2>
+                <p class="panel-subtitle">Gestión de órdenes de compra, clientes y seguimiento de envíos.</p>
+              </div>
+            </div>
+
+            <!-- Order filter pills -->
+            <div class="filter-pills-bar">
+              <button type="button" class="filter-chip active" data-status="all" onclick="filterOrdersByStatus('all')">Todos (<span id="count-orders-all">0</span>)</button>
+              <button type="button" class="filter-chip" data-status="Pendiente" onclick="filterOrdersByStatus('Pendiente')">Pendientes (<span id="count-orders-pending">0</span>)</button>
+              <button type="button" class="filter-chip" data-status="En preparación" onclick="filterOrdersByStatus('En preparación')">En Preparación (<span id="count-orders-prep">0</span>)</button>
+              <button type="button" class="filter-chip" data-status="Enviado" onclick="filterOrdersByStatus('Enviado')">Enviados (<span id="count-orders-sent">0</span>)</button>
+              <button type="button" class="filter-chip" data-status="Entregado" onclick="filterOrdersByStatus('Entregado')">Entregados (<span id="count-orders-done">0</span>)</button>
+              <button type="button" class="filter-chip" data-status="Cancelado" onclick="filterOrdersByStatus('Cancelado')">Cancelados</button>
+            </div>
+
+            <!-- Orders Table -->
+            <div class="table-responsive-wrapper">
+              <table class="backoffice-table" id="orders-table">
+                <thead>
+                  <tr>
+                    <th>Orden ID</th>
+                    <th>Fecha & Hora</th>
+                    <th>Cliente & Contacto</th>
+                    <th>Prendas</th>
+                    <th>Total</th>
+                    <th>Estado del Pedido</th>
+                    <th style="text-align: right;">Gestión</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-orders-tbody">
+                  <!-- Injected via JS -->
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- ==========================================
+               PANEL 4: AGENDA DEL ATELIER
+               ========================================== -->
+          <section id="panel-agenda" class="backoffice-panel">
+            <div class="panel-header">
+              <div>
+                <h2 class="panel-title">Agenda del Atelier</h2>
+                <p class="panel-subtitle">Citas de prueba, entregas, retiros y eventos especiales.</p>
+              </div>
+              <div class="panel-actions">
+                <button type="button" class="btn btn-primary" onclick="openAgendaEditorModal()">+ Nueva Cita / Evento</button>
+              </div>
+            </div>
+
+            <div class="agenda-filter-row">
+              <div class="filter-pills-bar">
+                <button type="button" class="filter-chip active" id="agenda-filter-upcoming" onclick="filterAgendaEvents('upcoming')">Próximas Citas</button>
+                <button type="button" class="filter-chip" id="agenda-filter-all" onclick="filterAgendaEvents('all')">Historial Completo</button>
+              </div>
+            </div>
+
+            <div id="agenda-cards-container" class="agenda-grid">
+              <!-- Injected via JS -->
+            </div>
+          </section>
+
+          <!-- ==========================================
+               PANEL 5: CONTENIDO DE LA TIENDA (CMS)
+               ========================================== -->
+          <section id="panel-cms" class="backoffice-panel">
+            <div class="panel-header">
+              <div>
+                <h2 class="panel-title">Contenido de la Tienda (CMS)</h2>
+                <p class="panel-subtitle">Edita textos, títulos, hero, pilares e historia de las hermanas sin tocar código.</p>
+              </div>
+              <div class="panel-actions">
+                <button type="button" class="btn btn-primary" onclick="saveCMSContent()">💾 Guardar y Publicar Cambios</button>
+              </div>
+            </div>
+
+            <!-- CMS Sub-Tabs Navigation -->
+            <div class="cms-tabs-bar">
+              <button type="button" class="cms-tab-btn active" data-cmstab="hero" onclick="switchCMSTab('hero')">🌟 Hero Principal</button>
+              <button type="button" class="cms-tab-btn" data-cmstab="banner" onclick="switchCMSTab('banner')">📢 Banner Superior</button>
+              <button type="button" class="cms-tab-btn" data-cmstab="pillars" onclick="switchCMSTab('pillars')">🌿 Pilares de Marca</button>
+              <button type="button" class="cms-tab-btn" data-cmstab="story" onclick="switchCMSTab('story')">👭 Historia de las Hermanas</button>
+              <button type="button" class="cms-tab-btn" data-cmstab="editorial" onclick="switchCMSTab('editorial')">📖 Manifiesto Editorial</button>
+            </div>
+
+            <!-- CMS Sub-Panel 1: Hero -->
+            <div id="cms-sub-hero" class="cms-subpanel active">
+              <div class="admin-section-box">
+                <h3 class="section-box-title">Portada Hero Principal</h3>
+                <div class="form-group">
+                  <label for="cms-hero-title">Título Principal (Línea Superior)</label>
+                  <input type="text" id="cms-hero-title" placeholder="DISEÑO ÚNICO HECHO A MANO" />
+                </div>
+                <div class="form-group">
+                  <label for="cms-hero-tagline">Bajada / Slogan (Línea Inferior)</label>
+                  <input type="text" id="cms-hero-tagline" placeholder="Prendas que no se repiten" />
+                </div>
+                <div class="form-group">
+                  <label for="cms-hero-desc">Descripción Editorial</label>
+                  <textarea id="cms-hero-desc" rows="3" placeholder="Párrafo de bienvenida..."></textarea>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label for="cms-hero-btn1-text">Botón Primario (Texto)</label>
+                    <input type="text" id="cms-hero-btn1-text" placeholder="Ver Colección" />
+                  </div>
+                  <div class="form-group">
+                    <label for="cms-hero-btn1-link">Botón Primario (Enlace)</label>
+                    <input type="text" id="cms-hero-btn1-link" placeholder="#coleccion" />
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label for="cms-hero-btn2-text">Botón Secundario (Texto)</label>
+                    <input type="text" id="cms-hero-btn2-text" placeholder="Leer Editorial" />
+                  </div>
+                  <div class="form-group">
+                    <label for="cms-hero-btn2-link">Botón Secundario (Enlace)</label>
+                    <input type="text" id="cms-hero-btn2-link" placeholder="#editorial" />
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label for="cms-hero-img-desktop">Foto de Fondo (Computadora / Panorámica)</label>
+                    <input type="text" id="cms-hero-img-desktop" placeholder="assets/hero-sunset-desktop.jpg" />
+                  </div>
+                  <div class="form-group">
+                    <label for="cms-hero-img-mobile">Foto de Fondo (Celulares / Vertical)</label>
+                    <input type="text" id="cms-hero-img-mobile" placeholder="assets/hero-sunset-mobile.jpg" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CMS Sub-Panel 2: Banner Superior -->
+            <div id="cms-sub-banner" class="cms-subpanel">
+              <div class="admin-section-box">
+                <div class="admin-toggle-row">
+                  <div>
+                    <strong style="display: block; font-size: 0.95rem; color: var(--text-main);">Activar Banner Superior</strong>
+                    <span style="font-size: 0.785rem; color: var(--text-secondary);">Muestra aviso de envíos gratis o promociones arriba de la cabecera.</span>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" id="cms-banner-enable" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+
+                <div style="margin-top: 1.25rem;">
+                  <div class="form-group">
+                    <label for="cms-banner-text">Texto del Anuncio</label>
+                    <input type="text" id="cms-banner-text" placeholder="🌿 Envíos sin cargo superando los $80.000" />
+                  </div>
+
+                  <div class="form-row-2">
+                    <div class="form-group">
+                      <label for="cms-banner-bg">Color de Fondo</label>
+                      <input type="color" id="cms-banner-bg" value="#F3ECE4" style="height: 38px; width: 60px; padding: 2px; cursor: pointer;" />
+                    </div>
+                    <div class="form-group">
+                      <label for="cms-banner-color">Color de Texto</label>
+                      <input type="color" id="cms-banner-color" value="#6B5A4B" style="height: 38px; width: 60px; padding: 2px; cursor: pointer;" />
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="cms-banner-link">Enlace al hacer clic</label>
+                    <input type="text" id="cms-banner-link" placeholder="#coleccion" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CMS Sub-Panel 3: Pilares de Marca -->
+            <div id="cms-sub-pillars" class="cms-subpanel">
+              <div class="admin-section-box">
+                <h3 class="section-box-title">Los 4 Pilares de Atelier</h3>
+                <div id="cms-pillars-editor-container" class="pillars-editor-grid">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+            </div>
+
+            <!-- CMS Sub-Panel 4: Historia de las Hermanas -->
+            <div id="cms-sub-story" class="cms-subpanel">
+              <div class="admin-section-box">
+                <h3 class="section-box-title">Historia de las Hermanas Fundadoras</h3>
+                <div class="form-group">
+                  <label for="cms-story-title">Título de la Sección</label>
+                  <input type="text" id="cms-story-title" placeholder="El Alma de Evangelina Atelier" />
+                </div>
+                <div class="form-group">
+                  <label for="cms-story-quote">Cita Destacada</label>
+                  <input type="text" id="cms-story-quote" placeholder="Creemos en la belleza de lo auténtico..." />
+                </div>
+                <div class="form-group">
+                  <label for="cms-story-p1">Párrafo 1 (Origen e identidad)</label>
+                  <textarea id="cms-story-p1" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="cms-story-p2">Párrafo 2 (Filosofía de confección)</label>
+                  <textarea id="cms-story-p2" rows="3"></textarea>
+                </div>
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label for="cms-story-author">Firmado Por</label>
+                    <input type="text" id="cms-story-author" placeholder="Ana y Eva" />
+                  </div>
+                  <div class="form-group">
+                    <label for="cms-story-role">Rol / Cargo</label>
+                    <input type="text" id="cms-story-role" placeholder="Hermanas & Creadoras del Atelier" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="cms-story-image">Foto de la Sección</label>
+                  <input type="text" id="cms-story-image" placeholder="assets/product-sunset-stripes.jpg" />
+                </div>
+              </div>
+            </div>
+
+            <!-- CMS Sub-Panel 5: Manifiesto Editorial -->
+            <div id="cms-sub-editorial" class="cms-subpanel">
+              <div class="admin-section-box">
+                <h3 class="section-box-title">Manifiesto Editorial</h3>
+                <div class="form-group">
+                  <label for="cms-editorial-subtitle">Subtítulo</label>
+                  <input type="text" id="cms-editorial-subtitle" placeholder="Manifiesto del Atelier" />
+                </div>
+                <div class="form-group">
+                  <label for="cms-editorial-title">Título Principal</label>
+                  <input type="text" id="cms-editorial-title" placeholder="El Arte de Vestir con Calma" />
+                </div>
+                <div class="form-group">
+                  <label for="cms-editorial-p1">Cita / Manifiesto</label>
+                  <textarea id="cms-editorial-p1" rows="3"></textarea>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ==========================================
+               PANEL 6: GALERÍA MULTIMEDIA
+               ========================================== -->
+          <section id="panel-media" class="backoffice-panel">
+            <div class="panel-header">
+              <div>
+                <h2 class="panel-title">Galería Multimedia</h2>
+                <p class="panel-subtitle">Administra fotos, videos de modelos y recursos visuales de la tienda.</p>
+              </div>
+              <div class="panel-actions">
+                <button type="button" class="btn btn-primary" onclick="openMediaUploadModal()">+ Subir Foto / Video</button>
+              </div>
+            </div>
+
+            <!-- Media Gallery Grid -->
+            <div id="media-gallery-grid" class="media-library-grid">
+              <!-- Populated by JS -->
+            </div>
+          </section>
+
+          <!-- ==========================================
+               PANEL 7: PRENDAS PERSONALIZADAS
+               ========================================== -->
+          <section id="panel-custom" class="backoffice-panel">
+            <div class="panel-header">
+              <div>
+                <h2 class="panel-title">Prendas Personalizadas (A Medida)</h2>
+                <p class="panel-subtitle">Seguimiento de encargos especiales, moldería, señas y fechas de entrega.</p>
+              </div>
+              <div class="panel-actions">
+                <button type="button" class="btn btn-primary" onclick="openCustomOrderModal()">+ Nuevo Encargo a Medida</button>
+              </div>
+            </div>
+
+            <div id="custom-orders-container" class="custom-orders-grid">
+              <!-- Populated by JS -->
+            </div>
+          </section>
+
+          <!-- ==========================================
+               PANEL 8: CONFIGURACIÓN & GITHUB SYNC
+               ========================================== -->
+          <section id="panel-settings" class="backoffice-panel">
+            <div class="panel-header">
+              <div>
+                <h2 class="panel-title">Configuración del Atelier & GitHub Sync</h2>
+                <p class="panel-subtitle">Ajustes generales, seguridad y enlace con el repositorio para persistencia real.</p>
+              </div>
+              <div class="panel-actions">
+                <button type="button" class="btn btn-primary" onclick="saveAllAtelierSettings()">💾 Guardar Configuración</button>
+              </div>
+            </div>
+
+            <!-- GitHub API Integration Box -->
+            <div class="admin-section-box highlight-box">
+              <div class="section-box-header">
+                <div>
+                  <h3 class="section-box-title">🔗 Conexión GitHub API (Persistencia en la Nube)</h3>
+                  <p class="section-box-desc">Conecta el repositorio para que cada cambio en productos, contenidos o agenda se guarde automáticamente en GitHub sin tocar código.</p>
+                </div>
+                <span class="gh-status-badge" id="settings-gh-badge"><span class="status-dot"></span> Desconectado</span>
+              </div>
+
+              <div class="form-row-3" style="margin-top: 1rem;">
+                <div class="form-group">
+                  <label for="cfg-gh-owner">Usuario / Organización *</label>
+                  <input type="text" id="cfg-gh-owner" placeholder="martingallara" />
+                </div>
+                <div class="form-group">
+                  <label for="cfg-gh-repo">Repositorio *</label>
+                  <input type="text" id="cfg-gh-repo" placeholder="evangelina-atelier" />
+                </div>
+                <div class="form-group">
+                  <label for="cfg-gh-branch">Rama (Branch)</label>
+                  <input type="text" id="cfg-gh-branch" value="main" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="cfg-gh-token">Personal Access Token (PAT) de GitHub</label>
+                <div class="pass-input-wrapper">
+                  <input type="password" id="cfg-gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx (Se guarda de forma segura en sessionStorage)" />
+                  <button type="button" class="btn-toggle-pass" onclick="toggleInputType('cfg-gh-token')">👁️</button>
+                </div>
+                <span class="input-helper">Genera un token clásico con permiso <code>repo</code> en GitHub > Settings > Developer settings > Tokens.</span>
+              </div>
+
+              <div class="github-action-buttons">
+                <button type="button" class="btn btn-secondary" onclick="testGitHubConnection()">🔍 Probar Conexión</button>
+                <button type="button" class="btn btn-secondary" onclick="syncAllDataWithGitHub()">⬆️ Sincronizar Todo a GitHub</button>
+                <button type="button" class="btn btn-secondary" onclick="pullAllDataFromGitHub()">⬇️ Descargar Datos de GitHub</button>
+                <button type="button" class="btn btn-clear-cart" style="color: var(--sale-badge);" onclick="disconnectGitHubSession()">Desconectar</button>
+              </div>
+            </div>
+
+            <!-- General Atelier Info -->
+            <div class="admin-section-box" style="margin-top: 1.5rem;">
+              <h3 class="section-box-title">Identidad del Atelier & Contacto</h3>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="cfg-store-name">Nombre de la Marca</label>
+                  <input type="text" id="cfg-store-name" value="Evangelina Atelier" />
+                </div>
+                <div class="form-group">
+                  <label for="cfg-store-tagline">Eslogan / Subtítulo</label>
+                  <input type="text" id="cfg-store-tagline" value="Moda Femenina Bohemia & Minimalista" />
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="cfg-whatsapp-num">WhatsApp (Número internacional para enlaces)</label>
+                  <input type="text" id="cfg-whatsapp-num" placeholder="5491100000000" />
+                </div>
+                <div class="form-group">
+                  <label for="cfg-whatsapp-display">WhatsApp (Texto visible para clientas)</label>
+                  <input type="text" id="cfg-whatsapp-display" placeholder="+54 9 11 0000-0000" />
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="cfg-instagram">Instagram (@usuario)</label>
+                  <input type="text" id="cfg-instagram" placeholder="evangelina.atelier" />
+                </div>
+                <div class="form-group">
+                  <label for="cfg-email">Email de Contacto</label>
+                  <input type="email" id="cfg-email" placeholder="contacto@evangelinaatelier.com" />
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="cfg-address">Dirección del Showroom / Taller</label>
+                  <input type="text" id="cfg-address" placeholder="Palermo Soho, CABA" />
+                </div>
+                <div class="form-group">
+                  <label for="cfg-schedule">Horarios de Atención</label>
+                  <input type="text" id="cfg-schedule" placeholder="Lun a Vie de 10 a 19 hs (con cita previa)" />
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="cfg-free-shipping">Umbral de Envío Gratis ($ ARS)</label>
+                  <input type="number" id="cfg-free-shipping" value="80000" step="5000" />
+                </div>
+                <div class="form-group">
+                  <label for="cfg-shipping-rate">Costo de Envío Fijo ($ ARS)</label>
+                  <input type="number" id="cfg-shipping-rate" value="4500" step="500" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Password Change -->
+            <div class="admin-section-box" style="margin-top: 1.5rem;">
+              <h3 class="section-box-title">🔐 Clave de Administrador</h3>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="cfg-new-pass">Nueva Contraseña</label>
+                  <input type="password" id="cfg-new-pass" placeholder="Dejar en blanco para conservar" />
+                </div>
+                <div class="form-group">
+                  <label for="cfg-confirm-pass">Confirmar Contraseña</label>
+                  <input type="password" id="cfg-confirm-pass" placeholder="Repetir contraseña" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Backup & Export -->
+            <div class="admin-section-box danger-box" style="margin-top: 1.5rem;">
+              <div class="danger-box-content">
+                <div>
+                  <h4 style="color: var(--sale-badge); margin-bottom: 0.25rem;">Copia de Seguridad y Restauración</h4>
+                  <p style="font-size: 0.785rem; color: var(--text-secondary); margin: 0;">Descarga un archivo JSON con todos los datos o restaura el estado inicial.</p>
+                </div>
+                <div class="danger-box-actions">
+                  <button type="button" class="btn btn-secondary btn-sm" onclick="exportAdminBackup()">Exportar Respaldo JSON</button>
+                  <button type="button" class="btn btn-secondary btn-sm btn-danger-outline" onclick="resetDemoData()">Restaurar Catálogo Base</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </main>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL 1: PRODUCT CREATE / EDIT MODAL
+       ========================================== -->
+  <div class="modal-overlay" id="product-editor-modal" style="z-index: 1200;">
+    <div class="modal-card product-editor-card">
+      <button class="modal-close-btn" onclick="closeProductEditorModal()">✕</button>
+      <div class="editor-modal-header">
+        <h3 id="product-editor-title">Nueva Prenda de Atelier</h3>
+        <p class="editor-modal-sub">Completa los datos técnicos, fotografías y stock.</p>
+      </div>
+      <form id="product-editor-form" onsubmit="event.preventDefault(); saveProductFromEditor();">
+        <input type="hidden" id="edit-product-id" value="" />
+        
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="edit-product-name">Nombre de la Prenda *</label>
+            <input type="text" id="edit-product-name" required placeholder="Ej: Pantalón Palazzo Sol Naciente" />
+          </div>
+          <div class="form-group">
+            <label for="edit-product-category">Categoría *</label>
+            <select id="edit-product-category" required>
+              <option value="Pantalones">Pantalones</option>
+              <option value="Remeras">Remeras</option>
+              <option value="Chalecos">Chalecos</option>
+              <option value="Conjuntos">Conjuntos</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row-3">
+          <div class="form-group">
+            <label for="edit-product-price">Precio ($ ARS) *</label>
+            <input type="number" id="edit-product-price" required min="1000" step="500" placeholder="54000" />
+          </div>
+          <div class="form-group">
+            <label for="edit-product-orig-price">Precio Anterior (Oferta)</label>
+            <input type="number" id="edit-product-orig-price" min="0" step="500" placeholder="62000" />
+          </div>
+          <div class="form-group">
+            <label for="edit-product-stock">Stock Disponible *</label>
+            <input type="number" id="edit-product-stock" required min="0" step="1" value="10" />
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="edit-product-image">Foto Principal (Ruta o URL) *</label>
+            <input type="text" id="edit-product-image" required placeholder="assets/product-sunset-stripes.jpg" />
+          </div>
+          <div class="form-group">
+            <label for="edit-product-model-image">Foto con Modelo (Opcional)</label>
+            <input type="text" id="edit-product-model-image" placeholder="assets/remera-sunset-model.jpg" />
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="edit-product-badge">Etiqueta / Badge</label>
+            <input type="text" id="edit-product-badge" placeholder="Nuevo, Favorito Atelier, Edición Limitada..." />
+          </div>
+          <div class="form-group">
+            <label for="edit-product-video">Video de Prenda / Pasarela (URL)</label>
+            <input type="text" id="edit-product-video" placeholder="https://... o video.mp4" />
+          </div>
+        </div>
+
+        <!-- Talles -->
+        <div class="form-group">
+          <label style="margin-bottom: 0.35rem; display: block;">Talles Disponibles</label>
+          <div class="size-checkbox-group" id="edit-product-sizes">
+            <label><input type="checkbox" value="XS" checked /> XS</label>
+            <label><input type="checkbox" value="S" checked /> S</label>
+            <label><input type="checkbox" value="M" checked /> M</label>
+            <label><input type="checkbox" value="L" checked /> L</label>
+            <label><input type="checkbox" value="XL" /> XL</label>
+            <label><input type="checkbox" value="A Medida" /> A Medida</label>
+          </div>
+        </div>
+
+        <!-- Colores -->
+        <div class="form-group">
+          <label for="edit-product-colors-text">Colores (Nombre:Hex separados por coma)</label>
+          <input type="text" id="edit-product-colors-text" placeholder="Ej: Teja:#D95D39, Arena:#E29578" />
+        </div>
+
+        <div class="form-group">
+          <label for="edit-product-description">Descripción Detallada</label>
+          <textarea id="edit-product-description" rows="3" placeholder="Calce, caída, estilo bohemio..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="edit-product-composition">Composición Textil</label>
+          <input type="text" id="edit-product-composition" placeholder="70% Algodón orgánico, 30% Lino europeo" />
+        </div>
+
+        <!-- Checkboxes for flags -->
+        <div class="form-row-2" style="margin-top: 0.5rem;">
+          <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.8125rem;">
+            <input type="checkbox" id="edit-product-featured" />
+            Marcar como Producto Destacado
+          </label>
+          <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.8125rem;">
+            <input type="checkbox" id="edit-product-customizable" />
+            Acepta Pedidos Personalizados
+          </label>
+        </div>
+
+        <div class="modal-form-actions">
+          <button type="submit" class="btn btn-primary" style="flex: 1;">Guardar Prenda</button>
+          <button type="button" class="btn btn-secondary" onclick="closeProductEditorModal()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL 2: ORDER DETAIL MODAL
+       ========================================== -->
+  <div class="modal-overlay" id="order-detail-modal" style="z-index: 1200;">
+    <div class="modal-card order-detail-card">
+      <button class="modal-close-btn" onclick="closeOrderDetailModal()">✕</button>
+      <div id="order-detail-body">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL 3: AGENDA EDITOR MODAL
+       ========================================== -->
+  <div class="modal-overlay" id="agenda-editor-modal" style="z-index: 1200;">
+    <div class="modal-card agenda-editor-card">
+      <button class="modal-close-btn" onclick="closeAgendaEditorModal()">✕</button>
+      <div class="editor-modal-header">
+        <h3 id="agenda-editor-title">Agendar Turno / Cita en Atelier</h3>
+        <p class="editor-modal-sub">Registra citas de prueba, entregas o eventos de clientas.</p>
+      </div>
+      <form id="agenda-editor-form" onsubmit="event.preventDefault(); saveAgendaFromEditor();">
+        <input type="hidden" id="edit-agenda-id" value="" />
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="edit-agenda-date">Fecha *</label>
+            <input type="date" id="edit-agenda-date" required />
+          </div>
+          <div class="form-group">
+            <label for="edit-agenda-time">Horario *</label>
+            <input type="time" id="edit-agenda-time" required />
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="edit-agenda-customer">Nombre del Cliente *</label>
+            <input type="text" id="edit-agenda-customer" required placeholder="Ej: Lucía Fernández" />
+          </div>
+          <div class="form-group">
+            <label for="edit-agenda-whatsapp">WhatsApp / Teléfono *</label>
+            <input type="text" id="edit-agenda-whatsapp" required placeholder="+54 9 11 6789-2234" />
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="edit-agenda-type">Tipo de Cita *</label>
+            <select id="edit-agenda-type" required>
+              <option value="Cita de Prueba en Atelier">Cita de Prueba en Atelier</option>
+              <option value="Entrega de Pedido Personalizado">Entrega de Pedido Personalizado</option>
+              <option value="Retiro en Showroom">Retiro en Showroom</option>
+              <option value="Reunión de Diseño Exclusivo">Reunión de Diseño Exclusivo</option>
+              <option value="Evento o Pop-up">Evento o Pop-up</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="edit-agenda-status">Estado</label>
+            <select id="edit-agenda-status">
+              <option value="Confirmada">Confirmada</option>
+              <option value="Programada">Programada</option>
+              <option value="Completada">Completada</option>
+              <option value="Cancelada">Cancelada</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="edit-agenda-desc">Descripción / Motivo</label>
+          <input type="text" id="edit-agenda-desc" placeholder="Prueba de talle palazzo..." />
+        </div>
+
+        <div class="form-group">
+          <label for="edit-agenda-notes">Notas Internas del Taller</label>
+          <textarea id="edit-agenda-notes" rows="2" placeholder="Detalles de telas o acompañantes..."></textarea>
+        </div>
+
+        <div class="modal-form-actions">
+          <button type="submit" class="btn btn-primary" style="flex: 1;">Guardar en Agenda</button>
+          <button type="button" class="btn btn-secondary" onclick="closeAgendaEditorModal()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL 4: CUSTOM ORDER MODAL
+       ========================================== -->
+  <div class="modal-overlay" id="custom-order-modal" style="z-index: 1200;">
+    <div class="modal-card custom-order-modal-card">
+      <button class="modal-close-btn" onclick="closeCustomOrderModal()">✕</button>
+      <div class="editor-modal-header">
+        <h3 id="custom-order-modal-title">Nuevo Encargo a Medida</h3>
+        <p class="editor-modal-sub">Ficha de confección artesanal personalizada para clienta.</p>
+      </div>
+      <form id="custom-order-form" onsubmit="event.preventDefault(); saveCustomOrderFromEditor();">
+        <input type="hidden" id="edit-custom-id" value="" />
+        
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="edit-custom-customer">Nombre de la Clienta *</label>
+            <input type="text" id="edit-custom-customer" required placeholder="Martina Gómez" />
+          </div>
+          <div class="form-group">
+            <label for="edit-custom-whatsapp">WhatsApp *</label>
+            <input type="text" id="edit-custom-whatsapp" required placeholder="+54 9 11 4455-8812" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="edit-custom-title">Prenda / Diseño Solicitado *</label>
+          <input type="text" id="edit-custom-title" required placeholder="Vestido Midi Lino Crudo con Espalda Escotada" />
+        </div>
+
+        <div class="form-group">
+          <label for="edit-custom-description">Descripción de Confección & Telas</label>
+          <textarea id="edit-custom-description" rows="2" placeholder="Lino europeo prelavado, botones forrados..."></textarea>
+        </div>
+
+        <!-- Medidas corporales -->
+        <label style="display: block; font-size: 0.8125rem; font-weight: 600; margin-bottom: 0.35rem;">Medidas de la Clienta</label>
+        <div class="form-row-4">
+          <div class="form-group">
+            <label for="edit-custom-busto" style="font-size: 0.72rem;">Busto</label>
+            <input type="text" id="edit-custom-busto" placeholder="92 cm" />
+          </div>
+          <div class="form-group">
+            <label for="edit-custom-cintura" style="font-size: 0.72rem;">Cintura</label>
+            <input type="text" id="edit-custom-cintura" placeholder="70 cm" />
+          </div>
+          <div class="form-group">
+            <label for="edit-custom-cadera" style="font-size: 0.72rem;">Cadera</label>
+            <input type="text" id="edit-custom-cadera" placeholder="98 cm" />
+          </div>
+          <div class="form-group">
+            <label for="edit-custom-largo" style="font-size: 0.72rem;">Largo</label>
+            <input type="text" id="edit-custom-largo" placeholder="118 cm" />
+          </div>
+        </div>
+
+        <!-- Economía -->
+        <div class="form-row-3">
+          <div class="form-group">
+            <label for="edit-custom-price">Precio Total ($ ARS) *</label>
+            <input type="number" id="edit-custom-price" required min="0" placeholder="95000" />
+          </div>
+          <div class="form-group">
+            <label for="edit-custom-deposit">Seña Pagada ($ ARS)</label>
+            <input type="number" id="edit-custom-deposit" min="0" placeholder="70000" />
+          </div>
+          <div class="form-group">
+            <label for="edit-custom-target-date">Fecha de Entrega Pactada</label>
+            <input type="date" id="edit-custom-target-date" />
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="edit-custom-status">Estado de Confección</label>
+            <select id="edit-custom-status">
+              <option value="Solicitud">Solicitud</option>
+              <option value="Moldería">Moldería & Medidas</option>
+              <option value="Corte y Confección">Corte y Confección</option>
+              <option value="Prueba agendada">Prueba agendada</option>
+              <option value="Listo para entrega">Listo para entrega</option>
+              <option value="Entregado">Entregado</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="edit-custom-image">Imagen de Referencia (Ruta o URL)</label>
+            <input type="text" id="edit-custom-image" placeholder="assets/..." />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="edit-custom-notes">Notas de Taller</label>
+          <textarea id="edit-custom-notes" rows="2" placeholder="Detalles de embalaje, hilos..."></textarea>
+        </div>
+
+        <div class="modal-form-actions">
+          <button type="submit" class="btn btn-primary" style="flex: 1;">Guardar Encargo</button>
+          <button type="button" class="btn btn-secondary" onclick="closeCustomOrderModal()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL 5: MEDIA UPLOAD MODAL
+       ========================================== -->
+  <div class="modal-overlay" id="media-upload-modal" style="z-index: 1200;">
+    <div class="modal-card media-upload-card">
+      <button class="modal-close-btn" onclick="closeMediaUploadModal()">✕</button>
+      <div class="editor-modal-header">
+        <h3>Subir Archivo Multimedia</h3>
+        <p class="editor-modal-sub">Sube una fotografía o video a la galería y sincronízalo con GitHub.</p>
+      </div>
+      <form id="media-upload-form" onsubmit="event.preventDefault(); submitMediaUpload();">
+        <div class="media-dropzone" id="media-dropzone" onclick="document.getElementById('media-file-input').click()">
+          <input type="file" id="media-file-input" accept="image/*,video/*" style="display: none;" onchange="handleMediaFileSelect(this)" />
+          <div class="dropzone-icon">📁</div>
+          <div class="dropzone-text" id="dropzone-text">Haz clic o arrastra una imagen o video aquí</div>
+          <span class="dropzone-hint">Formatos: JPG, PNG, WEBP, MP4 (máx 15 MB)</span>
+        </div>
+
+        <div id="media-preview-box" style="display: none; margin-top: 1rem; text-align: center;">
+          <img id="media-preview-img" src="" alt="Vista previa" style="max-height: 180px; border-radius: 4px; border: 1px solid var(--border-medium);" />
+          <span id="media-preview-name" style="display: block; font-size: 0.75rem; color: var(--text-muted); margin-top: 0.35rem;"></span>
+        </div>
+
+        <div class="form-group" style="margin-top: 1rem;">
+          <label for="media-target-name">Nombre de Archivo en Repositorio</label>
+          <input type="text" id="media-target-name" placeholder="assets/uploads/vestido-lino.jpg" required />
+        </div>
+
+        <div class="modal-form-actions">
+          <button type="submit" class="btn btn-primary" id="btn-submit-upload" style="flex: 1;">Subir a la Galería</button>
+          <button type="button" class="btn btn-secondary" onclick="closeMediaUploadModal()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="github-sync.js"></script>
+  <script src="backoffice.js?v=3.6"></script>
+</body>
+</html>

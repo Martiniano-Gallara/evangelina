@@ -1,0 +1,21 @@
+{
+  "name": "Evangelina Atelier",
+  "tagline": "Moda Femenina Bohemia y Minimalista",
+  "logo": "assets/logo.png",
+  "adminPassword": "evangelina2026",
+  "whatsappNumber": "5491100000000",
+  "whatsappDisplay": "+54 9 11 0000-0000",
+  "instagram": "evangelina.atelier",
+  "email": "contacto@evangelinaatelier.com",
+  "address": "Palermo Soho, Buenos Aires, Argentina",
+  "schedule": "Lunes a Viernes de 10:00 a 19:00 hs — Citas con agenda previa",
+  "freeShippingThreshold": 80000,
+  "shippingFlatRate": 4500,
+  "currency": "ARS",
+  "github": {
+    "owner": "Martiniano-Gallara",
+    "repo": "evangelina",
+    "branch": "main",
+    "autoSync": true
+  }
+}

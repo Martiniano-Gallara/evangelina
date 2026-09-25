@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evangelina Atelier — Moda Femenina Bohemia & Minimalista</title>
+  <meta name="description" content="Evangelina Atelier: Tienda online de ropa femenina con estética bohemia, minimalista y elegante. Siluetas relajadas, fibras nobles y confección atemporal inspirada en boutiques europeas." />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+
+  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=5.4" />
+</head>
+<body>
+  <!-- Top Announcement Bar (Oculto) -->
+  <div class="announcement-bar" id="announcement-bar" style="display: none !important;">
+    <div class="container announcement-content" id="announcement-content"></div>
+  </div>
+
+  <!-- Main Navigation Header (Centered Luxury Layout) -->
+  <header class="site-header" id="site-header">
+    <div class="container header-container">
+      
+      <!-- Top Row: Logo Centered In The Middle, Search & Bolsa on Right, Mobile Toggle on Left -->
+      <div class="header-top-row">
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+        <!-- Brand Logo Center -->
+        <a href="#" class="brand-logo" aria-label="Evangelina Atelier Inicio">
+          <img src="assets/logo-emblem.png" alt="Evangelina Atelier" class="brand-emblem-icon" />
+          <span class="brand-title">EVANGELINA</span>
+          <span class="brand-subtitle">ATELIER</span>
+        </a>
+
+        <!-- Desktop & Mobile Right Actions (Buscar & Bolsa) -->
+        <div class="header-actions">
+          <!-- Search Trigger -->
+          <button class="action-btn" id="search-trigger" aria-label="Buscar en la tienda">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <span class="action-text">Buscar</span>
+          </button>
+
+          <!-- Cart Trigger -->
+          <button class="action-btn cart-trigger" id="cart-trigger" aria-label="Ver carrito">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span class="action-text">Bolsa</span>
+            <span class="cart-badge" id="cart-count">0</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Desktop Navigation Centered In The Middle -->
+      <nav class="nav-desktop-centered" aria-label="Navegación principal">
+        <ul class="nav-list">
+          <li><a href="#coleccion" class="nav-link active">Colección</a></li>
+          <li><a href="#categorias" class="nav-link">Categorías</a></li>
+          <li><a href="#como-medirse" class="nav-link" id="nav-how-to-measure">Cómo Medirse</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu (Direct body child to avoid header stacking context) -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <div class="drawer-brand">
+        <img src="assets/logo-emblem.png" alt="Evangelina Atelier" class="drawer-logo-icon" />
+        <div class="drawer-brand-text">
+          <span class="drawer-title">EVANGELINA</span>
+          <span class="drawer-subtitle">ATELIER</span>
+        </div>
+      </div>
+      <button class="close-drawer-btn" id="close-mobile-menu" aria-label="Cerrar menú">✕</button>
+    </div>
+    <nav class="mobile-nav">
+      <a href="#coleccion" class="mobile-nav-link">Nueva Colección</a>
+      <a href="#categorias" class="mobile-nav-link">Categorías</a>
+      <a href="#como-medirse" class="mobile-nav-link">Cómo Medirse & Talles</a>
+      <a href="#contacto" class="mobile-nav-link">Contacto</a>
+      <a href="admin.html" class="mobile-nav-link" style="color: var(--bronze-hover); font-weight: 600;">⚙️ Panel Admin</a>
+    </nav>
+    <div class="mobile-drawer-footer">
+      <a href="https://wa.me/5491148209900?text=Hola%20Evangelina%20Atelier!%20Quisiera%20asesoramiento%20personalizado" target="_blank" rel="noopener noreferrer" class="drawer-whatsapp-btn">
+        💬 Asesoría por WhatsApp
+      </a>
+      <p class="mobile-footer-text">Buenos Aires, Argentina · Envíos a todo el país</p>
+    </div>
+  </div>
+  <div class="mobile-drawer-overlay" id="mobile-overlay"></div>
+
+  <!-- Live Search Bar Overlay -->
+  <div class="search-overlay" id="search-overlay">
+    <div class="container search-container">
+      <div class="search-input-wrap">
+        <svg class="search-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="live-search-input" placeholder="Buscar vestidos, conjuntos, tops, pantalones..." autocomplete="off" />
+        <button class="search-close" id="search-close" aria-label="Cerrar búsqueda">✕</button>
+      </div>
+      <div class="search-results" id="search-results"></div>
+    </div>
+  </div>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="hero-media">
+        <picture class="hero-picture" id="hero-picture">
+          <source id="hero-source-mobile" media="(max-width: 860px)" srcset="assets/hero-sunset-mobile.jpg" />
+          <img id="hero-img-desktop" src="assets/hero-sunset-desktop.jpg" alt="Evangelina Atelier — Diseño Único Hecho a Mano" class="hero-image" />
+        </picture>
+        <div class="hero-overlay"></div>
+        <!-- Mobile Interactive Tap Target linking to collection -->
+        <a href="#coleccion" class="hero-mobile-hitbox" aria-label="Ver Colección" onclick="scrollToCollection(event)"></a>
+      </div>
+      <div class="container hero-content-wrap">
+        <div class="hero-card">
+          <h1 class="hero-title">
+            <span class="hero-title-main" id="hero-title-main">DISEÑO ÚNICO<br>HECHO A MANO</span>
+            <span class="hero-tagline" id="hero-tagline">Prendas que no se repiten</span>
+          </h1>
+          <div class="hero-divider"></div>
+          <p class="hero-description" id="hero-description">
+            Creamos prendas y conjuntos originales, cuidando cada detalle y trabajando con materiales de excelente calidad.
+          </p>
+          <div class="hero-actions">
+            <a href="#coleccion" class="btn-hero-pill" id="hero-primary-btn" onclick="scrollToCollection(event)">
+              <span>VER COLECCIÓN</span>
+              <span class="pill-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section" id="categorias">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-sub">Diseños Disponibles</span>
+          <h2 class="section-title">COLECCIÓN EXCLUSIVA</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="categories-grid">
+          <!-- Chalecos -->
+          <div class="category-card" data-category="Chalecos" onclick="filterByCategory('Chalecos')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')filterByCategory('Chalecos')" title="Ver colección de Chalecos">
+            <div class="category-img-wrap">
+              <img src="assets/chaleco-tweed-crema.jpg" alt="Chalecos de Diseño Evangelina Atelier" loading="lazy" />
+            </div>
+            <div class="category-info">
+              <span class="category-tag">Diseño de Autor</span>
+              <h3 class="category-name">Chalecos</h3>
+              <p class="category-count">Tweed, denim sarga y gamuza boho</p>
+              <button class="category-btn" onclick="event.stopPropagation(); filterByCategory('Chalecos')">Ver Chalecos</button>
+            </div>
+          </div>
+
+          <!-- Remeras Estampadas -->
+          <div class="category-card" data-category="Remeras" onclick="filterByCategory('Remeras')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')filterByCategory('Remeras')" title="Ver colección de Remeras">
+            <div class="category-img-wrap">
+              <img src="assets/remeras-estampadas.jpg" alt="Remeras Estampadas de Autor" loading="lazy" />
+            </div>
+            <div class="category-info">
+              <span class="category-tag">Algodón Puro</span>
+              <h3 class="category-name">Remeras</h3>
+              <p class="category-count">Estampas serigráficas pop vintage</p>
+              <button class="category-btn" onclick="event.stopPropagation(); filterByCategory('Remeras')">Ver Remeras</button>
+            </div>
+          </div>
+
+          <!-- Pantalones Palazzo -->
+          <div class="category-card" data-category="Pantalones" onclick="filterByCategory('Pantalones')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')filterByCategory('Pantalones')" title="Ver colección de Pantalones">
+            <div class="category-img-wrap">
+              <img src="assets/product-green-stripes.jpg" alt="Pantalones Palazzo a Rayas" loading="lazy" />
+            </div>
+            <div class="category-info">
+              <span class="category-tag">Silueta Amplia</span>
+              <h3 class="category-name">Pantalones</h3>
+              <p class="category-count">Palazzos y cortes holgados a rayas</p>
+              <button class="category-btn" onclick="event.stopPropagation(); filterByCategory('Pantalones')">Ver Pantalones</button>
+            </div>
+          </div>
+
+          <!-- Conjuntos -->
+          <div class="category-card" data-category="Conjuntos" onclick="filterByCategory('Conjuntos')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')filterByCategory('Conjuntos')" title="Ver colección de Conjuntos">
+            <div class="category-img-wrap">
+              <img src="assets/product-polka-dot.jpg" alt="Conjuntos Femeninos Evangelina Atelier" loading="lazy" />
+            </div>
+            <div class="category-info">
+              <span class="category-tag">Dos Piezas</span>
+              <h3 class="category-name">Conjuntos</h3>
+              <p class="category-count">Top estructurado & palazzo a lunares</p>
+              <button class="category-btn" onclick="event.stopPropagation(); filterByCategory('Conjuntos')">Ver Conjunto</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Products Collection Section with Filters -->
+    <section class="collection-section" id="coleccion">
+      <div class="container">
+        <div class="collection-header">
+          <div>
+            <span class="section-sub">Piezas Disponibles</span>
+            <h2 class="section-title">Colección en Stock</h2>
+          </div>
+          
+          <!-- Category Filters -->
+          <div class="filter-controls">
+            <div class="category-pills" id="category-pills">
+              <button class="filter-pill active" data-filter="all">Todos (11)</button>
+              <button class="filter-pill" data-filter="Chalecos">Chalecos (3)</button>
+              <button class="filter-pill" data-filter="Remeras">Remeras (4)</button>
+              <button class="filter-pill" data-filter="Pantalones">Pantalones (3)</button>
+              <button class="filter-pill" data-filter="Conjuntos">Conjuntos (1)</button>
+            </div>
+
+            <!-- Sort dropdown -->
+            <div class="sort-wrap">
+              <label for="sort-select" class="sr-only">Ordenar por:</label>
+              <select id="sort-select" class="sort-select" aria-label="Ordenar productos">
+                <option value="featured">Destacados</option>
+                <option value="price-asc">Precio: menor a mayor</option>
+                <option value="price-desc">Precio: mayor a menor</option>
+                <option value="name">Alfabético (A-Z)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Filter Indicator & Count -->
+        <div class="filter-status-bar">
+          <span id="product-count-label" class="product-count-label">Mostrando 11 prendas en la colección</span>
+          <button id="reset-filters-btn" class="reset-filters-btn" style="display: none;">Limpiar filtros ✕</button>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-grid" id="products-grid">
+          <!-- Populated dynamically by app.js with real items only -->
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <!-- Guía de Medidas & Cómo Medirse Section -->
+    <section class="size-guide-section" id="como-medirse">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-sub">Moldería & Calce Atelier</span>
+          <h2 class="section-title">El Arte de Medirse: Guía de Talles</h2>
+          <p class="section-desc">
+            Diseñamos nuestras prendas con siluetas fluidas, holgadas y relajadas de inspiración europea. Conocé tus medidas en 3 simples pasos o descubrí tu talle exacto con nuestra calculadora interactiva.
+          </p>
+        </div>
+
+        <!-- 4 Step Measurement Visual Cards -->
+        <div class="measure-steps-grid" id="measure-steps-grid">
+          <!-- Step 1: Busto -->
+          <div class="measure-step-card" onclick="openMeasureSheet('busto')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openMeasureSheet('busto')" title="Hacer clic para abrir ficha técnica ilustrada con dibujo">
+            <div class="step-badge">Paso 01</div>
+            <div class="step-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.5a9 9 0 0 0 4.3 6.64l4.84 2.82 4.84-2.82a9 9 0 0 0 4.3-6.64l.58-3.5a2 2 0 0 0-1.34-2.23z"/>
+              </svg>
+            </div>
+            <h3 class="step-title">Contorno de Busto</h3>
+            <p class="step-desc">
+              Rodeá la parte más saliente del pecho con la cinta métrica en posición horizontal. Mantené los hombros relajados y la cinta cómoda sin apretar.
+            </p>
+            <div class="step-tip">
+              <strong>Ideal para:</strong> Chalecos sastreros, Tops y Remeras.
+            </div>
+            <div class="step-card-trigger">
+              <span class="trigger-label">Ver Ficha Técnica con Dibujo</span>
+              <span class="trigger-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- Step 2: Cintura -->
+          <div class="measure-step-card" onclick="openMeasureSheet('cintura')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openMeasureSheet('cintura')" title="Hacer clic para abrir ficha técnica ilustrada con dibujo">
+            <div class="step-badge">Paso 02</div>
+            <div class="step-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <ellipse cx="12" cy="12" rx="9" ry="5"/>
+                <path d="M3 12v4c0 2.76 4.03 5 9 5s9-2.24 9-5v-4"/>
+              </svg>
+            </div>
+            <h3 class="step-title">Cintura Natural</h3>
+            <p class="step-desc">
+              Medí la circunferencia en el punto más estrecho del torso, aproximadamente 2 a 3 cm sobre el ombligo, en postura natural sin contener la respiración.
+            </p>
+            <div class="step-tip">
+              <strong>Ideal para:</strong> Pantalones palazzo y pretinas de tiro alto.
+            </div>
+            <div class="step-card-trigger">
+              <span class="trigger-label">Ver Ficha Técnica con Dibujo</span>
+              <span class="trigger-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- Step 3: Cadera -->
+          <div class="measure-step-card" onclick="openMeasureSheet('cadera')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openMeasureSheet('cadera')" title="Hacer clic para abrir ficha técnica ilustrada con dibujo">
+            <div class="step-badge">Paso 03</div>
+            <div class="step-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="4" width="18" height="16" rx="2"/>
+                <line x1="3" y1="12" x2="21" y2="12" stroke-dasharray="3 3"/>
+              </svg>
+            </div>
+            <h3 class="step-title">Contorno de Cadera</h3>
+            <p class="step-desc">
+              Con los pies juntos y de pie, pasá la cinta por la parte más prominente de los glúteos. Asegurá que la cinta quede paralela al suelo.
+            </p>
+            <div class="step-tip">
+              <strong>Ideal para:</strong> Caída y soltura de palazzos y conjuntos.
+            </div>
+            <div class="step-card-trigger">
+              <span class="trigger-label">Ver Ficha Técnica con Dibujo</span>
+              <span class="trigger-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- Step 4: Consejo de Calce -->
+          <div class="measure-step-card measure-card-highlight" onclick="openMeasureSheet('consejo')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openMeasureSheet('consejo')" title="Hacer clic para abrir ficha de calce y dudas de talle">
+            <div class="step-badge">Consejo Atelier</div>
+            <div class="step-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="16" x2="12" y2="12"/>
+                <line x1="12" y1="8" x2="12.01" y2="8"/>
+              </svg>
+            </div>
+            <h3 class="step-title">¿Dudas entre 2 Talles?</h3>
+            <p class="step-desc">
+              Nuestras prendas poseen calce relajado. Si preferís un estilo más entallado elegí el menor; si buscás la caída bohemia y holgada del atelier, elegí el mayor.
+            </p>
+            <div class="step-tip">
+              <strong>Cinta flexible:</strong> Recomendamos medirte sobre ropa interior.
+            </div>
+            <div class="step-card-trigger">
+              <span class="trigger-label">Ver Ficha de Calce Ilustrada</span>
+              <span class="trigger-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Step Indicator & Navigation Dots (Visible on Mobile) -->
+        <div class="measure-mobile-dots" id="measure-mobile-dots">
+          <div class="mobile-dots-track">
+            <button type="button" class="mobile-step-pill active" onclick="scrollToMeasureStep(0)">Paso 01 · Busto</button>
+            <button type="button" class="mobile-step-pill" onclick="scrollToMeasureStep(1)">Paso 02 · Cintura</button>
+            <button type="button" class="mobile-step-pill" onclick="scrollToMeasureStep(2)">Paso 03 · Cadera</button>
+            <button type="button" class="mobile-step-pill" onclick="scrollToMeasureStep(3)">Consejo</button>
+          </div>
+          <span class="mobile-swipe-hint">← Deslizá horizontalmente para explorar los pasos →</span>
+        </div>
+
+        <!-- Interactive Calculator & Size Tables Box -->
+        <div class="measure-interactive-box">
+          <div class="measure-interactive-tabs">
+            <button type="button" class="measure-tab-btn active" id="tab-btn-calc" onclick="switchMeasureTab('calc')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="vertical-align: -3px; margin-right: 6px;">
+                <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+                <line x1="8" y1="6" x2="16" y2="6"></line>
+                <line x1="16" y1="14" x2="16" y2="18"></line>
+                <path d="M16 10h.01"></path>
+                <path d="M12 10h.01"></path>
+                <path d="M8 10h.01"></path>
+                <path d="M12 14h.01"></path>
+                <path d="M8 14h.01"></path>
+                <path d="M12 18h.01"></path>
+                <path d="M8 18h.01"></path>
+              </svg>
+              <span>Calculadora de Talle</span>
+            </button>
+            <button type="button" class="measure-tab-btn" id="tab-btn-tables" onclick="switchMeasureTab('tables')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="vertical-align: -3px; margin-right: 6px;">
+                <path d="M3 3h18v18H3z"></path>
+                <path d="M3 9h18"></path>
+                <path d="M3 15h18"></path>
+                <path d="M9 3v18"></path>
+              </svg>
+              <span>Tablas de Medidas</span>
+            </button>
+          </div>
+
+          <!-- TAB 1: CALCULATOR -->
+          <div id="measure-tab-calc" class="measure-tab-content active">
+            <div class="measure-calc-grid">
+              <div class="calc-inputs-col">
+                <h4 class="calc-col-title">Ingresá tus medidas en centímetros:</h4>
+                <div class="calc-fields-row">
+                  <div class="form-group">
+                    <label for="calc-busto">Busto (cm)</label>
+                    <input type="number" id="calc-busto" placeholder="Ej: 88" min="70" max="135" />
+                    <span class="field-hint">Alrededor de la parte más ancha</span>
+                  </div>
+                  <div class="form-group">
+                    <label for="calc-cintura">Cintura (cm)</label>
+                    <input type="number" id="calc-cintura" placeholder="Ej: 68" min="50" max="125" />
+                    <span class="field-hint">En el punto más estrecho</span>
+                  </div>
+                  <div class="form-group">
+                    <label for="calc-cadera">Cadera (cm)</label>
+                    <input type="number" id="calc-cadera" placeholder="Ej: 96" min="70" max="145" />
+                    <span class="field-hint">Alrededor de los glúteos</span>
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label for="calc-category">Prenda de Interés</label>
+                    <select id="calc-category">
+                      <option value="todos">Toda la Colección</option>
+                      <option value="pantalones">Pantalones Palazzo</option>
+                      <option value="chalecos">Chalecos Sastreros</option>
+                      <option value="remeras">Remeras Estampadas</option>
+                      <option value="conjuntos">Conjuntos 2 Piezas</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="calc-fit-preference">Preferencia de Calce</label>
+                    <select id="calc-fit-preference">
+                      <option value="relax">Más Holgado / Oversized</option>
+                      <option value="fitted">Más Al Cuerpo / Entallado</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="calc-btn-group">
+                  <button type="button" class="btn btn-calc-submit" onclick="calculateMySize()">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="margin-right: 8px;">
+                      <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+                      <line x1="8" y1="6" x2="16" y2="6"></line>
+                      <line x1="16" y1="14" x2="16" y2="18"></line>
+                      <path d="M16 10h.01"></path>
+                      <path d="M12 10h.01"></path>
+                      <path d="M8 10h.01"></path>
+                    </svg>
+                    Calcular mi Talle Recomendado
+                  </button>
+                  <button type="button" class="btn btn-calc-reset" onclick="resetSizeCalculator()">
+                    Limpiar
+                  </button>
+                </div>
+              </div>
+
+              <div class="calc-result-col" id="calc-result-box">
+                <div class="calc-placeholder">
+                  <div class="calc-placeholder-icon">📐</div>
+                  <h5 class="calc-placeholder-title">Descubrí tu talle ideal</h5>
+                  <p class="calc-placeholder-desc">Completá tus medidas a la izquierda para recibir la recomendación personalizada de moldería del Atelier.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: SIZE TABLES -->
+          <div id="measure-tab-tables" class="measure-tab-content">
+            <div class="tables-category-nav">
+              <button type="button" class="table-cat-pill active" id="btn-cat-pantalones" onclick="switchTableCategory('pantalones')">Pantalones Palazzo</button>
+              <button type="button" class="table-cat-pill" id="btn-cat-chalecos" onclick="switchTableCategory('chalecos')">Chalecos</button>
+              <button type="button" class="table-cat-pill" id="btn-cat-remeras" onclick="switchTableCategory('remeras')">Remeras Estampadas</button>
+              <button type="button" class="table-cat-pill" id="btn-cat-conjuntos" onclick="switchTableCategory('conjuntos')">Conjuntos 2 Piezas</button>
+            </div>
+
+            <div class="table-responsive" id="table-container">
+              <!-- Rendered via JavaScript -->
+            </div>
+          </div>
+        </div>
+
+        <!-- WhatsApp Support Direct Link -->
+        <div class="measure-help-banner">
+          <div class="help-text">
+            <h4>¿Querés asesoramiento a medida con tus prendas?</h4>
+            <p>Escribinos por WhatsApp con tus medidas y la prenda que te gustó, y te asesoramos personalmente en minutos.</p>
+          </div>
+          <a href="https://wa.me/5491148209900?text=Hola%20Evangelina%20Atelier!%20Quisiera%20asesoramiento%20sobre%20c%C3%B3mo%20medirme%20y%20el%20talle%20de%20una%20prenda" target="_blank" rel="noopener noreferrer" class="btn btn-secondary help-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="margin-right: 0.5rem;">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+            Asesoría por WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+  <!-- Simplified Minimalist Footer Bar -->
+  <footer class="site-footer-bar" id="contacto">
+    <div class="container footer-bar-container">
+      <a href="https://mgh.net.ar/?utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener noreferrer" class="footer-bar-link" aria-label="Desarrollado por MGH" title="Visitar MGH">
+        <img src="assets/logo.png" alt="Evangelina Atelier" class="footer-bar-logo" />
+        <span class="footer-bar-divider" aria-hidden="true"></span>
+        <div class="footer-bar-credit">
+          <span class="mgh-label">Desarrollado por</span>
+          <span class="mgh-brand">MGH</span>
+          <svg class="mgh-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </div>
+      </a>
+      <button class="footer-admin-link" id="admin-trigger" onclick="openAdminModal()" aria-label="Abrir panel de administración" style="display: none;">⚙️</button>
+    </div>
+  </footer>
+
+  <!-- Slide-Over Shopping Cart Drawer -->
+  <div class="cart-drawer-overlay" id="cart-drawer-overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Bolsa de Compras">
+    <div class="cart-drawer-header">
+      <div class="cart-header-title">
+        <h3>Tu Bolsa de Compras</h3>
+        <span class="cart-drawer-count" id="cart-drawer-count">(0 prendas)</span>
+      </div>
+      <button class="cart-close-btn" id="cart-close-btn" aria-label="Cerrar bolsa">✕</button>
+    </div>
+
+    <!-- Free Shipping Progress -->
+    <div class="free-shipping-box">
+      <div class="free-shipping-text" id="free-shipping-text">
+        ¡Agrega $120.000 para obtener envío gratis!
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="shipping-progress" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <!-- Items List -->
+    <div class="cart-items-container" id="cart-items-container">
+      <!-- Generated dynamically -->
+    </div>
+
+    <!-- Cart Footer & Checkout -->
+    <div class="cart-drawer-footer" id="cart-drawer-footer">
+      <div class="cart-summary-line">
+        <span>Subtotal</span>
+        <span class="cart-subtotal-val" id="cart-subtotal">$0</span>
+      </div>
+      <div class="cart-summary-line shipping-line">
+        <span>Envío estimado</span>
+        <span id="cart-shipping-val">Calculado en el checkout</span>
+      </div>
+      <p class="cart-installments-text">Hasta 3 o 6 cuotas sin interés con tarjetas seleccionadas.</p>
+      
+      <div id="cart-summary-actions">
+        <button class="btn btn-primary btn-checkout" id="checkout-btn" onclick="toggleCartCheckoutForm(true)">
+          Continuar al Pago
+        </button>
+        <button class="btn-clear-cart" id="clear-cart-btn">Vaciar bolsa</button>
+      </div>
+
+      <!-- Checkout Form inside Cart Drawer -->
+      <div id="cart-checkout-form-container" style="display: none; padding-top: 1rem; border-top: 1px solid var(--border-subtle); margin-top: 0.75rem;">
+        <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--text-main); font-family: var(--font-editorial);">Finalizar Compra</h4>
+        <div class="form-group" style="margin-bottom: 0.5rem;">
+          <label for="checkout-name" style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em;">Nombre y Apellido *</label>
+          <input type="text" id="checkout-name" placeholder="Tu nombre completo" style="padding: 0.45rem 0.65rem; font-size: 0.8125rem;" />
+        </div>
+        <div class="form-group" style="margin-bottom: 0.5rem;">
+          <label for="checkout-phone" style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em;">WhatsApp / Teléfono *</label>
+          <input type="tel" id="checkout-phone" placeholder="Ej: +54 9 11 5555-5555" style="padding: 0.45rem 0.65rem; font-size: 0.8125rem;" />
+        </div>
+        <div class="form-group" style="margin-bottom: 0.65rem;">
+          <label for="checkout-address" style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em;">Dirección / Localidad</label>
+          <input type="text" id="checkout-address" placeholder="Ej: Palermo, CABA" style="padding: 0.45rem 0.65rem; font-size: 0.8125rem;" />
+        </div>
+        <button type="button" class="btn btn-primary btn-block" id="confirm-order-btn" onclick="submitCartCheckout()" style="padding: 0.75rem; font-size: 0.8125rem;">
+          Confirmar y Abrir WhatsApp 📲
+        </button>
+        <button type="button" class="btn-clear-cart" onclick="toggleCartCheckoutForm(false)" style="margin-top: 0.5rem;">
+          ← Volver a la bolsa
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================
+       MODAL: FICHA TÉCNICA ILUSTRADA DE MEDICIÓN
+       ========================================== -->
+  <div class="modal-overlay measure-sheet-overlay" id="measure-sheet-overlay" role="dialog" aria-modal="true" aria-labelledby="sheet-modal-title" onclick="if(event.target===this)closeMeasureSheet()">
+    <div class="modal-card measure-sheet-card">
+      <button class="modal-close-btn" onclick="closeMeasureSheet()" aria-label="Cerrar ficha técnica">✕</button>
+
+      <!-- Sheet Header -->
+      <div class="sheet-modal-header">
+        <div class="sheet-header-top-row">
+          <div class="sheet-header-badges">
+            <span class="sheet-kicker">Atelier Evangelina • Moldería & Calce</span>
+            <span class="sheet-doc-id">GUÍA ANATÓMICA</span>
+          </div>
+          <span class="sheet-esc-hint">Presioná ESC para cerrar</span>
+        </div>
+        <h3 class="sheet-title" id="sheet-modal-title">Ficha Técnica de Medición Ilustrada</h3>
+        <p class="sheet-subtitle">Esquema visual y recomendaciones de alta costura para tomar tus medidas exactas y disfrutar la caída bohemia de nuestras prendas.</p>
+      </div>
+
+      <!-- Tab Navigation for the 4 Steps -->
+      <div class="sheet-tabs-nav" role="tablist">
+        <button type="button" class="sheet-nav-tab active" id="sheet-tab-btn-busto" onclick="switchMeasureSheetTab('busto')" role="tab">
+          <span class="sheet-tab-num">01</span>
+          <span class="sheet-tab-label">Contorno de Busto</span>
+        </button>
+        <button type="button" class="sheet-nav-tab" id="sheet-tab-btn-cintura" onclick="switchMeasureSheetTab('cintura')" role="tab">
+          <span class="sheet-tab-num">02</span>
+          <span class="sheet-tab-label">Cintura Natural</span>
+        </button>
+        <button type="button" class="sheet-nav-tab" id="sheet-tab-btn-cadera" onclick="switchMeasureSheetTab('cadera')" role="tab">
+          <span class="sheet-tab-num">03</span>
+          <span class="sheet-tab-label">Contorno de Cadera</span>
+        </button>
+        <button type="button" class="sheet-nav-tab" id="sheet-tab-btn-consejo" onclick="switchMeasureSheetTab('consejo')" role="tab">
+          <span class="sheet-tab-num">★</span>
+          <span class="sheet-tab-label">¿Dudas de Talle?</span>
+        </button>
+      </div>
+
+      <!-- Sheet Body: Two Columns (Illustration on Left, Step Guidance & Actions on Right) -->
+      <div class="sheet-body-grid">
+        <!-- Left: Technical Atelier Drawing / Illustration -->
+        <div class="sheet-drawing-col">
+          <div class="sheet-drawing-card">
+            <div class="drawing-header-bar">
+              <div class="drawing-header-left">
+                <span class="drawing-pulse-dot"></span>
+                <span class="drawing-tag" id="sheet-drawing-tag">Esquema Técnico Anatómico</span>
+              </div>
+              <span class="drawing-scale">Calce Evangelina Atelier</span>
+            </div>
+            
+            <!-- Dynamic Vector Illustration injected by JS -->
+            <div class="sheet-drawing-viewport" id="sheet-drawing-viewport">
+              <!-- Injected by JavaScript -->
+            </div>
+
+            <!-- Drawing Legend / Tape guide -->
+            <div class="drawing-legend" id="sheet-drawing-legend">
+              <!-- Injected by JavaScript -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Technical Guidance, Rules & Actions -->
+        <div class="sheet-info-col" id="sheet-info-col">
+          <!-- Injected by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick View Modal -->
+  <div class="modal-overlay" id="quick-view-overlay">
+    <div class="modal-card quick-view-card" id="quick-view-card">
+      <button class="modal-close-btn" id="quick-view-close" aria-label="Cerrar detalle">✕</button>
+      <div class="quick-view-grid" id="quick-view-content">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Image Lightbox Modal (Ver de cerca con zoom y paneo) -->
+  <div class="modal-overlay lightbox-overlay" id="image-lightbox-modal" aria-hidden="true">
+    <div class="lightbox-toolbar">
+      <div class="lightbox-title-wrap">
+        <span class="lightbox-brand-tag">Evangelina Atelier</span>
+        <h4 class="lightbox-product-title" id="lightbox-title">Detalle de Prenda</h4>
+      </div>
+      <div class="lightbox-controls">
+        <button type="button" class="lightbox-btn" id="lightbox-zoom-in" title="Acercar (+)">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <line x1="11" y1="8" x2="11" y2="14"></line>
+            <line x1="8" y1="11" x2="14" y2="11"></line>
+          </svg>
+          <span class="btn-label">Acercar</span>
+        </button>
+        <button type="button" class="lightbox-btn" id="lightbox-zoom-out" title="Alejar (-)">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <line x1="8" y1="11" x2="14" y2="11"></line>
+          </svg>
+          <span class="btn-label">Alejar</span>
+        </button>
+        <button type="button" class="lightbox-btn" id="lightbox-zoom-reset" title="Restablecer tamaño original">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+            <path d="M3 3v5h5"></path>
+          </svg>
+          <span class="btn-label">100%</span>
+        </button>
+        <button type="button" class="lightbox-btn lightbox-close-btn" id="lightbox-close" aria-label="Cerrar vista de cerca">
+          ✕
+        </button>
+      </div>
+    </div>
+    <div class="lightbox-stage" id="lightbox-stage">
+      <div class="lightbox-img-wrap" id="lightbox-img-wrap">
+        <img src="" alt="Detalle en alta definición" id="lightbox-img" class="lightbox-image" draggable="false" />
+      </div>
+      <div class="lightbox-hint" id="lightbox-hint">
+        <span class="hint-desktop">💡 Pasa el cursor, arrastra o gira la rueda del mouse para ver de cerca</span>
+        <span class="hint-mobile">💡 Toca o pellizca para hacer zoom y ver los detalles</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- User Account Modal -->
+  <div class="modal-overlay" id="user-modal-overlay">
+    <div class="modal-card user-modal-card">
+      <button class="modal-close-btn" id="user-modal-close" aria-label="Cerrar ventana">✕</button>
+      <div class="user-modal-header text-center">
+        <img src="assets/logo.png" alt="Evangelina Atelier" class="modal-logo" />
+        <h3 class="user-modal-title">Bienvenida al Atelier</h3>
+        <p class="user-modal-sub">Inicia sesión para gestionar tus pedidos y prendas favoritas.</p>
+      </div>
+      <form class="user-form" id="user-login-form" onsubmit="event.preventDefault(); showToast('¡Bienvenida nuevamente a Evangelina Atelier!'); closeUserModal();">
+        <div class="form-group">
+          <label for="login-email">Correo Electrónico</label>
+          <input type="email" id="login-email" required placeholder="tucorreo@ejemplo.com" />
+        </div>
+        <div class="form-group">
+          <label for="login-password">Contraseña</label>
+          <input type="password" id="login-password" required placeholder="••••••••" />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+        <div class="user-form-footer text-center">
+          <a href="#" onclick="alert('Te hemos enviado un enlace de recuperación a tu correo.');">¿Olvidaste tu contraseña?</a>
+          <span class="user-sep">|</span>
+          <a href="#" onclick="alert('El registro de nuevas clientas se encuentra activo. Completa tus datos en el formulario.');">Crear cuenta</a>
+        </div>
+        <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border-subtle); text-align: center;">
+          <a href="admin.html" class="btn-secondary" style="font-size: 0.75rem; padding: 0.45rem 0.9rem; text-decoration: none; display: inline-block;">Acceso Panel de Administración</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Informative Modal (Size guide / Shipping / Care) -->
+  <div class="modal-overlay" id="info-modal-overlay">
+    <div class="modal-card info-modal-card">
+      <button class="modal-close-btn" id="info-modal-close" aria-label="Cerrar">✕</button>
+      <div id="info-modal-body">
+        <!-- Dynamically injected -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Administrative backoffice is managed in admin.html -->
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Script -->
+  <script src="github-sync.js"></script>
+  <script src="backoffice.js?v=3.6"></script>
+  <script src="app.js?v=3.8"></script>
+</body>
+</html>

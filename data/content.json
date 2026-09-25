@@ -1,0 +1,57 @@
+{
+  "banner": {
+    "enabled": false,
+    "text": "🌿 Nueva Colección Estío: Fibras Nobles y Diseños que no se repiten — Envíos sin cargo superando los $80.000",
+    "bgColor": "#F3ECE4",
+    "textColor": "#6B5A4B",
+    "link": "#coleccion"
+  },
+  "hero": {
+    "title": "DISEÑO ÚNICO HECHO A MANO",
+    "titleMain": "DISEÑO ÚNICO HECHO A MANO",
+    "tagline": "Prendas que no se repiten",
+    "description": "Creamos prendas y conjuntos originales, cuidando cada detalle y trabajando con materiales de excelente calidad. También hacemos diseños personalizados para que puedas llevar algo realmente tuyo.",
+    "primaryBtnText": "Ver Colección",
+    "primaryBtnLink": "#coleccion",
+    "secondaryBtnText": "Conocé el Atelier",
+    "secondaryBtnLink": "#atelier",
+    "desktopImage": "assets/hero-sunset-desktop.jpg",
+    "mobileImage": "assets/hero-sunset-mobile.jpg"
+  },
+  "pillars": [
+    {
+      "title": "Confección Artesanal",
+      "text": "Piezas confeccionadas con atención minuciosa en pequeños talleres éticos."
+    },
+    {
+      "title": "Fibras Nobles y Lino",
+      "text": "Selección de algodones puros, lino europeo y texturas que abrazan la piel."
+    },
+    {
+      "title": "Piezas Irrepetibles",
+      "text": "Tiradas limitadas y diseños personalizados que garantizan exclusividad."
+    },
+    {
+      "title": "Trato Cercano",
+      "text": "Atención personalizada por WhatsApp y asesoramiento de talle a medida."
+    }
+  ],
+  "story": {
+    "sectionSubtitle": "Filosofía y Taller Familiar",
+    "sectionTitle": "El Alma de Evangelina Atelier",
+    "quote": "\"Creemos en la belleza de lo auténtico: prendas que visten tu historia con calma, libertad y elegancia sin tiempo.\"",
+    "p1": "Evangelina Atelier nació del encuentro entre dos hermanas unidas por una misma pasión: devolverle a la moda el valor de lo irrepetible. En un mundo donde todo se produce en masa y a las apuradas, elegimos la pausa, la calidad de los materiales nobles y la dedicación en cada puntada.",
+    "p2": "Cada prenda que sale de nuestro taller es pensada como una obra única. Diseñamos para mujeres que valoran la frescura, el confort bohemio y la seguridad de vestir piezas que no van a encontrar repetidas en ninguna otra parte. También abrimos nuestras puertas para diseñar conjuntos a medida que reflejen fielmente tu propia identidad.",
+    "author": "Ana y Eva",
+    "authorRole": "Hermanas & Creadoras del Atelier",
+    "role": "Hermanas & Creadoras del Atelier",
+    "image": "assets/product-sunset-stripes.jpg"
+  },
+  "editorial": {
+    "subtitle": "Manifiesto de Marca",
+    "title": "Habitar con Calma y Elegancia",
+    "p1": "Nuestra colección nace de la contemplación de las mañanas lentas, los patios de sol cálido y el tacto suave del lino natural. Creemos que la ropa no debe disfrazarte, sino acompañar tu movimiento con naturalidad.",
+    "p2": "Cada camisa, palazzo y chaleco es confeccionado con terminaciones cuidadas a mano, botones de madera natural y costuras que resisten el paso de las temporadas.",
+    "tag": "Colección Atemporal"
+  }
+}
