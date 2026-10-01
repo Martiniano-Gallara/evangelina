@@ -1314,11 +1314,11 @@
       <div class="order-item-card">
         <div class="order-item-left">
           <div class="order-item-name"><strong>${item.name || item.productId}</strong></div>
-          <div class="order-item-specs">Talle: ${item.selectedSize || 'Estándar'} · Color: ${item.selectedColor || 'Original'}</div>
+          <div class="order-item-specs">Talle: <strong>${item.selectedSize || 'Estándar'}</strong> · Color: <strong>${item.selectedColor || 'Original'}</strong></div>
         </div>
         <div class="order-item-right">
-          <span>${item.quantity} un. × ${formatPrice(item.price)}</span>
-          <strong>${formatPrice(item.price * item.quantity)}</strong>
+          <span class="order-item-unit">${item.quantity} un. × ${formatPrice(item.price)}</span>
+          <strong class="order-item-total">${formatPrice(item.price * item.quantity)}</strong>
         </div>
       </div>
     `).join('');
@@ -1336,58 +1336,78 @@
     `).join('');
 
     body.innerHTML = `
-      <div class="order-modal-header">
-        <div>
-          <h3 class="order-modal-title">Pedido #${order.id}</h3>
-          <span class="order-modal-date">${formatDate(order.date, true)}</span>
+      <div class="order-card-header-styled">
+        <div class="order-header-top">
+          <div>
+            <span class="order-type-badge">PEDIDO ONLINE</span>
+            <h3 class="order-title-big">Pedido #${order.id}</h3>
+            <span class="order-date-sub">📅 ${formatDate(order.date, true)}</span>
+          </div>
+          <div class="order-header-right">
+            <span class="status-pill ${getOrderStatusClass(order.status)}">${order.status}</span>
+            <div class="order-total-badge-large">
+              <span class="lbl">Total:</span>
+              <strong class="val">${formatPrice(order.total)}</strong>
+            </div>
+          </div>
         </div>
-        <span class="status-pill ${getOrderStatusClass(order.status)}">${order.status}</span>
       </div>
 
-      <div class="order-modal-grid">
-        <div class="order-section-box">
+      <div class="order-card-two-cols">
+        <div class="order-section-card">
           <h4 class="order-box-title">👤 Datos del Cliente</h4>
-          <p><strong>Nombre:</strong> ${order.customer?.name || '-'}</p>
-          <p><strong>Tel / WhatsApp:</strong> ${order.customer?.phone || '-'}</p>
-          <p><strong>Dirección:</strong> ${order.customer?.address || 'Retiro en Atelier'}</p>
-          ${order.customer?.email ? `<p><strong>Email:</strong> ${order.customer.email}</p>` : ''}
-          ${order.notes ? `<p><strong>Notas:</strong> <em>${order.notes}</em></p>` : ''}
+          <div class="customer-info-grid">
+            <div class="c-info-item">
+              <span class="c-label">Nombre:</span>
+              <strong class="c-val">${order.customer?.name || '-'}</strong>
+            </div>
+            <div class="c-info-item">
+              <span class="c-label">Tel / WhatsApp:</span>
+              <span class="c-val">${order.customer?.phone || '-'}</span>
+            </div>
+            <div class="c-info-item">
+              <span class="c-label">Dirección:</span>
+              <span class="c-val">${order.customer?.address || 'Retiro en Atelier'}</span>
+            </div>
+            ${order.customer?.email ? `
+            <div class="c-info-item">
+              <span class="c-label">Email:</span>
+              <span class="c-val">${order.customer.email}</span>
+            </div>` : ''}
+          </div>
           <div style="margin-top: 0.85rem;">
-            <button type="button" class="btn btn-secondary btn-sm" onclick="Backoffice.notifyOrderWhatsApp('${order.id}')">
+            <button type="button" class="btn btn-wa-action" onclick="Backoffice.notifyOrderWhatsApp('${order.id}')">
               💬 Enviar Estado por WhatsApp
             </button>
           </div>
         </div>
 
-        <div class="order-section-box">
+        <div class="order-section-card">
           <h4 class="order-box-title">⚙️ Cambiar Estado</h4>
-          <div class="status-change-control">
-            <select id="modal-order-status-select" class="form-select">
+          <p class="status-help-text">Seleccioná el nuevo estado para actualizar la orden:</p>
+          <div class="status-select-btn-group">
+            <select id="modal-order-status-select" class="form-select status-dropdown">
               <option value="Pendiente" ${order.status === 'Pendiente' ? 'selected' : ''}>Pendiente</option>
               <option value="En preparación" ${order.status === 'En preparación' || order.status === 'En Taller / Confección' ? 'selected' : ''}>En preparación</option>
               <option value="Enviado" ${order.status === 'Enviado' || order.status === 'Despachado' ? 'selected' : ''}>Enviado</option>
               <option value="Entregado" ${order.status === 'Entregado' ? 'selected' : ''}>Entregado</option>
               <option value="Cancelado" ${order.status === 'Cancelado' ? 'selected' : ''}>Cancelado</option>
             </select>
-            <button type="button" class="btn btn-primary btn-sm" onclick="Backoffice.updateOrderStatusFromModal('${order.id}')">
+            <button type="button" class="btn btn-primary btn-update-action" onclick="Backoffice.updateOrderStatusFromModal('${order.id}')">
               Actualizar
             </button>
-          </div>
-          <div class="order-total-summary">
-            <span>Total del Pedido:</span>
-            <strong class="total-price">${formatPrice(order.total)}</strong>
           </div>
         </div>
       </div>
 
-      <div class="order-items-box">
-        <h4 class="order-box-title">🛍️ Prendas Adquiridas</h4>
-        <div class="order-items-list">${itemsHtml}</div>
+      <div class="order-section-card margin-top-sm">
+        <h4 class="order-box-title">🛍️ Prendas Adquiridas (${order.items ? order.items.length : 0})</h4>
+        <div class="order-items-list-styled">${itemsHtml}</div>
       </div>
 
-      <div class="order-history-box">
+      <div class="order-section-card margin-top-sm">
         <h4 class="order-box-title">📜 Historial de Cambios</h4>
-        <div class="order-history-list">${historyHtml}</div>
+        <div class="order-history-list-styled">${historyHtml}</div>
       </div>
     `;
 

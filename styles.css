@@ -4162,12 +4162,14 @@ body.admin-page .admin-login-screen {
   background-color: #FFFFFF;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   box-shadow: var(--shadow-subtle);
 }
 
 .backoffice-table {
   width: 100%;
+  min-width: 860px;
   border-collapse: collapse;
   text-align: left;
   font-size: 0.8125rem;
@@ -4175,10 +4177,10 @@ body.admin-page .admin-login-screen {
 
 .backoffice-table th {
   background-color: var(--bg-sand);
-  padding: 0.9rem 1.1rem;
-  font-size: 0.72rem;
+  padding: 0.75rem 0.75rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   color: var(--text-secondary);
   border-bottom: 1px solid var(--border-medium);
   font-weight: 700;
@@ -4186,7 +4188,7 @@ body.admin-page .admin-login-screen {
 }
 
 .backoffice-table td {
-  padding: 0.9rem 1.1rem;
+  padding: 0.75rem 0.75rem;
   border-bottom: 1px solid var(--border-subtle);
   color: var(--text-main);
   vertical-align: middle;
@@ -7341,5 +7343,261 @@ body.admin-page .admin-login-screen {
   }
   .pillar-card {
     padding: 0.95rem 1rem;
+  }
+}
+
+/* ==========================================================================
+   ELEGANT ORDER DETAIL MODAL & CARDS
+   ========================================================================== */
+.order-card-header-styled {
+  background: linear-gradient(135deg, #FAF6F1 0%, #F5EFEB 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.order-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.order-type-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--bronze-primary);
+  margin-bottom: 0.2rem;
+}
+
+.order-title-big {
+  font-family: var(--font-editorial);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.order-date-sub {
+  font-size: 0.785rem;
+  color: var(--text-secondary);
+}
+
+.order-header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.order-total-badge-large {
+  background: #FFFFFF;
+  border: 1.5px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 8px rgba(50, 40, 30, 0.04);
+}
+
+.order-total-badge-large .lbl {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.order-total-badge-large .val {
+  font-family: var(--font-editorial);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--bronze-hover);
+}
+
+.order-card-two-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.order-section-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  box-shadow: 0 3px 12px rgba(50, 40, 30, 0.03);
+}
+
+.order-section-card.margin-top-sm {
+  margin-top: 1.25rem;
+}
+
+.box-heading {
+  font-family: var(--font-editorial);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.customer-info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-size: 0.85rem;
+}
+
+.c-info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem 0;
+  border-bottom: 1px dashed #F2EAE1;
+}
+
+.c-info-item:last-child {
+  border-bottom: none;
+}
+
+.c-label {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
+.c-val {
+  color: var(--text-main);
+}
+
+.btn-wa-action {
+  width: 100%;
+  padding: 0.65rem;
+  font-size: 0.785rem;
+  font-weight: 600;
+  background-color: #FAF6F1;
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  color: #2D2724;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-wa-action:hover {
+  background-color: #25D366;
+  border-color: #25D366;
+  color: #FFFFFF;
+}
+
+.status-help-text {
+  font-size: 0.785rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.85rem;
+}
+
+.status-select-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.status-dropdown {
+  flex: 1;
+  height: 42px;
+  line-height: 42px;
+  padding: 0 2rem 0 0.85rem;
+  font-size: 0.85rem;
+  border: 1.5px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  background-color: #FAF8F5;
+  color: var(--text-main);
+  outline: none;
+  cursor: pointer;
+}
+
+.btn-update-action {
+  height: 42px;
+  padding: 0 1.25rem;
+  font-size: 0.785rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background-color: #2A2421;
+  border: 1px solid #2A2421;
+  color: #FAF8F5;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--transition-fast);
+}
+
+.btn-update-action:hover {
+  background-color: var(--bronze-primary);
+  border-color: var(--bronze-primary);
+}
+
+.order-items-list-styled {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.order-item-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FAF8F5;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1.15rem;
+}
+
+.order-item-name {
+  font-size: 0.9rem;
+  color: var(--text-main);
+  margin-bottom: 0.2rem;
+}
+
+.order-item-specs {
+  font-size: 0.785rem;
+  color: var(--text-secondary);
+}
+
+.order-item-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+}
+
+.order-item-unit {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.order-item-total {
+  font-family: var(--font-editorial);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+@media (max-width: 768px) {
+  .order-card-two-cols {
+    grid-template-columns: 1fr;
+  }
+  .order-header-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .order-header-right {
+    width: 100%;
+    justify-content: space-between;
   }
 }
