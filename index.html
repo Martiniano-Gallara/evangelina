@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=5.4" />
+  <link rel="stylesheet" href="styles.css?v=5.5" />
 </head>
 <body>
   <!-- Top Announcement Bar (Oculto) -->
@@ -39,7 +39,7 @@
         </button>
 
         <!-- Brand Logo Center -->
-        <a href="#" class="brand-logo" aria-label="Evangelina Atelier Inicio">
+        <a href="#hero" class="brand-logo" aria-label="Evangelina Atelier Inicio">
           <img src="assets/logo-emblem.png" alt="Evangelina Atelier" class="brand-emblem-icon" />
           <span class="brand-title">EVANGELINA</span>
           <span class="brand-subtitle">ATELIER</span>
@@ -72,7 +72,8 @@
       <!-- Desktop Navigation Centered In The Middle -->
       <nav class="nav-desktop-centered" aria-label="Navegación principal">
         <ul class="nav-list">
-          <li><a href="#coleccion" class="nav-link active">Colección</a></li>
+          <li><a href="#hero" class="nav-link active">Inicio</a></li>
+          <li><a href="#coleccion" class="nav-link">Colección</a></li>
           <li><a href="#categorias" class="nav-link">Categorías</a></li>
           <li><a href="#como-medirse" class="nav-link" id="nav-how-to-measure">Cómo Medirse</a></li>
         </ul>
@@ -93,6 +94,7 @@
       <button class="close-drawer-btn" id="close-mobile-menu" aria-label="Cerrar menú">✕</button>
     </div>
     <nav class="mobile-nav">
+      <a href="#hero" class="mobile-nav-link">Inicio</a>
       <a href="#coleccion" class="mobile-nav-link">Nueva Colección</a>
       <a href="#categorias" class="mobile-nav-link">Categorías</a>
       <a href="#como-medirse" class="mobile-nav-link">Cómo Medirse & Talles</a>
@@ -124,7 +126,7 @@
   </div>
 
   <main>
-    <!-- Hero Section -->
+    <!-- Hero Section (Inicio) -->
     <section class="hero-section" id="hero">
       <div class="hero-media">
         <picture class="hero-picture" id="hero-picture">
@@ -133,7 +135,10 @@
         </picture>
         <div class="hero-overlay"></div>
         <!-- Mobile Interactive Tap Target linking to collection -->
-        <a href="#coleccion" class="hero-mobile-hitbox" aria-label="Ver Colección" onclick="scrollToCollection(event)"></a>
+        <a href="#coleccion" class="hero-mobile-hitbox" aria-label="Ver Colección" onclick="scrollToCollection(event)">
+          <span>VER COLECCIÓN</span>
+          <span class="pill-arrow">→</span>
+        </a>
       </div>
       <div class="container hero-content-wrap">
         <div class="hero-card">
@@ -154,7 +159,6 @@
         </div>
       </div>
     </section>
-
     <!-- Categories Section -->
     <section class="categories-section" id="categorias">
       <div class="container">
@@ -275,7 +279,7 @@
           <span class="section-sub">Moldería & Calce Atelier</span>
           <h2 class="section-title">El Arte de Medirse: Guía de Talles</h2>
           <p class="section-desc">
-            Diseñamos nuestras prendas con siluetas fluidas, holgadas y relajadas de inspiración europea. Conocé tus medidas en 3 simples pasos o descubrí tu talle exacto con nuestra calculadora interactiva.
+            Completá tus medidas a la izquierda para recibir la recomendación personalizada de moldería del Atelier.
           </p>
         </div>
 

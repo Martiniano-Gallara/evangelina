@@ -2531,22 +2531,64 @@ input, select, textarea {
 
   /* Interactive tap button overlay matching the "VER COLECCIÓN →" pill */
   .hero-mobile-hitbox {
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
     position: absolute;
-    top: 51.5%;
-    left: 3.5%;
-    width: 36%;
-    height: 8.5%;
-    z-index: 50;
+    top: 53.2%;
+    left: 5.2%;
+    width: auto;
+    min-width: clamp(165px, 32vw, 215px);
+    height: clamp(38px, 5.2vw, 46px);
+    padding: 0 1.25rem;
+    border-radius: 9999px;
+    border: 1.5px solid rgba(226, 203, 180, 0.9);
+    background-color: rgba(45, 34, 27, 0.55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #F8F4EF;
+    font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+    font-size: clamp(0.7rem, 2.5vw, 0.8125rem);
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
     cursor: pointer;
-    border-radius: 50px;
-    -webkit-tap-highlight-color: rgba(221, 176, 136, 0.35);
-    transition: background-color 0.2s ease, transform 0.15s ease;
+    z-index: 50;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.28);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
   }
 
-  .hero-mobile-hitbox:hover,
+  .hero-mobile-hitbox span:first-child {
+    display: inline-block;
+    letter-spacing: 0.14em;
+  }
+
+  .hero-mobile-hitbox .pill-arrow {
+    display: inline-block;
+    transition: transform 0.25s ease;
+    font-size: 1.05rem;
+    line-height: 1;
+  }
+
+  .hero-mobile-hitbox:hover {
+    background-color: rgba(226, 203, 180, 0.22);
+    border-color: #FFFFFF;
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 16px rgba(226, 203, 180, 0.3);
+  }
+
+  .hero-mobile-hitbox:hover .pill-arrow {
+    transform: translateX(4px);
+  }
+
   .hero-mobile-hitbox:active {
-    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(0.97);
+    background-color: rgba(226, 203, 180, 0.3);
   }
 }
 
