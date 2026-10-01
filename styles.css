@@ -7260,19 +7260,19 @@ body.admin-page .admin-login-screen {
 .about-pillars-grid {
   display: flex;
   flex-direction: column;
-  gap: 1.15rem;
-  margin-bottom: 2rem;
+  gap: 0.65rem;
+  margin-bottom: 1.5rem;
 }
 
 .pillar-card {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 0.75rem;
   background-color: #F2EAE1;
   border: 1px solid #DFD2C4;
-  border-radius: var(--radius-md);
-  padding: 1.15rem 1.25rem;
-  box-shadow: 0 4px 15px rgba(50, 40, 30, 0.05);
+  border-radius: var(--radius-sm);
+  padding: 0.7rem 0.9rem;
+  box-shadow: 0 2px 8px rgba(50, 40, 30, 0.04);
   transition: transform var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
 }
 
@@ -7283,24 +7283,24 @@ body.admin-page .admin-login-screen {
 }
 
 .pillar-icon {
-  font-size: 1.45rem;
+  font-size: 1.15rem;
   line-height: 1;
-  padding-top: 2px;
+  padding-top: 1px;
 }
 
 .pillar-title {
   font-family: var(--font-editorial);
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--text-main);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.15rem;
 }
 
 .pillar-desc {
-  font-size: 0.85rem;
-  font-weight: 600;
-  line-height: 1.5;
-  color: var(--text-main);
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: var(--text-muted);
+  margin: 0;
 }
 
 .about-authors-sign {
