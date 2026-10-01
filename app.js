@@ -61,7 +61,7 @@ const DEFAULT_PRODUCTS = [
       'Cintura elastizada tiro alto con frunce artesanal',
       'Pierna amplia palazzo de caída fluida',
       'Bolsillos laterales profundos y funcionales',
-      'Confeccionado artesanalmente en Buenos Aires'
+      'Confección artesanal de autor'
     ]
   },
   {
@@ -169,7 +169,7 @@ const DEFAULT_PRODUCTS = [
       'Top con terminación de volados en hombros',
       'Pantalón palazzo tiro alto con elástico suave',
       'Tejido fresco y texturado ideal para media estación y verano',
-      'Confeccionado artesanalmente en Buenos Aires'
+      'Confección artesanal de autor'
     ]
   },
   {
