@@ -461,8 +461,8 @@
   function switchLoginAuthMode(mode) {
     const passForm = document.getElementById('admin-login-form');
     const ghForm = document.getElementById('admin-github-login-form');
-    document.querySelectorAll('.auth-tab-btn').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.mode === mode);
+    document.querySelectorAll('.login-tab-btn, .auth-tab-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.mode === mode || btn.id === 'tab-login-' + mode);
     });
 
     if (mode === 'github') {
@@ -473,9 +473,10 @@
       if (ghForm) ghForm.style.display = 'none';
     }
   }
+  window.switchLoginAuthMode = switchLoginAuthMode;
 
   function handleAdminLogin(e) {
-    if (e) e.preventDefault();
+    if (e && e.preventDefault) e.preventDefault();
     const passInput = document.getElementById('admin-pass-input');
     const errBox = document.getElementById('admin-login-error');
     const entered = passInput ? passInput.value.trim() : '';
@@ -494,9 +495,10 @@
       if (passInput) passInput.select();
     }
   }
+  window.handleAdminLogin = handleAdminLogin;
 
   async function handleGitHubLogin(e) {
-    if (e) e.preventDefault();
+    if (e && e.preventDefault) e.preventDefault();
     const token = getVal('gh-login-token');
     const owner = getVal('gh-login-owner') || 'martingallara';
     const repo = getVal('gh-login-repo') || 'evangelina';
@@ -530,6 +532,7 @@
       }
     }
   }
+  window.handleGitHubLogin = handleGitHubLogin;
 
   function handleAdminLogout() {
     sessionStorage.removeItem(STORE_KEYS.AUTH);
