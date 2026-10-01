@@ -1638,7 +1638,7 @@ function openInfoModal(type) {
       <div class="info-modal-content">
         <h4 style="font-size: 1rem; color: var(--text-main); margin-bottom: 0.5rem;">Envíos Cuidados</h4>
         <p style="margin-bottom: 1rem;">
-          Despachamos todas las órdenes dentro de las 24-48 hs hábiles desde nuestro Atelier en Buenos Aires.
+          Despachamos todas las órdenes dentro de las 24-48 hs hábiles desde nuestro Atelier.
           Los pedidos superiores a <strong>${formatPrice(FREE_SHIPPING_THRESHOLD)}</strong> gozan de <strong>Envío Sin Cargo</strong> a todo el país mediante correo prioritario.
         </p>
         <h4 style="font-size: 1rem; color: var(--text-main); margin-bottom: 0.5rem;">Cambios Sin Fricción</h4>
