@@ -33,7 +33,7 @@ const DEFAULT_PRODUCTS = [
       'Tiro alto clásico con botón y cierre frontal',
       'Corte amplio palazzo de espíritu bohemio chic',
       'Estampa animalier safari en tonos cacao, negro y arena',
-      'Confección artesanal en Buenos Aires'
+      'Confección artesanal de autor'
     ]
   },
   {
@@ -88,7 +88,7 @@ const DEFAULT_PRODUCTS = [
       'Tiro alto con elástico invisible y cierre lateral',
       'Bolsillos laterales sutiles',
       'Tejido transpirable de fibra noble',
-      'Confección artesanal en Buenos Aires'
+      'Confección artesanal de autor'
     ]
   },
   {
@@ -196,7 +196,7 @@ const DEFAULT_PRODUCTS = [
       'Top crop estructurado forrado',
       'Pantalón corte flare / oxford con caída pesada',
       'Tiro ultra alto moldeador',
-      'Confección artesanal en Buenos Aires'
+      'Confección artesanal de autor'
     ]
   },
   {
@@ -223,7 +223,7 @@ const DEFAULT_PRODUCTS = [
       'Top corto con lazos regulables laterales',
       'Pantalón palazzo de silueta fluida',
       'Lino y algodón fresco y transpirable',
-      'Confección artesanal en Buenos Aires'
+      'Confección artesanal de autor'
     ]
   },
   {
