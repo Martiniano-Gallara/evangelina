@@ -2213,7 +2213,7 @@
     setVal('cfg-whatsapp-display', cfg.whatsappDisplay || '+54 9 11 3840-2948');
     setVal('cfg-instagram', cfg.instagram || '@evangelina.atelier');
     setVal('cfg-email', cfg.email || 'contacto@evangelinaatelier.com');
-    setVal('cfg-address', cfg.address || 'Buenos Aires, Argentina');
+    setVal('cfg-address', cfg.address || 'Atelier Boutique');
     setVal('cfg-schedule', cfg.businessHours || 'Lunes a Sábados 11:00 a 19:30 hs');
     setVal('cfg-free-shipping', cfg.freeShippingThreshold || 120000);
     setVal('cfg-shipping-rate', cfg.shippingFlatRate || 8500);
