@@ -2131,10 +2131,16 @@ document.addEventListener('DOMContentLoaded', () => {
       nextLabel: 'Siguiente: Cintura Natural →',
       svg: `<svg viewBox="0 0 380 430" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="mannequinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FAF5EE"/>
-      <stop offset="50%" stop-color="#F2E6D8"/>
-      <stop offset="100%" stop-color="#E5D3C0"/>
+    <linearGradient id="mannequinGradClean" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#FAF9F6"/>
+      <stop offset="100%" stop-color="#EDE8E2"/>
+    </linearGradient>
+    <linearGradient id="chromeCap" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#787C80"/>
+      <stop offset="35%" stop-color="#E2E6EA"/>
+      <stop offset="70%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#585C60"/>
     </linearGradient>
     <linearGradient id="tapeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#E5B96B"/>
@@ -2142,7 +2148,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <stop offset="100%" stop-color="#DEAC56"/>
     </linearGradient>
     <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#4A3B32" flood-opacity="0.12"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#3A3028" flood-opacity="0.12"/>
     </filter>
   </defs>
 
@@ -2154,96 +2160,80 @@ document.addEventListener('DOMContentLoaded', () => {
     <line x1="0" y1="180" x2="380" y2="180"/>
   </g>
 
-  <!-- Stand Base & Pole -->
-  <line x1="190" y1="350" x2="190" y2="420" stroke="#8E7058" stroke-width="6" stroke-linecap="round"/>
-  <ellipse cx="190" cy="418" rx="42" ry="7" fill="#6E533F"/>
+  <!-- Modern Metallic Stand Pole Base -->
+  <line x1="190" y1="365" x2="190" y2="430" stroke="#4A4E52" stroke-width="6" stroke-linecap="round"/>
 
-  <!-- Wood Top Cap (Soft golden/neutral finish) -->
-  <ellipse cx="190" cy="38" rx="16" ry="6" fill="#C9A26B" stroke="#9E7B5C" stroke-width="1.2"/>
-  <rect x="180" y="28" width="20" height="10" rx="3" fill="#D6B37C" stroke="#9E7B5C" stroke-width="1"/>
+  <!-- Mannequin Torso with Realistic Smooth Dress Form Contour (Reference 2) -->
+  <path d="M 166,42 Q 190,38 214,42 Q 224,54 238,72 Q 258,95 264,124 Q 268,154 256,182 Q 242,210 236,234 Q 230,258 238,284 Q 248,314 250,344 Q 251,360 248,366 L 132,366 Q 129,360 130,344 Q 132,314 142,284 Q 150,258 144,234 Q 138,210 124,182 Q 112,154 116,124 Q 122,95 142,72 Q 156,54 166,42 Z" 
+        fill="url(#mannequinGradClean)" stroke="#B0A69A" stroke-width="1.5" filter="url(#shadow)"/>
 
-  <!-- Golden Stand Pole and Elegant Tripod Base -->
-  <g stroke="#B38B42" fill="none">
-    <line x1="190" y1="365" x2="190" y2="425" stroke="#C9A253" stroke-width="5" stroke-linecap="round"/>
-    <circle cx="190" cy="370" r="5" fill="#D8B668" stroke="#A37E36" stroke-width="1"/>
-    <path d="M 190,400 C 175,410 160,420 148,428" stroke="#C9A253" stroke-width="4" stroke-linecap="round"/>
-    <path d="M 190,400 C 205,410 220,420 232,428" stroke="#C9A253" stroke-width="4" stroke-linecap="round"/>
-    <path d="M 190,405 L 190,428" stroke="#B38B42" stroke-width="3" stroke-linecap="round"/>
-  </g>
+  <!-- Modern Metallic Chrome Neck Cap (Silver finish from Reference Photo) -->
+  <rect x="166" y="24" width="48" height="18" rx="4" fill="url(#chromeCap)" stroke="#3A3E42" stroke-width="1.2"/>
+  <ellipse cx="190" cy="24" rx="24" ry="4" fill="#EAECEE" stroke="#505458" stroke-width="1"/>
+  <ellipse cx="190" cy="42" rx="24" ry="4" fill="none" stroke="#7A8084" stroke-width="0.8"/>
 
-  <!-- Mannequin Torso with High-End Atelier Dress Form Contour -->
-  <path d="M 174,38 C 170,55 158,68 140,80 C 118,95 106,128 114,165 C 122,198 136,218 138,228 C 140,238 126,260 114,290 C 100,325 110,360 145,366 L 235,366 C 270,360 280,325 266,290 C 254,260 240,238 242,228 C 244,218 258,198 266,165 C 274,128 262,95 240,80 C 222,68 210,55 206,38 Z" 
-        fill="url(#mannequinGrad)" stroke="#8A674B" stroke-width="2" filter="url(#shadow)"/>
-
-  <!-- Atelier Seams / Princess Lines -->
-  <path d="M142 82 C140 130 148 180 162 250 C168 280 170 310 172 345" fill="none" stroke="#D3BFAD" stroke-width="1.2" stroke-dasharray="4 3"/>
-  <path d="M238 82 C240 130 232 180 218 250 C212 280 210 310 208 345" fill="none" stroke="#D3BFAD" stroke-width="1.2" stroke-dasharray="4 3"/>
-  <!-- Center seam -->
-  <line x1="190" y1="75" x2="190" y2="345" stroke="#D3BFAD" stroke-width="1" stroke-dasharray="3 3"/>
-
-  <!-- Chest Apex / Bust Volume Highlights -->
-  <ellipse cx="148" cy="180" rx="20" ry="15" fill="#FFFFFF" fill-opacity="0.35"/>
-  <ellipse cx="232" cy="180" rx="20" ry="15" fill="#FFFFFF" fill-opacity="0.35"/>
-  <circle cx="152" cy="180" r="3.5" fill="#9E7B5C"/>
-  <circle cx="228" cy="180" r="3.5" fill="#9E7B5C"/>
+  <!-- Bust Anatomical Highlights -->
+  <ellipse cx="152" cy="172" rx="18" ry="14" fill="#FFFFFF" fill-opacity="0.4"/>
+  <ellipse cx="228" cy="172" rx="18" ry="14" fill="#FFFFFF" fill-opacity="0.4"/>
+  <circle cx="156" cy="172" r="3" fill="#A08E7D"/>
+  <circle cx="224" cy="172" r="3" fill="#A08E7D"/>
 
   <!-- Back Tape Arc (Behind body) -->
-  <path d="M102 180 C130 168 250 168 278 180" fill="none" stroke="#C29A4D" stroke-width="14" stroke-opacity="0.4" stroke-dasharray="6 4"/>
+  <path d="M104 175 C132 163 248 163 276 175" fill="none" stroke="#C29A4D" stroke-width="14" stroke-opacity="0.4" stroke-dasharray="6 4"/>
 
   <!-- Front Measuring Tape (Golden Ribbon across Bust Apex) -->
-  <path d="M100 178 C140 190 240 190 280 178 L281 192 C240 204 140 204 99 192 Z" 
+  <path d="M102 173 C142 185 238 185 278 173 L279 187 C238 199 142 199 101 187 Z" 
         fill="url(#tapeGrad)" stroke="#8A6729" stroke-width="1.2" filter="url(#shadow)"/>
 
   <!-- Centimeter Tick Marks on Front Tape -->
   <g stroke="#543C16" stroke-width="1">
-    <line x1="112" y1="181" x2="112" y2="187"/>
-    <line x1="122" y1="183" x2="122" y2="191"/>
-    <line x1="132" y1="184" x2="132" y2="189"/>
-    <line x1="142" y1="186" x2="142" y2="193"/>
-    <line x1="152" y1="187" x2="152" y2="191"/>
-    <line x1="162" y1="188" x2="162" y2="194"/>
-    <line x1="172" y1="189" x2="172" y2="193"/>
-    <line x1="182" y1="189" x2="182" y2="195"/>
-    <line x1="192" y1="189" x2="192" y2="195"/>
-    <line x1="202" y1="189" x2="202" y2="193"/>
-    <line x1="212" y1="188" x2="212" y2="194"/>
-    <line x1="222" y1="187" x2="222" y2="191"/>
-    <line x1="232" y1="186" x2="232" y2="193"/>
-    <line x1="242" y1="184" x2="242" y2="189"/>
-    <line x1="252" y1="183" x2="252" y2="191"/>
-    <line x1="262" y1="181" x2="262" y2="187"/>
-    <line x1="272" y1="180" x2="272" y2="185"/>
+    <line x1="114" y1="176" x2="114" y2="182"/>
+    <line x1="124" y1="178" x2="124" y2="186"/>
+    <line x1="134" y1="179" x2="134" y2="184"/>
+    <line x1="144" y1="181" x2="144" y2="188"/>
+    <line x1="154" y1="182" x2="154" y2="186"/>
+    <line x1="164" y1="183" x2="164" y2="189"/>
+    <line x1="174" y1="184" x2="174" y2="188"/>
+    <line x1="184" y1="184" x2="184" y2="190"/>
+    <line x1="194" y1="184" x2="194" y2="190"/>
+    <line x1="204" y1="184" x2="204" y2="188"/>
+    <line x1="214" y1="183" x2="214" y2="189"/>
+    <line x1="224" y1="182" x2="224" y2="186"/>
+    <line x1="234" y1="181" x2="234" y2="188"/>
+    <line x1="244" y1="179" x2="244" y2="184"/>
+    <line x1="254" y1="178" x2="254" y2="186"/>
+    <line x1="264" y1="176" x2="264" y2="182"/>
   </g>
-  <text x="142" y="191" font-family="'Plus Jakarta Sans', sans-serif" font-size="6.5" font-weight="700" fill="#422E10" text-anchor="middle">88</text>
-  <text x="190" y="193" font-family="'Plus Jakarta Sans', sans-serif" font-size="7" font-weight="800" fill="#422E10" text-anchor="middle">92</text>
-  <text x="238" y="191" font-family="'Plus Jakarta Sans', sans-serif" font-size="6.5" font-weight="700" fill="#422E10" text-anchor="middle">96</text>
+  <text x="144" y="186" font-family="'Plus Jakarta Sans', sans-serif" font-size="6.5" font-weight="700" fill="#422E10" text-anchor="middle">88</text>
+  <text x="190" y="188" font-family="'Plus Jakarta Sans', sans-serif" font-size="7" font-weight="800" fill="#422E10" text-anchor="middle">92</text>
+  <text x="236" y="186" font-family="'Plus Jakarta Sans', sans-serif" font-size="6.5" font-weight="700" fill="#422E10" text-anchor="middle">96</text>
 
   <!-- Caliper Guideline with Arrows -->
-  <line x1="55" y1="185" x2="94" y2="185" stroke="#9E7B5C" stroke-width="1.8"/>
-  <polyline points="91,181 96,185 91,189" fill="none" stroke="#9E7B5C" stroke-width="1.8"/>
-  <line x1="286" y1="185" x2="325" y2="185" stroke="#9E7B5C" stroke-width="1.8"/>
-  <polyline points="289,181 284,185 289,189" fill="none" stroke="#9E7B5C" stroke-width="1.8"/>
+  <line x1="55" y1="180" x2="96" y2="180" stroke="#9E7B5C" stroke-width="1.8"/>
+  <polyline points="93,176 98,180 93,184" fill="none" stroke="#9E7B5C" stroke-width="1.8"/>
+  <line x1="284" y1="180" x2="325" y2="180" stroke="#9E7B5C" stroke-width="1.8"/>
+  <polyline points="287,176 282,180 287,184" fill="none" stroke="#9E7B5C" stroke-width="1.8"/>
 
   <!-- Left Callout Box: Vértice del Busto -->
-  <g transform="translate(10, 105)">
+  <g transform="translate(10, 100)">
     <rect width="112" height="34" rx="4" fill="#FFFFFF" stroke="#9E7B5C" stroke-width="1.2" filter="url(#shadow)"/>
     <text x="56" y="15" font-family="'Plus Jakarta Sans', sans-serif" font-size="7.5" font-weight="700" fill="#3D3028" text-anchor="middle">VÉRTICE DEL PECHO</text>
     <text x="56" y="26" font-family="'Plus Jakarta Sans', sans-serif" font-size="6.5" fill="#7C685A" text-anchor="middle">Parte más prominente</text>
-    <path d="M112 17 L132 17 L150 176" fill="none" stroke="#9E7B5C" stroke-width="1.2" stroke-dasharray="3 2"/>
-    <circle cx="150" cy="176" r="3.5" fill="#9E7B5C"/>
+    <path d="M112 17 L132 17 L156 172" fill="none" stroke="#9E7B5C" stroke-width="1.2" stroke-dasharray="3 2"/>
+    <circle cx="156" cy="172" r="3.5" fill="#9E7B5C"/>
   </g>
 
   <!-- Right Callout Box: Cinta Horizontal & Espalda -->
-  <g transform="translate(255, 105)">
+  <g transform="translate(255, 100)">
     <rect width="115" height="34" rx="4" fill="#FFFFFF" stroke="#9E7B5C" stroke-width="1.2" filter="url(#shadow)"/>
     <text x="57" y="15" font-family="'Plus Jakarta Sans', sans-serif" font-size="7.5" font-weight="700" fill="#3D3028" text-anchor="middle">CINTA HORIZONTAL</text>
     <text x="57" y="26" font-family="'Plus Jakarta Sans', sans-serif" font-size="6.5" fill="#7C685A" text-anchor="middle">Nivelada en la espalda</text>
-    <path d="M0 17 L-18 17 L-30 168" fill="none" stroke="#9E7B5C" stroke-width="1.2" stroke-dasharray="3 2"/>
-    <circle cx="225" cy="168" r="3.5" fill="#9E7B5C"/>
+    <path d="M0 17 L-18 17 L-31 165" fill="none" stroke="#9E7B5C" stroke-width="1.2" stroke-dasharray="3 2"/>
+    <circle cx="224" cy="172" r="3.5" fill="#9E7B5C"/>
   </g>
 
   <!-- Bottom Badge: Tolerancia 1 dedo -->
-  <g transform="translate(190, 248)">
+  <g transform="translate(190, 244)">
     <rect x="-85" y="-14" width="170" height="28" rx="14" fill="#FAF4EB" stroke="#9E7B5C" stroke-width="1.5" filter="url(#shadow)"/>
     <text x="0" y="4" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="700" fill="#9E7B5C" text-anchor="middle">✨ TOLERANCIA: 1 DEDO DE HOLGURA</text>
   </g>
