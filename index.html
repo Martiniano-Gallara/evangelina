@@ -213,7 +213,7 @@
         <!-- 4 Step Measurement Visual Cards -->
         <div class="measure-steps-grid" id="measure-steps-grid">
           <!-- Step 1: Busto -->
-          <div class="measure-step-card" onclick="openMeasureSheet('busto')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openMeasureSheet('busto')" title="Hacer clic para abrir ficha técnica ilustrada con dibujo">
+          <div class="measure-step-card">
             <div class="step-badge">Paso 01</div>
             <div class="step-icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -227,18 +227,10 @@
             <div class="step-tip">
               <strong>Ideal para:</strong> Chalecos sastreros, Tops y Remeras.
             </div>
-            <div class="step-card-trigger">
-              <span class="trigger-label">Ver Ficha Técnica con Dibujo</span>
-              <span class="trigger-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                </svg>
-              </span>
-            </div>
           </div>
 
           <!-- Step 2: Cintura -->
-          <div class="measure-step-card" onclick="openMeasureSheet('cintura')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openMeasureSheet('cintura')" title="Hacer clic para abrir ficha técnica ilustrada con dibujo">
+          <div class="measure-step-card">
             <div class="step-badge">Paso 02</div>
             <div class="step-icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -253,18 +245,10 @@
             <div class="step-tip">
               <strong>Ideal para:</strong> Pantalones palazzo y pretinas de tiro alto.
             </div>
-            <div class="step-card-trigger">
-              <span class="trigger-label">Ver Ficha Técnica con Dibujo</span>
-              <span class="trigger-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                </svg>
-              </span>
-            </div>
           </div>
 
           <!-- Step 3: Cadera -->
-          <div class="measure-step-card" onclick="openMeasureSheet('cadera')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openMeasureSheet('cadera')" title="Hacer clic para abrir ficha técnica ilustrada con dibujo">
+          <div class="measure-step-card">
             <div class="step-badge">Paso 03</div>
             <div class="step-icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -279,18 +263,10 @@
             <div class="step-tip">
               <strong>Ideal para:</strong> Caída y soltura de palazzos y conjuntos.
             </div>
-            <div class="step-card-trigger">
-              <span class="trigger-label">Ver Ficha Técnica con Dibujo</span>
-              <span class="trigger-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                </svg>
-              </span>
-            </div>
           </div>
 
           <!-- Step 4: Consejo de Calce -->
-          <div class="measure-step-card measure-card-highlight" onclick="openMeasureSheet('consejo')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openMeasureSheet('consejo')" title="Hacer clic para abrir ficha de calce y dudas de talle">
+          <div class="measure-step-card measure-card-highlight">
             <div class="step-badge">Consejo Atelier</div>
             <div class="step-icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -305,14 +281,6 @@
             </p>
             <div class="step-tip">
               <strong>Cinta flexible:</strong> Recomendamos medirte sobre ropa interior.
-            </div>
-            <div class="step-card-trigger">
-              <span class="trigger-label">Ver Ficha de Calce Ilustrada</span>
-              <span class="trigger-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                </svg>
-              </span>
             </div>
           </div>
         </div>
@@ -543,78 +511,7 @@
     </div>
   </aside>
 
-  <!-- ==========================================
-       MODAL: FICHA TÉCNICA ILUSTRADA DE MEDICIÓN
-       ========================================== -->
-  <div class="modal-overlay measure-sheet-overlay" id="measure-sheet-overlay" role="dialog" aria-modal="true" aria-labelledby="sheet-modal-title" onclick="if(event.target===this)closeMeasureSheet()">
-    <div class="modal-card measure-sheet-card">
-      <button class="modal-close-btn" onclick="closeMeasureSheet()" aria-label="Cerrar ficha técnica">✕</button>
 
-      <!-- Sheet Header -->
-      <div class="sheet-modal-header">
-        <div class="sheet-header-top-row">
-          <div class="sheet-header-badges">
-            <span class="sheet-kicker">Atelier Evangelina • Moldería & Calce</span>
-            <span class="sheet-doc-id">GUÍA ANATÓMICA</span>
-          </div>
-          <span class="sheet-esc-hint">Presioná ESC para cerrar</span>
-        </div>
-        <h3 class="sheet-title" id="sheet-modal-title">Ficha Técnica de Medición Ilustrada</h3>
-        <p class="sheet-subtitle">Esquema visual y recomendaciones de alta costura para tomar tus medidas exactas y disfrutar la caída bohemia de nuestras prendas.</p>
-      </div>
-
-      <!-- Tab Navigation for the 4 Steps -->
-      <div class="sheet-tabs-nav" role="tablist">
-        <button type="button" class="sheet-nav-tab active" id="sheet-tab-btn-busto" onclick="switchMeasureSheetTab('busto')" role="tab">
-          <span class="sheet-tab-num">01</span>
-          <span class="sheet-tab-label">Contorno de Busto</span>
-        </button>
-        <button type="button" class="sheet-nav-tab" id="sheet-tab-btn-cintura" onclick="switchMeasureSheetTab('cintura')" role="tab">
-          <span class="sheet-tab-num">02</span>
-          <span class="sheet-tab-label">Cintura Natural</span>
-        </button>
-        <button type="button" class="sheet-nav-tab" id="sheet-tab-btn-cadera" onclick="switchMeasureSheetTab('cadera')" role="tab">
-          <span class="sheet-tab-num">03</span>
-          <span class="sheet-tab-label">Contorno de Cadera</span>
-        </button>
-        <button type="button" class="sheet-nav-tab" id="sheet-tab-btn-consejo" onclick="switchMeasureSheetTab('consejo')" role="tab">
-          <span class="sheet-tab-num">★</span>
-          <span class="sheet-tab-label">¿Dudas de Talle?</span>
-        </button>
-      </div>
-
-      <!-- Sheet Body: Two Columns (Illustration on Left, Step Guidance & Actions on Right) -->
-      <div class="sheet-body-grid">
-        <!-- Left: Technical Atelier Drawing / Illustration -->
-        <div class="sheet-drawing-col">
-          <div class="sheet-drawing-card">
-            <div class="drawing-header-bar">
-              <div class="drawing-header-left">
-                <span class="drawing-pulse-dot"></span>
-                <span class="drawing-tag" id="sheet-drawing-tag">Esquema Técnico Anatómico</span>
-              </div>
-              <span class="drawing-scale">Calce Evangelina Atelier</span>
-            </div>
-            
-            <!-- Dynamic Vector Illustration injected by JS -->
-            <div class="sheet-drawing-viewport" id="sheet-drawing-viewport">
-              <!-- Injected by JavaScript -->
-            </div>
-
-            <!-- Drawing Legend / Tape guide -->
-            <div class="drawing-legend" id="sheet-drawing-legend">
-              <!-- Injected by JavaScript -->
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: Technical Guidance, Rules & Actions -->
-        <div class="sheet-info-col" id="sheet-info-col">
-          <!-- Injected by JavaScript -->
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Quick View Modal -->
   <div class="modal-overlay" id="quick-view-overlay">
