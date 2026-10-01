@@ -1874,7 +1874,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   const SIZE_TABLES = {
     pantalones: {
-      title: 'Pantalones Palazzo (Tiro Alto con Elástico Invisible)',
+      title: 'Pantalones Palazzo',
       headers: ['Talle', 'Equivalencia AR/EU', 'Cintura (cm)', 'Cadera (cm)', 'Largo Total', 'Tiro'],
       rows: [
         ['XS', '34 - 36', '62 - 66', '88 - 92', '104 cm', '33 cm'],
@@ -1885,7 +1885,7 @@ document.addEventListener('DOMContentLoaded', () => {
       note: 'Nuestros palazzos cuentan con pretina anatómica y elástico sutil posterior que concede hasta 5 cm de elasticidad y confort natural sin perder la estructura sastrera.'
     },
     chalecos: {
-      title: 'Chalecos de Diseño (Tweed, Denim & Gamuza)',
+      title: 'Chalecos',
       headers: ['Talle', 'Busto (cm)', 'Cintura (cm)', 'Largo Prenda', 'Hombros'],
       rows: [
         ['S', '84 - 88', '66 - 72', '47 cm', '36 cm'],
@@ -1895,7 +1895,7 @@ document.addEventListener('DOMContentLoaded', () => {
       note: 'El chaleco de gamuza rosa cuenta con cordones de cuero laterales regulables para adaptar el calce a tu silueta o usarlo abierto sobre camisas.'
     },
     remeras: {
-      title: 'Remeras Estampadas (100% Algodón Peinado)',
+      title: 'Remeras Estampadas',
       headers: ['Talle', 'Ancho Sisa a Sisa', 'Contorno Pecho', 'Largo Total', 'Hombro a Hombro'],
       rows: [
         ['S', '48 cm', '96 cm', '63 cm', '41 cm'],
@@ -1906,7 +1906,7 @@ document.addEventListener('DOMContentLoaded', () => {
       note: 'Corte recto relajado unisex de tacto suave. Para lucir la estética oversize relajada del atelier, te sugerimos optar por un talle superior.'
     },
     conjuntos: {
-      title: 'Conjunto Ecléctico Lunares Índigo (2 Piezas)',
+      title: 'Conjuntos 2 Piezas',
       headers: ['Talle', 'Top Busto (cm)', 'Top Largo', 'Palazzo Cintura (cm)', 'Palazzo Cadera (cm)'],
       rows: [
         ['S', '86 - 90', '48 cm', '66 - 72', '92 - 96'],
