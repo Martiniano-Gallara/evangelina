@@ -2292,29 +2292,17 @@ document.addEventListener('DOMContentLoaded', () => {
     <line x1="0" y1="225" x2="380" y2="225"/>
   </g>
 
-  <!-- Wood Top Cap (Soft golden/neutral finish) -->
-  <ellipse cx="190" cy="38" rx="16" ry="6" fill="#C9A26B" stroke="#9E7B5C" stroke-width="1.2"/>
-  <rect x="180" y="28" width="20" height="10" rx="3" fill="#D6B37C" stroke="#9E7B5C" stroke-width="1"/>
+  <!-- Modern Metallic Stand Pole Base -->
+  <line x1="190" y1="365" x2="190" y2="430" stroke="#4A4E52" stroke-width="6" stroke-linecap="round"/>
 
-  <!-- Golden Stand Pole and Elegant Tripod Base -->
-  <g stroke="#B38B42" fill="none">
-    <!-- Center Pole -->
-    <line x1="190" y1="365" x2="190" y2="425" stroke="#C9A253" stroke-width="5" stroke-linecap="round"/>
-    <circle cx="190" cy="370" r="5" fill="#D8B668" stroke="#A37E36" stroke-width="1"/>
-    <!-- Tripod Legs -->
-    <path d="M 190,400 C 175,410 160,420 148,428" stroke="#C9A253" stroke-width="4" stroke-linecap="round"/>
-    <path d="M 190,400 C 205,410 220,420 232,428" stroke="#C9A253" stroke-width="4" stroke-linecap="round"/>
-    <path d="M 190,405 L 190,428" stroke="#B38B42" stroke-width="3" stroke-linecap="round"/>
-  </g>
+  <!-- Mannequin Torso with Realistic Smooth Dress Form Contour (Reference 2) -->
+  <path d="M 166,42 Q 190,38 214,42 Q 224,54 238,72 Q 258,95 264,124 Q 268,154 256,182 Q 242,210 236,234 Q 230,258 238,284 Q 248,314 250,344 Q 251,360 248,366 L 132,366 Q 129,360 130,344 Q 132,314 142,284 Q 150,258 144,234 Q 138,210 124,182 Q 112,154 116,124 Q 122,95 142,72 Q 156,54 166,42 Z" 
+        fill="url(#mannequinGradClean)" stroke="#B0A69A" stroke-width="1.5" filter="url(#shadow2)"/>
 
-  <!-- Mannequin Torso with High-End Atelier Dress Form Contour -->
-  <path d="M 174,38 C 170,55 158,68 140,80 C 118,95 106,128 114,165 C 122,198 136,218 138,228 C 140,238 126,260 114,290 C 100,325 110,360 145,366 L 235,366 C 270,360 280,325 266,290 C 254,260 240,238 242,228 C 244,218 258,198 266,165 C 274,128 262,95 240,80 C 222,68 210,55 206,38 Z" 
-        fill="url(#mannequinGrad2)" stroke="#8A674B" stroke-width="2" filter="url(#shadow2)"/>
-
-  <!-- Princess Seams & Center Line -->
-  <path d="M148 72 C146 130 152 185 160 226 C168 270 162 320 165 375" fill="none" stroke="#D3BFAD" stroke-width="1.2" stroke-dasharray="4 3"/>
-  <path d="M232 72 C234 130 228 185 220 226 C212 270 218 320 215 375" fill="none" stroke="#D3BFAD" stroke-width="1.2" stroke-dasharray="4 3"/>
-  <line x1="190" y1="68" x2="190" y2="375" stroke="#D3BFAD" stroke-width="1" stroke-dasharray="3 3"/>
+  <!-- Chrome Cap Top -->
+  <rect x="166" y="24" width="48" height="18" rx="4" fill="url(#chromeCap)" stroke="#3A3E42" stroke-width="1.2"/>
+  <ellipse cx="190" cy="24" rx="24" ry="4" fill="#EAECEE" stroke="#505458" stroke-width="1"/>
+  <ellipse cx="190" cy="42" rx="24" ry="4" fill="none" stroke="#7A8084" stroke-width="0.8"/>
 
   <!-- Navel Marker (Ombligo) -->
   <ellipse cx="190" cy="256" rx="4.5" ry="3.5" fill="#B0937A"/>
@@ -2428,22 +2416,17 @@ document.addEventListener('DOMContentLoaded', () => {
     <line x1="0" y1="210" x2="380" y2="210"/>
   </g>
 
-  <!-- Wood Top Cap (Soft golden/neutral finish) -->
-  <ellipse cx="190" cy="38" rx="16" ry="6" fill="#C9A26B" stroke="#9E7B5C" stroke-width="1.2"/>
-  <rect x="180" y="28" width="20" height="10" rx="3" fill="#D6B37C" stroke="#9E7B5C" stroke-width="1"/>
+  <!-- Modern Metallic Stand Pole Base -->
+  <line x1="190" y1="365" x2="190" y2="430" stroke="#4A4E52" stroke-width="6" stroke-linecap="round"/>
 
-  <!-- Golden Stand Pole and Elegant Tripod Base -->
-  <g stroke="#B38B42" fill="none">
-    <line x1="190" y1="365" x2="190" y2="425" stroke="#C9A253" stroke-width="5" stroke-linecap="round"/>
-    <circle cx="190" cy="370" r="5" fill="#D8B668" stroke="#A37E36" stroke-width="1"/>
-    <path d="M 190,400 C 175,410 160,420 148,428" stroke="#C9A253" stroke-width="4" stroke-linecap="round"/>
-    <path d="M 190,400 C 205,410 220,420 232,428" stroke="#C9A253" stroke-width="4" stroke-linecap="round"/>
-    <path d="M 190,405 L 190,428" stroke="#B38B42" stroke-width="3" stroke-linecap="round"/>
-  </g>
+  <!-- Mannequin Torso with Realistic Smooth Dress Form Contour (Reference 2) -->
+  <path d="M 166,42 Q 190,38 214,42 Q 224,54 238,72 Q 258,95 264,124 Q 268,154 256,182 Q 242,210 236,234 Q 230,258 238,284 Q 248,314 250,344 Q 251,360 248,366 L 132,366 Q 129,360 130,344 Q 132,314 142,284 Q 150,258 144,234 Q 138,210 124,182 Q 112,154 116,124 Q 122,95 142,72 Q 156,54 166,42 Z" 
+        fill="url(#mannequinGradClean)" stroke="#B0A69A" stroke-width="1.5" filter="url(#shadow3)"/>
 
-  <!-- Lower Body & Hips Silhouette -->
-  <path d="M 174,38 C 170,55 158,68 140,80 C 118,95 106,128 114,165 C 122,198 136,218 138,228 C 140,238 126,260 114,290 C 100,325 110,360 145,366 L 235,366 C 270,360 280,325 266,290 C 254,260 240,238 242,228 C 244,218 258,198 266,165 C 274,128 262,95 240,80 C 222,68 210,55 206,38 Z" 
-        fill="url(#mannequinGrad3)" stroke="#8A674B" stroke-width="2" filter="url(#shadow3)"/>
+  <!-- Chrome Cap Top -->
+  <rect x="166" y="24" width="48" height="18" rx="4" fill="url(#chromeCap)" stroke="#3A3E42" stroke-width="1.2"/>
+  <ellipse cx="190" cy="24" rx="24" ry="4" fill="#EAECEE" stroke="#505458" stroke-width="1"/>
+  <ellipse cx="190" cy="42" rx="24" ry="4" fill="none" stroke="#7A8084" stroke-width="0.8"/>
 
   <!-- Center division & leg seams -->
   <line x1="190" y1="45" x2="190" y2="255" stroke="#D3BFAD" stroke-width="1" stroke-dasharray="3 3"/>
