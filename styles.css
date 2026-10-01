@@ -6573,38 +6573,41 @@ body.admin-page .admin-login-screen {
     grid-template-columns: repeat(2, 1fr);
   }
   .sheet-drawing-viewport {
-    min-height: 250px;
-  }
-}
-
-@media (max-width: 520px) {
+    min-h@media (max-width: 520px) {
   .measure-sheet-card {
-    padding: 1.15rem 0.95rem;
+    padding: 1.15rem 0.85rem;
     max-width: 95vw;
     max-height: 92vh;
     border-radius: 12px;
   }
   .sheet-tabs-nav {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.35rem;
-    margin-bottom: 0.85rem;
+    display: flex !important;
+    overflow-x: auto !important;
+    gap: 0.35rem !important;
+    margin-bottom: 0.85rem !important;
+    padding: 0.3rem !important;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap !important;
   }
-  .sheet-tab-item {
-    padding: 0.5rem 0.45rem;
-    font-size: 0.72rem;
+  .sheet-nav-tab {
+    flex-shrink: 0 !important;
+    padding: 0.5rem 0.6rem !important;
+    font-size: 0.72rem !important;
+    white-space: nowrap !important;
   }
   .sheet-drawing-viewport {
-    min-height: 190px !important;
-    max-height: 220px !important;
+    min-height: 220px !important;
+    max-height: 260px !important;
     border-radius: 8px;
+    padding: 0.75rem 0.25rem !important;
   }
-  .sheet-detail-title {
-    font-size: 1.25rem;
-    margin-bottom: 0.45rem;
+  .sheet-step-title {
+    font-size: 1.3rem !important;
+    margin-bottom: 0.45rem !important;
   }
-  .sheet-detail-body {
-    font-size: 0.8125rem;
-    line-height: 1.5;
+  .sheet-step-intro {
+    font-size: 0.8125rem !important;
+    line-height: 1.45 !important;
   }
   .sheet-actions-row {
     flex-direction: column;
@@ -6625,6 +6628,8 @@ body.admin-page .admin-login-screen {
   }
   .sheet-esc-hint {
     display: none;
+  }
+}    display: none;
   }
 /* ==========================================================================
    PRENDAS PERSONALIZADAS (A MEDIDA) — BESPOKE DOSSIER STYLING
