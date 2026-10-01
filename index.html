@@ -73,7 +73,6 @@
       <nav class="nav-desktop-centered" aria-label="Navegación principal">
         <ul class="nav-list">
           <li><a href="#coleccion" class="nav-link active">Colección</a></li>
-          <li><a href="#categorias" class="nav-link">Categorías</a></li>
           <li><a href="#como-medirse" class="nav-link" id="nav-how-to-measure">Cómo Medirse</a></li>
         </ul>
       </nav>
@@ -94,7 +93,6 @@
     </div>
     <nav class="mobile-nav">
       <a href="#coleccion" class="mobile-nav-link">Nueva Colección</a>
-      <a href="#categorias" class="mobile-nav-link">Categorías</a>
       <a href="#como-medirse" class="mobile-nav-link">Cómo Medirse & Talles</a>
       <a href="#contacto" class="mobile-nav-link">Contacto</a>
       <a href="admin.html" class="mobile-nav-link" style="color: var(--bronze-hover); font-weight: 600;">⚙️ Panel Admin</a>
@@ -155,70 +153,7 @@
       </div>
     </section>
 
-    <!-- Categories Section -->
-    <section class="categories-section" id="categorias">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="section-sub">DISEÑOS DISPONIBLES</span>
-          <h2 class="section-title">COLECCIÓN EXCLUSIVA</h2>
-          <div class="section-divider"></div>
-        </div>
 
-        <div class="categories-grid">
-          <!-- Chalecos -->
-          <div class="category-card" data-category="Chalecos" onclick="filterByCategory('Chalecos')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')filterByCategory('Chalecos')" title="Ver colección de Chalecos">
-            <div class="category-img-wrap">
-              <img src="assets/chaleco-tweed-crema.jpg" alt="Chalecos de Diseño Evangelina Atelier" loading="lazy" />
-            </div>
-            <div class="category-info">
-              <span class="category-tag">Diseño de Autor</span>
-              <h3 class="category-name">Chalecos</h3>
-              <p class="category-count">Tweed, denim sarga y gamuza boho</p>
-              <button class="category-btn" onclick="event.stopPropagation(); filterByCategory('Chalecos')">Ver Chalecos</button>
-            </div>
-          </div>
-
-          <!-- Remeras Estampadas -->
-          <div class="category-card" data-category="Remeras" onclick="filterByCategory('Remeras')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')filterByCategory('Remeras')" title="Ver colección de Remeras">
-            <div class="category-img-wrap">
-              <img src="assets/remeras-estampadas.jpg" alt="Remeras Estampadas de Autor" loading="lazy" />
-            </div>
-            <div class="category-info">
-              <span class="category-tag">Algodón Puro</span>
-              <h3 class="category-name">Remeras</h3>
-              <p class="category-count">Estampas serigráficas pop vintage</p>
-              <button class="category-btn" onclick="event.stopPropagation(); filterByCategory('Remeras')">Ver Remeras</button>
-            </div>
-          </div>
-
-          <!-- Pantalones Palazzo -->
-          <div class="category-card" data-category="Pantalones" onclick="filterByCategory('Pantalones')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')filterByCategory('Pantalones')" title="Ver colección de Pantalones">
-            <div class="category-img-wrap">
-              <img src="assets/product-green-stripes.jpg" alt="Pantalones Palazzo a Rayas" loading="lazy" />
-            </div>
-            <div class="category-info">
-              <span class="category-tag">Silueta Amplia</span>
-              <h3 class="category-name">Pantalones</h3>
-              <p class="category-count">Palazzos y cortes holgados a rayas</p>
-              <button class="category-btn" onclick="event.stopPropagation(); filterByCategory('Pantalones')">Ver Pantalones</button>
-            </div>
-          </div>
-
-          <!-- Conjuntos -->
-          <div class="category-card" data-category="Conjuntos" onclick="filterByCategory('Conjuntos')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')filterByCategory('Conjuntos')" title="Ver colección de Conjuntos">
-            <div class="category-img-wrap">
-              <img src="assets/product-polka-dot.jpg" alt="Conjuntos Femeninos Evangelina Atelier" loading="lazy" />
-            </div>
-            <div class="category-info">
-              <span class="category-tag">Dos Piezas</span>
-              <h3 class="category-name">Conjuntos</h3>
-              <p class="category-count">Top estructurado & palazzo a lunares</p>
-              <button class="category-btn" onclick="event.stopPropagation(); filterByCategory('Conjuntos')">Ver Conjunto</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- Main Products Collection Section with Filters -->
     <section class="collection-section" id="coleccion">
