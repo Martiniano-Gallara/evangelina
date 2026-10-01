@@ -6,7 +6,7 @@
     "customer": "Martina Gómez",
     "whatsapp": "+54 9 11 4455-8812",
     "title": "Vestido Midi Lino Crudo con Espalda Escotada",
-    "description": "Vestido de silueta evasé en lino puro europeo color crudo natural. Breteles finos ajustables y detalle de botones forrados en espalda.",
+    "description": "Vestido a medida de silueta evasé confeccionado en lino puro europeo (color crudo natural). Incluye breteles ajustables, escote profundo en espalda y detalle artesanal de botones forrados.",
     "measurements": {
       "busto": "92 cm",
       "cintura": "70 cm",
@@ -18,7 +18,7 @@
     "remaining": 25000,
     "status": "Listo para entrega",
     "referenceImage": "assets/product-sunset-stripes.jpg",
-    "notes": "Planchado y embalado con funda de lienzo y ramita de lavanda."
+    "notes": "Prenda finalizada, planchada a vapor y embalada en funda de lienzo atelier con aroma a lavanda."
   },
   {
     "id": "PERS-102",
@@ -26,8 +26,8 @@
     "targetDate": "2026-10-05",
     "customer": "Ana Clara Domínguez",
     "whatsapp": "+54 9 11 9912-3344",
-    "title": "Pantalón Palazzo Sastrero a Rayas Verdes a Medida",
-    "description": "Adaptación de moldería del Palazzo Riviera Verde para altura 1.82m con tiro especial de 37cm y largo de botamanga de 114cm.",
+    "title": "Pantalón Palazzo Sastrero a Rayas Verdes (A Medida)",
+    "description": "Adaptación especial de moldería sobre el diseño Palazzo Riviera Verde para una altura de 1,82 m. Confeccionado con tiro alto especial de 37 cm y largo total de botamanga ajustado a 114 cm.",
     "measurements": {
       "busto": "-",
       "cintura": "74 cm",
@@ -39,6 +39,6 @@
     "remaining": 31000,
     "status": "Corte y Confección",
     "referenceImage": "assets/product-green-stripes.jpg",
-    "notes": "Tela lavada y pre-encogida antes del corte."
+    "notes": "Textil decatizado y pre-encogido previo al proceso de corte de moldería."
   }
 ]

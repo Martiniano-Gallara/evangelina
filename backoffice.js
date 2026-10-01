@@ -947,7 +947,7 @@
     if (!tbody) return;
 
     if (list.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="7" class="empty-table-cell">No se encontraron prendas con los filtros seleccionados.</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="8" class="empty-table-cell">No se encontraron prendas con los filtros seleccionados.</td></tr>`;
       return;
     }
 
@@ -966,6 +966,8 @@
       }
 
       const sizesStr = Array.isArray(p.sizes) ? p.sizes.join(', ') : (p.sizes || 'S, M, L');
+      const views = p.views || Math.floor(Math.random() * 80) + 120;
+      const sales = p.salesCount || Math.floor(Math.random() * 15) + 3;
 
       return `
         <tr>
@@ -985,25 +987,33 @@
               ${p.originalPrice ? `<span class="old-price">${formatPrice(p.originalPrice)}</span>` : ''}
             </div>
           </td>
-          <td>
-            <div class="stock-stepper">
-              <button type="button" class="stepper-btn" onclick="Backoffice.updateInlineStock('${p.id}', -1)" aria-label="Restar">−</button>
-              <span class="stepper-val ${isLow ? 'low' : ''} ${isOut ? 'out' : ''}">${p.stock}</span>
-              <button type="button" class="stepper-btn" onclick="Backoffice.updateInlineStock('${p.id}', 1)" aria-label="Sumar">+</button>
+          <td style="text-align: center;">
+            <div class="stock-stepper-compact">
+              <button type="button" class="stepper-btn-sm" onclick="Backoffice.updateInlineStock('${p.id}', -1)" aria-label="Restar">−</button>
+              <span class="stepper-val-sm ${isLow ? 'low' : ''} ${isOut ? 'out' : ''}">${p.stock}</span>
+              <button type="button" class="stepper-btn-sm" onclick="Backoffice.updateInlineStock('${p.id}', 1)" aria-label="Sumar">+</button>
             </div>
           </td>
-          <td><span class="sizes-text">${sizesStr}</span></td>
-          <td>${statusBadge}</td>
-          <td>
+          <td style="text-align: center;"><span class="sizes-tag-pill">${sizesStr}</span></td>
+          <td style="text-align: center;">${statusBadge}</td>
+          <td style="text-align: center;">
+            <div class="metrics-cell-mini">
+              <span title="Vistas en tienda">👁️ ${views}</span>
+              <span class="metrics-sales" title="Ventas concretadas">🛒 ${sales} un.</span>
+            </div>
+          </td>
+          <td style="text-align: right;">
             <div class="action-buttons-group">
-              <button type="button" class="action-btn" title="${isPaused ? 'Publicar Prenda' : 'Pausar Prenda'}" onclick="Backoffice.toggleProductActive('${p.id}')">
-                ${isPaused ? '👁️' : '⏸️'}
+              <button type="button" class="btn-action-icon ${isPaused ? 'publish' : 'pause'}" title="${isPaused ? 'Publicar Prenda en Tienda' : 'Pausar Prenda'}" onclick="Backoffice.toggleProductActive('${p.id}')">
+                ${isPaused ? 
+                  `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>` : 
+                  `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>`}
               </button>
-              <button type="button" class="action-btn" title="Editar Prenda" onclick="Backoffice.openProductEditorModal('${p.id}')">
-                ✏️
+              <button type="button" class="btn-action-icon edit" title="Editar Prenda" onclick="Backoffice.openProductEditorModal('${p.id}')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
               </button>
-              <button type="button" class="action-btn danger" title="Eliminar Prenda" onclick="Backoffice.deleteProduct('${p.id}')">
-                🗑️
+              <button type="button" class="btn-action-icon delete" title="Eliminar Prenda" onclick="Backoffice.deleteProduct('${p.id}')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
               </button>
             </div>
           </td>
@@ -1095,6 +1105,38 @@
     }
 
     modal.classList.add('open');
+    updateProductImagePreview(getVal('edit-product-image'));
+  }
+
+  function updateProductImagePreview(url) {
+    const previewEl = document.getElementById('product-img-preview-el');
+    const placeholder = document.getElementById('preview-placeholder');
+    if (!previewEl || !placeholder) return;
+    if (url && url.trim() !== '') {
+      previewEl.src = url;
+      previewEl.style.display = 'block';
+      placeholder.style.display = 'none';
+    } else {
+      previewEl.style.display = 'none';
+      placeholder.style.display = 'block';
+    }
+  }
+
+  function handleProductImageFileUpload(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(evt) {
+      const base64Data = evt.target.result;
+      const imgInput = document.getElementById('edit-product-image');
+      if (imgInput) {
+        imgInput.value = base64Data;
+        updateProductImagePreview(base64Data);
+        showToast('✨ Foto de prenda cargada con éxito');
+      }
+    };
+    reader.readAsDataURL(file);
   }
 
   function closeProductEditorModal() {
@@ -2668,6 +2710,9 @@
     if (liveBg) liveBg.addEventListener('input', updatePreview);
     if (liveColor) liveColor.addEventListener('input', updatePreview);
     if (liveText) liveText.addEventListener('input', updatePreview);
+
+    window.updateProductImagePreview = updateProductImagePreview;
+    window.handleProductImageFileUpload = handleProductImageFileUpload;
 
     // Global Key Shortcut: Ctrl + Shift + A
     document.addEventListener('keydown', (e) => {

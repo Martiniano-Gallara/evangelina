@@ -2158,14 +2158,22 @@ document.addEventListener('DOMContentLoaded', () => {
   <line x1="190" y1="350" x2="190" y2="420" stroke="#8E7058" stroke-width="6" stroke-linecap="round"/>
   <ellipse cx="190" cy="418" rx="42" ry="7" fill="#6E533F"/>
 
-  <!-- Neck cap (turned wood) -->
-  <ellipse cx="190" cy="42" rx="18" ry="7" fill="#8E7058"/>
-  <rect x="181" y="24" width="18" height="18" rx="4" fill="#A88B73"/>
-  <circle cx="190" cy="20" r="8" fill="#8E7058"/>
+  <!-- Wood Top Cap (Soft golden/neutral finish) -->
+  <ellipse cx="190" cy="38" rx="16" ry="6" fill="#C9A26B" stroke="#9E7B5C" stroke-width="1.2"/>
+  <rect x="180" y="28" width="20" height="10" rx="3" fill="#D6B37C" stroke="#9E7B5C" stroke-width="1"/>
 
-  <!-- Torso Silhouette Outline & Fill -->
-  <path d="M172 45 C176 56 177 65 177 75 C145 78 122 92 108 120 C98 138 100 160 106 185 C116 215 132 232 135 242 C138 252 124 270 116 295 C106 325 114 345 148 350 L232 350 C266 345 274 325 264 295 C256 270 242 252 245 242 C248 232 264 215 274 185 C280 160 282 138 272 120 C258 92 235 78 203 75 C203 65 204 56 208 45 Z" 
-        fill="url(#mannequinGrad)" stroke="#9E7B5C" stroke-width="2.5" filter="url(#shadow)"/>
+  <!-- Golden Stand Pole and Elegant Tripod Base -->
+  <g stroke="#B38B42" fill="none">
+    <line x1="190" y1="365" x2="190" y2="425" stroke="#C9A253" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="190" cy="370" r="5" fill="#D8B668" stroke="#A37E36" stroke-width="1"/>
+    <path d="M 190,400 C 175,410 160,420 148,428" stroke="#C9A253" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 190,400 C 205,410 220,420 232,428" stroke="#C9A253" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 190,405 L 190,428" stroke="#B38B42" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- Mannequin Torso with High-End Atelier Dress Form Contour -->
+  <path d="M 174,38 C 170,55 158,68 140,80 C 118,95 106,128 114,165 C 122,198 136,218 138,228 C 140,238 126,260 114,290 C 100,325 110,360 145,366 L 235,366 C 270,360 280,325 266,290 C 254,260 240,238 242,228 C 244,218 258,198 266,165 C 274,128 262,95 240,80 C 222,68 210,55 206,38 Z" 
+        fill="url(#mannequinGrad)" stroke="#8A674B" stroke-width="2" filter="url(#shadow)"/>
 
   <!-- Atelier Seams / Princess Lines -->
   <path d="M142 82 C140 130 148 180 162 250 C168 280 170 310 172 345" fill="none" stroke="#D3BFAD" stroke-width="1.2" stroke-dasharray="4 3"/>
@@ -2294,16 +2302,23 @@ document.addEventListener('DOMContentLoaded', () => {
     <line x1="0" y1="225" x2="380" y2="225"/>
   </g>
 
-  <!-- Stand Pole -->
-  <line x1="190" y1="360" x2="190" y2="420" stroke="#8E7058" stroke-width="6" stroke-linecap="round"/>
-  <ellipse cx="190" cy="418" rx="42" ry="7" fill="#6E533F"/>
+  <!-- Wood Top Cap (Soft golden/neutral finish) -->
+  <ellipse cx="190" cy="38" rx="16" ry="6" fill="#C9A26B" stroke="#9E7B5C" stroke-width="1.2"/>
+  <rect x="180" y="28" width="20" height="10" rx="3" fill="#D6B37C" stroke="#9E7B5C" stroke-width="1"/>
 
-  <!-- Upper Neck Cap (Real Dress Form Wood Top) -->
-  <ellipse cx="190" cy="46" rx="20" ry="7" fill="#B38B59" stroke="#805C33" stroke-width="1"/>
-  <rect x="176" y="34" width="28" height="12" rx="4" fill="#C9A26B" stroke="#805C33" stroke-width="1"/>
+  <!-- Golden Stand Pole and Elegant Tripod Base -->
+  <g stroke="#B38B42" fill="none">
+    <!-- Center Pole -->
+    <line x1="190" y1="365" x2="190" y2="425" stroke="#C9A253" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="190" cy="370" r="5" fill="#D8B668" stroke="#A37E36" stroke-width="1"/>
+    <!-- Tripod Legs -->
+    <path d="M 190,400 C 175,410 160,420 148,428" stroke="#C9A253" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 190,400 C 205,410 220,420 232,428" stroke="#C9A253" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 190,405 L 190,428" stroke="#B38B42" stroke-width="3" stroke-linecap="round"/>
+  </g>
 
-  <!-- Mannequin Torso with Real Dress Form Proportions (Broad Shoulders, Bust, Natural Waist & Hips) -->
-  <path d="M 176,46 C 172,60 166,75 142,88 C 118,102 98,135 106,170 C 114,200 134,220 138,230 C 142,240 126,265 112,295 C 98,328 108,365 145,372 L 235,372 C 272,365 282,328 268,295 C 254,265 238,240 242,230 C 246,220 266,200 274,170 C 282,135 262,102 238,88 C 214,75 208,60 204,46 Z" 
+  <!-- Mannequin Torso with High-End Atelier Dress Form Contour -->
+  <path d="M 174,38 C 170,55 158,68 140,80 C 118,95 106,128 114,165 C 122,198 136,218 138,228 C 140,238 126,260 114,290 C 100,325 110,360 145,366 L 235,366 C 270,360 280,325 266,290 C 254,260 240,238 242,228 C 244,218 258,198 266,165 C 274,128 262,95 240,80 C 222,68 210,55 206,38 Z" 
         fill="url(#mannequinGrad2)" stroke="#8A674B" stroke-width="2" filter="url(#shadow2)"/>
 
   <!-- Princess Seams & Center Line -->
@@ -2423,9 +2438,22 @@ document.addEventListener('DOMContentLoaded', () => {
     <line x1="0" y1="210" x2="380" y2="210"/>
   </g>
 
+  <!-- Wood Top Cap (Soft golden/neutral finish) -->
+  <ellipse cx="190" cy="38" rx="16" ry="6" fill="#C9A26B" stroke="#9E7B5C" stroke-width="1.2"/>
+  <rect x="180" y="28" width="20" height="10" rx="3" fill="#D6B37C" stroke="#9E7B5C" stroke-width="1"/>
+
+  <!-- Golden Stand Pole and Elegant Tripod Base -->
+  <g stroke="#B38B42" fill="none">
+    <line x1="190" y1="365" x2="190" y2="425" stroke="#C9A253" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="190" cy="370" r="5" fill="#D8B668" stroke="#A37E36" stroke-width="1"/>
+    <path d="M 190,400 C 175,410 160,420 148,428" stroke="#C9A253" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 190,400 C 205,410 220,420 232,428" stroke="#C9A253" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 190,405 L 190,428" stroke="#B38B42" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
   <!-- Lower Body & Hips Silhouette -->
-  <path d="M148 45 C142 80 125 125 110 165 C95 205 104 250 122 288 C136 315 150 345 156 375 L224 375 C230 345 244 315 258 288 C276 250 285 205 270 165 C255 125 238 80 232 45 Z" 
-        fill="url(#mannequinGrad3)" stroke="#9E7B5C" stroke-width="2.5" filter="url(#shadow3)"/>
+  <path d="M 174,38 C 170,55 158,68 140,80 C 118,95 106,128 114,165 C 122,198 136,218 138,228 C 140,238 126,260 114,290 C 100,325 110,360 145,366 L 235,366 C 270,360 280,325 266,290 C 254,260 240,238 242,228 C 244,218 258,198 266,165 C 274,128 262,95 240,80 C 222,68 210,55 206,38 Z" 
+        fill="url(#mannequinGrad3)" stroke="#8A674B" stroke-width="2" filter="url(#shadow3)"/>
 
   <!-- Center division & leg seams -->
   <line x1="190" y1="45" x2="190" y2="255" stroke="#D3BFAD" stroke-width="1" stroke-dasharray="3 3"/>

@@ -31,7 +31,7 @@
           <img src="assets/logo.png" alt="Evangelina Atelier" class="backoffice-logo-mini" />
           <div>
             <div class="backoffice-title">Evangelina Atelier · Backoffice</div>
-            <div class="backoffice-subtitle">Centro de Gestión Integral & Despacho</div>
+            <div class="backoffice-subtitle">Panel de Administración & Gestión</div>
           </div>
         </div>
 
@@ -146,11 +146,6 @@
             <button type="button" class="nav-item" data-tab="cms" onclick="switchBackofficeTab('cms')">
               <span class="nav-icon">✍️</span>
               <span class="nav-label">Contenido de la Tienda</span>
-            </button>
-
-            <button type="button" class="nav-item" data-tab="media" onclick="switchBackofficeTab('media')">
-              <span class="nav-icon">🖼️</span>
-              <span class="nav-label">Galería Multimedia</span>
             </button>
 
             <button type="button" class="nav-item" data-tab="custom" onclick="switchBackofficeTab('custom')">
@@ -463,12 +458,13 @@
               <table class="backoffice-table" id="inventory-table">
                 <thead>
                   <tr>
-                    <th>Prenda</th>
+                    <th style="min-width: 220px;">Prenda</th>
                     <th>Categoría</th>
                     <th>Precio / Oferta</th>
-                    <th style="min-width: 170px;">Stock en Almacén</th>
-                    <th>Estado</th>
-                    <th>Vistas / Ventas</th>
+                    <th style="width: 130px; text-align: center;">Stock</th>
+                    <th style="text-align: center;">Talles</th>
+                    <th style="text-align: center;">Estado</th>
+                    <th style="text-align: center;">Vistas / Ventas</th>
                     <th style="text-align: right;">Acciones</th>
                   </tr>
                 </thead>
@@ -962,14 +958,20 @@
           </div>
         </div>
 
-        <div class="form-row-2">
-          <div class="form-group">
-            <label for="edit-product-image">Foto Principal (Ruta o URL) *</label>
-            <input type="text" id="edit-product-image" required placeholder="assets/product-sunset-stripes.jpg" />
-          </div>
-          <div class="form-group">
-            <label for="edit-product-model-image">Foto con Modelo (Opcional)</label>
-            <input type="text" id="edit-product-model-image" placeholder="assets/remera-sunset-model.jpg" />
+        <div class="form-group">
+          <label style="font-weight: 600; color: var(--text-main);">📸 Fotografía de la Prenda (Carga directa para la Tienda) *</label>
+          <div style="display: flex; gap: 0.75rem; align-items: center; background: #FAF6F0; padding: 0.85rem; border-radius: 8px; border: 1px stroke rgba(196,172,146,0.4);">
+            <div id="product-img-preview-box" style="width: 60px; height: 75px; border-radius: 6px; background: #EFE8DE; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid #D6C8B8; flex-shrink: 0;">
+              <span id="preview-placeholder" style="font-size: 1.2rem;">📷</span>
+              <img id="product-img-preview-el" src="" alt="Vista previa" style="display: none; width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            <div style="flex: 1;">
+              <input type="file" id="edit-product-file-input" accept="image/*" style="display: none;" onchange="handleProductImageFileUpload(event)" />
+              <button type="button" class="btn btn-secondary btn-sm" onclick="document.getElementById('edit-product-file-input').click()" style="margin-bottom: 0.35rem;">
+                📤 Seleccionar Foto desde mi Dispositivo
+              </button>
+              <input type="text" id="edit-product-image" required placeholder="O pega el enlace/ruta de la imagen..." oninput="updateProductImagePreview(this.value)" style="font-size: 0.78rem; padding: 0.35rem 0.6rem;" />
+            </div>
           </div>
         </div>
 
