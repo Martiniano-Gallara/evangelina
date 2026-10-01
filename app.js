@@ -20,11 +20,10 @@ const DEFAULT_PRODUCTS = [
     isFeatured: true,
     stock: 8,
     active: true,
-    views: 65,
-    salesCount: 1,
+    views: 0,
+    salesCount: 0,
     colors: [
-      { name: 'Leopardo & Cacao', hex: '#4A3528' },
-      { name: 'Patchwork Safari', hex: '#634832' }
+      { name: 'Leopardo & Cacao', hex: '#4A3528' }
     ],
     sizes: ['L', 'XL'],
     description: 'Pantalón palazzo de silueta holgada confeccionado en sarga suave con estampa animal print y textura gráfica safari. Tiro alto con botón al tono, presillas para cinto y calce ultra relajado.',
@@ -48,11 +47,10 @@ const DEFAULT_PRODUCTS = [
     isFeatured: true,
     stock: 10,
     active: true,
-    views: 42,
+    views: 0,
     salesCount: 0,
     colors: [
-      { name: 'Moca Tostado', hex: '#8C675B' },
-      { name: 'Malva Suave', hex: '#A88B82' }
+      { name: 'Moca Tostado', hex: '#8C675B' }
     ],
     sizes: ['M', 'L'],
     description: 'Pantalón palazzo de tiro alto confeccionado en gabardina liviana de algodón suave esmerilado. Cintura elástica fruncida supercómoda y pierna amplia con caída impecable. Tono moca versátil que combina con todo el guardarropa de estación.',
@@ -75,11 +73,10 @@ const DEFAULT_PRODUCTS = [
     isNew: true,
     stock: 12,
     active: true,
-    views: 128,
-    salesCount: 8,
+    views: 0,
+    salesCount: 0,
     colors: [
-      { name: 'Teja & Mostaza', hex: '#D95D39' },
-      { name: 'Arena & Crudo', hex: '#E29578' }
+      { name: 'Teja & Mostaza', hex: '#D95D39' }
     ],
     sizes: ['XS', 'S', 'M', 'L'],
     description: 'Pantalón palazzo de tiro alto confeccionado en sarga de algodón y lino peinado. Estampa artesanal a rayas verticales en tonos teja, terracota, mostaza y crudo. Caída relajada y silueta fluida de espíritu mediterráneo.',
@@ -102,11 +99,10 @@ const DEFAULT_PRODUCTS = [
     isNew: true,
     stock: 6,
     active: true,
-    views: 94,
-    salesCount: 5,
+    views: 0,
+    salesCount: 0,
     colors: [
-      { name: 'Verde Botánico & Salvia', hex: '#4A6B53' },
-      { name: 'Oliva & Arena', hex: '#87986A' }
+      { name: 'Verde Botánico & Salvia', hex: '#4A6B53' }
     ],
     sizes: ['XS', 'S', 'M', 'L'],
     description: 'Pantalón amplio con tiro medio-alto, estampa a franjas verticales en gamas de verde bosque, salvia y marfil. Calce holgado de impronta europea que estiliza y aporta frescura natural.',
@@ -129,11 +125,10 @@ const DEFAULT_PRODUCTS = [
     isNew: true,
     stock: 3,
     active: true,
-    views: 164,
-    salesCount: 11,
+    views: 0,
+    salesCount: 0,
     colors: [
-      { name: 'Azul Marino & Lunares', hex: '#1D2A44' },
-      { name: 'Negro & Tiza', hex: '#2A2A2A' }
+      { name: 'Azul Marino & Lunares', hex: '#1D2A44' }
     ],
     sizes: ['S', 'M', 'L'],
     description: 'Conjunto coordinado de top sin mangas con hombreras estructuradas y pantalón palazzo de tiro alto con cintura elástica sumamente confortable. Confeccionado en poplin sedoso con motivo clásico de topos marítimos.',
@@ -156,11 +151,10 @@ const DEFAULT_PRODUCTS = [
     isNew: true,
     stock: 7,
     active: true,
-    views: 48,
+    views: 0,
     salesCount: 0,
     colors: [
-      { name: 'Azul Francés & Blanco', hex: '#4A6FA5' },
-      { name: 'Celeste Brisa', hex: '#8FA9C4' }
+      { name: 'Azul Francés & Blanco', hex: '#4A6FA5' }
     ],
     sizes: ['S', 'M', 'L'],
     description: 'Conjunto de dos piezas confeccionado en algodón seersucker liviano a micro rayas azules y blancas. Top con volados sutiles en mangas y lazo, junto a pantalón palazzo holgado con cintura elastizada.',
@@ -183,11 +177,10 @@ const DEFAULT_PRODUCTS = [
     isNew: true,
     stock: 6,
     active: true,
-    views: 56,
-    salesCount: 1,
+    views: 0,
+    salesCount: 0,
     colors: [
-      { name: 'Blanco Puro', hex: '#FFFFFF' },
-      { name: 'Marfil Suave', hex: '#F7F5F0' }
+      { name: 'Blanco Puro', hex: '#FFFFFF' }
     ],
     sizes: ['S', 'M', 'L'],
     description: 'Elegante conjunto monocromático de dos piezas en bengala de algodón elastizado blanco puro. Top crop sin mangas con cuello redondo y pantalón oxford flare tiro alto con pinzas que estilizan la silueta.',
@@ -210,11 +203,10 @@ const DEFAULT_PRODUCTS = [
     isNew: true,
     stock: 8,
     active: true,
-    views: 60,
-    salesCount: 2,
+    views: 0,
+    salesCount: 0,
     colors: [
-      { name: 'Celeste Cielo & Marfil', hex: '#93B5CF' },
-      { name: 'Azul Costero', hex: '#5B7FA4' }
+      { name: 'Celeste Cielo & Marfil', hex: '#93B5CF' }
     ],
     sizes: ['S', 'M', 'L'],
     description: 'Conjunto de dos piezas con estampa a rayas verticales en tonos celeste cielo y tiza. Top sin mangas con detalle de lazos laterales regulables y pantalón palazzo de cintura elastizada con calce holgado mediterráneo.',
@@ -237,11 +229,10 @@ const DEFAULT_PRODUCTS = [
     isNew: false,
     stock: 8,
     active: true,
-    views: 73,
-    salesCount: 4,
+    views: 0,
+    salesCount: 0,
     colors: [
-      { name: 'Rojo Carmín & Marfil', hex: '#C23B38' },
-      { name: 'Vino & Ocre', hex: '#7A2228' }
+      { name: 'Rojo Carmín & Marfil', hex: '#C23B38' }
     ],
     sizes: ['XS', 'S', 'M', 'L'],
     description: 'Pantalón de silueta ancha a rayas bicolores estilo toldo de la Riviera italiana. Tiro alto estructurado con corte limpio que alarga visualmente la figura.',
@@ -265,8 +256,8 @@ const DEFAULT_PRODUCTS = [
     isNew: true,
     stock: 15,
     active: true,
-    views: 110,
-    salesCount: 7,
+    views: 0,
+    salesCount: 0,
     colors: [
       { name: 'Blanco Óptico', hex: '#FFFFFF' }
     ],
@@ -292,8 +283,8 @@ const DEFAULT_PRODUCTS = [
     isNew: true,
     stock: 14,
     active: true,
-    views: 89,
-    salesCount: 6,
+    views: 0,
+    salesCount: 0,
     colors: [
       { name: 'Blanco Óptico', hex: '#FFFFFF' }
     ],
@@ -319,8 +310,8 @@ const DEFAULT_PRODUCTS = [
     isNew: true,
     stock: 2,
     active: true,
-    views: 135,
-    salesCount: 9,
+    views: 0,
+    salesCount: 0,
     colors: [
       { name: 'Blanco Óptico', hex: '#FFFFFF' }
     ],
@@ -345,8 +336,8 @@ const DEFAULT_PRODUCTS = [
     isNew: true,
     stock: 10,
     active: true,
-    views: 65,
-    salesCount: 3,
+    views: 0,
+    salesCount: 0,
     colors: [
       { name: 'Blanco Óptico', hex: '#FFFFFF' }
     ],
@@ -371,8 +362,8 @@ const DEFAULT_PRODUCTS = [
     isNew: true,
     stock: 7,
     active: true,
-    views: 102,
-    salesCount: 6,
+    views: 0,
+    salesCount: 0,
     colors: [
       { name: 'Arena & Marfil', hex: '#E6DCCE' }
     ],
@@ -397,8 +388,8 @@ const DEFAULT_PRODUCTS = [
     isNew: true,
     stock: 5,
     active: true,
-    views: 82,
-    salesCount: 4,
+    views: 0,
+    salesCount: 0,
     colors: [
       { name: 'Azul Índigo Profundo', hex: '#1C2538' }
     ],
@@ -423,8 +414,8 @@ const DEFAULT_PRODUCTS = [
     isNew: true,
     stock: 4,
     active: true,
-    views: 118,
-    salesCount: 7,
+    views: 0,
+    salesCount: 0,
     colors: [
       { name: 'Rosa Viejo / Terracota Suave', hex: '#C98B8B' }
     ],

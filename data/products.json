@@ -11,16 +11,12 @@
     "isFeatured": true,
     "stock": 8,
     "active": true,
-    "views": 65,
-    "salesCount": 1,
+    "views": 0,
+    "salesCount": 0,
     "colors": [
       {
         "name": "Leopardo & Cacao",
         "hex": "#4A3528"
-      },
-      {
-        "name": "Patchwork Safari",
-        "hex": "#634832"
       }
     ],
     "sizes": [
@@ -48,16 +44,12 @@
     "isFeatured": true,
     "stock": 10,
     "active": true,
-    "views": 42,
+    "views": 0,
     "salesCount": 0,
     "colors": [
       {
         "name": "Moca Tostado",
         "hex": "#8C675B"
-      },
-      {
-        "name": "Malva Suave",
-        "hex": "#A88B82"
       }
     ],
     "sizes": [
@@ -85,16 +77,12 @@
     "isFeatured": true,
     "stock": 12,
     "active": true,
-    "views": 128,
-    "salesCount": 8,
+    "views": 0,
+    "salesCount": 0,
     "colors": [
       {
         "name": "Teja y Mostaza",
         "hex": "#D95D39"
-      },
-      {
-        "name": "Arena y Crudo",
-        "hex": "#E29578"
       }
     ],
     "sizes": [
@@ -124,16 +112,12 @@
     "isFeatured": false,
     "stock": 6,
     "active": true,
-    "views": 94,
-    "salesCount": 5,
+    "views": 0,
+    "salesCount": 0,
     "colors": [
       {
         "name": "Verde Botánico y Salvia",
         "hex": "#4A6B53"
-      },
-      {
-        "name": "Oliva y Arena",
-        "hex": "#87986A"
       }
     ],
     "sizes": [
@@ -163,16 +147,12 @@
     "isFeatured": true,
     "stock": 3,
     "active": true,
-    "views": 164,
-    "salesCount": 11,
+    "views": 0,
+    "salesCount": 0,
     "colors": [
       {
         "name": "Azul Marino y Lunares",
         "hex": "#1D2A44"
-      },
-      {
-        "name": "Negro y Tiza",
-        "hex": "#2A2A2A"
       }
     ],
     "sizes": [
@@ -201,16 +181,12 @@
     "isFeatured": true,
     "stock": 7,
     "active": true,
-    "views": 48,
+    "views": 0,
     "salesCount": 0,
     "colors": [
       {
         "name": "Azul Francés & Blanco",
         "hex": "#4A6FA5"
-      },
-      {
-        "name": "Celeste Brisa",
-        "hex": "#8FA9C4"
       }
     ],
     "sizes": [
@@ -239,16 +215,12 @@
     "isFeatured": true,
     "stock": 6,
     "active": true,
-    "views": 56,
-    "salesCount": 1,
+    "views": 0,
+    "salesCount": 0,
     "colors": [
       {
         "name": "Blanco Puro",
         "hex": "#FFFFFF"
-      },
-      {
-        "name": "Marfil Suave",
-        "hex": "#F7F5F0"
       }
     ],
     "sizes": [
@@ -277,16 +249,12 @@
     "isFeatured": true,
     "stock": 8,
     "active": true,
-    "views": 60,
-    "salesCount": 2,
+    "views": 0,
+    "salesCount": 0,
     "colors": [
       {
         "name": "Celeste Cielo & Marfil",
         "hex": "#93B5CF"
-      },
-      {
-        "name": "Azul Costero",
-        "hex": "#5B7FA4"
       }
     ],
     "sizes": [
@@ -315,16 +283,12 @@
     "isFeatured": false,
     "stock": 8,
     "active": true,
-    "views": 73,
-    "salesCount": 4,
+    "views": 0,
+    "salesCount": 0,
     "colors": [
       {
         "name": "Rojo Carmín y Marfil",
         "hex": "#C23B38"
-      },
-      {
-        "name": "Vino y Ocre",
-        "hex": "#7A2228"
       }
     ],
     "sizes": [
@@ -355,8 +319,8 @@
     "isFeatured": true,
     "stock": 15,
     "active": true,
-    "views": 110,
-    "salesCount": 7,
+    "views": 0,
+    "salesCount": 0,
     "colors": [
       {
         "name": "Blanco Óptico",
@@ -374,7 +338,7 @@
     "details": [
       "Calce clásico unisex relajado",
       "Estampa serigráfica al agua de alta durabilidad",
-      "Cuello en ribb con costura reforzada",
+      "Cuello en ribb con costura reinforced",
       "Prenda combinable con nuestro Pantalón Rayas Carmín"
     ]
   },
@@ -391,8 +355,8 @@
     "isFeatured": false,
     "stock": 14,
     "active": true,
-    "views": 89,
-    "salesCount": 6,
+    "views": 0,
+    "salesCount": 0,
     "colors": [
       {
         "name": "Blanco Óptico",
@@ -427,8 +391,8 @@
     "isFeatured": true,
     "stock": 2,
     "active": true,
-    "views": 135,
-    "salesCount": 9,
+    "views": 0,
+    "salesCount": 0,
     "colors": [
       {
         "name": "Blanco Óptico",
@@ -462,8 +426,8 @@
     "isFeatured": false,
     "stock": 10,
     "active": true,
-    "views": 65,
-    "salesCount": 3,
+    "views": 0,
+    "salesCount": 0,
     "colors": [
       {
         "name": "Blanco Óptico",
@@ -497,8 +461,8 @@
     "isFeatured": true,
     "stock": 7,
     "active": true,
-    "views": 102,
-    "salesCount": 6,
+    "views": 0,
+    "salesCount": 0,
     "colors": [
       {
         "name": "Arena y Marfil",
@@ -531,8 +495,8 @@
     "isFeatured": false,
     "stock": 4,
     "active": true,
-    "views": 88,
-    "salesCount": 5,
+    "views": 0,
+    "salesCount": 0,
     "colors": [
       {
         "name": "Rosa Palo y Canela",
@@ -565,8 +529,8 @@
     "isFeatured": false,
     "stock": 9,
     "active": true,
-    "views": 76,
-    "salesCount": 4,
+    "views": 0,
+    "salesCount": 0,
     "colors": [
       {
         "name": "Azul Índigo Profundo",
@@ -582,7 +546,7 @@
     "description": "Chaleco denim estructurado de lavado índigo profundo con pespuntes en contraste tono caramelo. Botones metálicos grabados de impronta vintage.",
     "composition": "100% Denim algodón rígido 12 oz.",
     "details": [
-      "Costuras reforzadas a doble aguja",
+      "Costuras reinforced a doble aguja",
       "Corte sastrero a la cintura",
       "Presilla trasera regulable",
       "Lavado eco-friendly con ahorro de agua"
