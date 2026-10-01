@@ -71,6 +71,15 @@
 
     async loadAll() {
       this.products = await this.loadKey(STORE_KEYS.PRODUCTS, 'data/products.json', []);
+      if (Array.isArray(this.products) && this.products.length !== 4) {
+        try {
+          const res = await fetch('data/products.json');
+          if (res.ok) {
+            this.products = await res.json();
+            localStorage.setItem(STORE_KEYS.PRODUCTS, JSON.stringify(this.products));
+          }
+        } catch (e) {}
+      }
       this.orders = await this.loadKey(STORE_KEYS.ORDERS, 'data/orders.json', []);
       this.agenda = await this.loadKey(STORE_KEYS.AGENDA, 'data/agenda.json', []);
       this.customOrders = await this.loadKey(STORE_KEYS.CUSTOM, 'data/custom_orders.json', []);
@@ -144,8 +153,9 @@
 
     saveProducts(syncGH = true) {
       this.saveKey(STORE_KEYS.PRODUCTS, this.products, syncGH ? 'data/products.json' : null, 'Actualización de catálogo de productos');
-      if (window.PRODUCTS) window.PRODUCTS = this.products;
+      window.PRODUCTS = this.products;
       if (typeof window.renderProducts === 'function') window.renderProducts();
+      window.dispatchEvent(new CustomEvent('evangelina:products-updated', { detail: this.products }));
       this.updateBadges();
     }
 
@@ -732,13 +742,7 @@
           <span class="badge-pct">22%</span>
         </div>
       </div>
-      <div class="channel-row">
-        <span class="channel-left">🔍 Búsqueda Google</span>
-        <div class="channel-right">
-          <span>200 visitas</span>
-          <span class="badge-pct">14%</span>
-        </div>
-      </div>
+
       <div class="device-split-bar">
         <div class="device-labels">
           <span>📱 Móvil: <strong>86%</strong> (1.221)</span>

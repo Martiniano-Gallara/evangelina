@@ -1128,7 +1128,9 @@ input, select, textarea {
 }
 
 .sort-wrap select {
-  padding: 0.55rem 1.2rem;
+  height: 40px;
+  line-height: 1.4;
+  padding: 0.45rem 1.2rem;
   font-size: 0.8125rem;
   border: 1px solid var(--border-subtle);
   background-color: var(--bg-surface);
@@ -1136,6 +1138,7 @@ input, select, textarea {
   border-radius: var(--radius-sm);
   outline: none;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 .sort-wrap select:focus {
@@ -2288,7 +2291,8 @@ input, select, textarea {
 .form-group select,
 .form-group textarea {
   width: 100%;
-  height: 42px;
+  height: 44px;
+  line-height: 1.4;
   padding: 0.55rem 0.85rem;
   font-size: 0.825rem;
   color: var(--text-main);
@@ -2308,6 +2312,9 @@ input, select, textarea {
 }
 
 .form-group select {
+  height: 46px;
+  line-height: 46px;
+  padding: 0 2rem 0 0.85rem;
   appearance: auto;
   cursor: pointer;
 }
@@ -2842,11 +2849,16 @@ body.admin-page .backoffice-window {
 
 body.admin-page .admin-login-screen {
   background: linear-gradient(135deg, var(--bg-sand) 0%, var(--bg-body) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: calc(100vh - 70px) !important;
+  padding: 2rem 1rem !important;
+  box-sizing: border-box !important;
 }
 
 /* Fullscreen Window Overlay */
@@ -3018,23 +3030,28 @@ body.admin-page .admin-login-screen {
 
 /* Login Screen */
 .admin-login-screen {
-  flex: 1;
+  flex: 1 1 auto;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 2rem 1rem;
   overflow-y: auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .admin-login-card {
-  max-width: 460px;
+  max-width: 480px;
   width: 100%;
+  margin: auto !important;
   background-color: #FFFFFF;
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 2.5rem 2rem;
-  box-shadow: var(--shadow-subtle);
+  border-radius: var(--radius-lg);
+  padding: 2.75rem 2.25rem;
+  box-shadow: 0 16px 45px rgba(50, 40, 30, 0.09);
   text-align: center;
+  box-sizing: border-box;
 }
 
 .admin-login-icon {
@@ -5117,13 +5134,14 @@ body.admin-page .admin-login-screen {
   margin-bottom: 0.5rem;
 }
 
-.calc-inputs-col input[type="number"],
-.calc-inputs-col select {
+.calc-inputs-col input[type="number"] {
   width: 100%;
+  height: 48px;
+  line-height: normal;
   background-color: #FFFFFF;
   border: 1.5px solid #DFD5C8;
   border-radius: var(--radius-sm);
-  padding: 0.85rem 1.15rem;
+  padding: 0.75rem 1rem;
   font-family: var(--font-body);
   font-size: 0.9rem;
   font-weight: 500;
@@ -5131,17 +5149,32 @@ body.admin-page .admin-login-screen {
   box-shadow: 0 2px 6px rgba(60, 45, 35, 0.03);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
   outline: none;
+  box-sizing: border-box;
 }
 
 .calc-inputs-col select {
+  width: 100%;
+  height: 48px;
+  line-height: 48px;
+  background-color: #FFFFFF;
+  border: 1.5px solid #DFD5C8;
+  border-radius: var(--radius-sm);
+  padding: 0 2.4rem 0 1rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-main);
+  box-shadow: 0 2px 6px rgba(60, 45, 35, 0.03);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+  outline: none;
+  box-sizing: border-box;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%239E7B5C' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 1.15rem center;
+  background-position: right 1rem center;
   background-size: 11px 7px;
-  padding-right: 2.6rem;
   cursor: pointer;
 }
 
@@ -5448,6 +5481,11 @@ body.admin-page .admin-login-screen {
   .measure-calc-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .form-row-2 {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
   }
 
   .calc-result-col {
@@ -7031,5 +7069,277 @@ body.admin-page .admin-login-screen {
   .table-cat-pill {
     flex-shrink: 0;
     white-space: nowrap;
+  }
+}
+
+/* Mobile Responsiveness for Admin Login Screen */
+@media (max-width: 576px) {
+  .admin-login-screen,
+  body.admin-page .admin-login-screen {
+    padding: 1.25rem 0.85rem !important;
+    min-height: calc(100dvh - 60px) !important;
+  }
+
+  .admin-login-card {
+    padding: 1.85rem 1.25rem !important;
+    border-radius: 14px !important;
+    box-shadow: 0 8px 30px rgba(50, 40, 30, 0.08) !important;
+  }
+
+  .admin-login-icon {
+    font-size: 2rem !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  .admin-login-title {
+    font-size: 1.45rem !important;
+    margin: 0.35rem 0 0.25rem !important;
+  }
+
+  .admin-login-sub {
+    font-size: 0.785rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .login-tabs {
+    margin-bottom: 1.25rem !important;
+  }
+
+  .login-tab-btn {
+    padding: 0.55rem 0.35rem !important;
+    font-size: 0.72rem !important;
+  }
+}
+
+/* ==========================================================================
+   SECCIÓN SOBRE NOSOTRAS (EVA & ANA)
+   ========================================================================== */
+.about-us-section {
+  padding: 5rem 0;
+  background: linear-gradient(180deg, #FBF9F6 0%, #F5EFEB 100%);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+}
+
+.about-us-container {
+  max-width: var(--container-max);
+}
+
+.about-us-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.about-us-image-frame {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 16px 45px rgba(60, 45, 35, 0.12);
+  border: 1px solid rgba(216, 204, 192, 0.6);
+}
+
+.about-us-img {
+  width: 100%;
+  height: auto;
+  max-height: 540px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.about-us-image-frame:hover .about-us-img {
+  transform: scale(1.03);
+}
+
+.about-badge-float {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 6px 20px rgba(50, 40, 30, 0.1);
+}
+
+.about-badge-float .badge-icon {
+  font-size: 1.35rem;
+}
+
+.about-badge-float .badge-title {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--bronze-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.about-badge-float .badge-sub {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+.section-tag-gold {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--bronze-primary);
+  margin-bottom: 0.35rem;
+}
+
+.about-us-heading {
+  font-family: var(--font-editorial);
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+}
+
+.about-heading-divider {
+  width: 50px;
+  height: 2px;
+  background-color: var(--bronze-primary);
+  margin-bottom: 1.25rem;
+}
+
+.about-lead-paragraph {
+  font-size: 1.025rem;
+  line-height: 1.65;
+  color: var(--text-main);
+  margin-bottom: 1.75rem;
+}
+
+.about-pillars-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  margin-bottom: 2rem;
+}
+
+.pillar-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background-color: #F2EAE1;
+  border: 1px solid #DFD2C4;
+  border-radius: var(--radius-md);
+  padding: 1.15rem 1.25rem;
+  box-shadow: 0 4px 15px rgba(50, 40, 30, 0.05);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.pillar-card:hover {
+  transform: translateY(-2px);
+  background-color: #EDE3D8;
+  border-color: var(--bronze-primary);
+}
+
+.pillar-icon {
+  font-size: 1.45rem;
+  line-height: 1;
+  padding-top: 2px;
+}
+
+.pillar-title {
+  font-family: var(--font-editorial);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+}
+
+.pillar-desc {
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text-main);
+}
+
+.about-authors-sign {
+  border-top: 1px dashed var(--border-medium);
+  padding-top: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.sign-quote {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--text-main);
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.authors-name {
+  display: block;
+  font-family: var(--font-editorial);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--bronze-hover);
+  letter-spacing: 0.05em;
+}
+
+.authors-role {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 992px) {
+  .about-us-section {
+    padding: 3.5rem 0;
+  }
+  .about-us-grid {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+  .about-us-img {
+    max-height: 440px;
+    aspect-ratio: 4 / 5;
+    object-position: center top;
+  }
+  .about-us-heading {
+    font-size: 2.1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-us-section {
+    padding: 2.75rem 0;
+  }
+  .about-us-img {
+    max-height: 380px;
+    aspect-ratio: 1 / 1;
+    object-position: center 15%;
+    border-radius: var(--radius-md);
+  }
+  .about-us-heading {
+    font-size: 1.8rem;
+  }
+  .about-badge-float {
+    bottom: 0.75rem;
+    right: 0.75rem;
+    padding: 0.5rem 0.85rem;
+  }
+  .pillar-card {
+    padding: 0.95rem 1rem;
   }
 }

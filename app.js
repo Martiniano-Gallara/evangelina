@@ -9,424 +9,137 @@
 // ==========================================
 const DEFAULT_PRODUCTS = [
   {
-    id: 'pantalon-palazzo-animalier',
-    name: 'Pantalón Palazzo Animalier Safari',
-    category: 'Pantalones',
-    price: 58000,
-    originalPrice: 66000,
-    image: 'assets/product-palazzo-animalier.jpg',
-    badge: 'Nuevo',
-    isNew: true,
-    isFeatured: true,
-    stock: 8,
-    active: true,
-    views: 0,
-    salesCount: 0,
-    colors: [
-      { name: 'Leopardo & Cacao', hex: '#4A3528' }
+    "id": "pantalon-palazzo-animalier",
+    "name": "Pantalón Palazzo Animalier Safari",
+    "category": "Pantalones",
+    "price": 58000,
+    "originalPrice": 66000,
+    "image": "assets/product-palazzo-animalier.jpg",
+    "badge": "Nuevo",
+    "isNew": true,
+    "isFeatured": true,
+    "stock": 8,
+    "active": true,
+    "views": 0,
+    "salesCount": 0,
+    "colors": [
+      {
+        "name": "Leopardo & Cacao",
+        "hex": "#4A3528"
+      }
     ],
-    sizes: ['L', 'XL'],
-    description: 'Pantalón palazzo de silueta holgada confeccionado en sarga suave con estampa animal print y textura gráfica safari. Tiro alto con botón al tono, presillas para cinto y calce ultra relajado.',
-    composition: '100% Algodón puro esmerilado con caída natural.',
-    details: [
-      'Tiro alto clásico con botón y cierre frontal',
-      'Corte amplio palazzo de espíritu bohemio chic',
-      'Estampa animalier safari en tonos cacao, negro y arena',
-      'Confección artesanal de autor'
+    "sizes": [
+      "L",
+      "XL"
+    ],
+    "description": "Pantalón palazzo de silueta holgada confeccionado en sarga suave con estampa animal print y textura gráfica safari. Tiro alto con botón al tono, presillas para cinto y calce ultra relajado.",
+    "composition": "100% Algodón puro esmerilado con caída natural.",
+    "details": [
+      "Tiro alto clásico con botón y cierre frontal",
+      "Corte amplio palazzo de espíritu bohemio chic",
+      "Estampa animalier safari en tonos cacao, negro y arena",
+      "Confección artesanal de autor"
     ]
   },
   {
-    id: 'pantalon-palazzo-moca',
-    name: 'Pantalón Palazzo Moca Toscana',
-    category: 'Pantalones',
-    price: 56000,
-    originalPrice: 64000,
-    image: 'assets/product-palazzo-moca.jpg',
-    badge: 'Nuevo',
-    isNew: true,
-    isFeatured: true,
-    stock: 10,
-    active: true,
-    views: 0,
-    salesCount: 0,
-    colors: [
-      { name: 'Moca Tostado', hex: '#8C675B' }
+    "id": "remera-sardine",
+    "name": "Remera Estampada Sardine al Pomodoro",
+    "category": "Remeras",
+    "price": 32000,
+    "originalPrice": 38000,
+    "image": "assets/product-sardine.jpg",
+    "badge": "Más Vendido",
+    "isNew": false,
+    "isFeatured": true,
+    "stock": 14,
+    "active": true,
+    "views": 0,
+    "salesCount": 0,
+    "colors": [
+      {
+        "name": "Crema Vintage",
+        "hex": "#F4EFE6"
+      }
     ],
-    sizes: ['M', 'L'],
-    description: 'Pantalón palazzo de tiro alto confeccionado en gabardina liviana de algodón suave esmerilado. Cintura elástica fruncida supercómoda y pierna amplia con caída impecable. Tono moca versátil que combina con todo el guardarropa de estación.',
-    composition: '98% Algodón puro esmerilado, 2% Elastano.',
-    details: [
-      'Cintura elastizada tiro alto con frunce artesanal',
-      'Pierna amplia palazzo de caída fluida',
-      'Bolsillos laterales profundos y funcionales',
-      'Confección artesanal de autor'
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "description": "Remera de corte clásico confeccionada en algodón 100% peinado de mano súper suave. Estampa frontal exclusiva de latita de sardinas vintage en tono rojo pomodoro sobre fondo crema.",
+    "composition": "100% Algodón puro peinado 24/1.",
+    "details": [
+      "Cuello redondo de morley al tono",
+      "Corte recto relajado unisex",
+      "Estampa serigráfica al agua de alta durabilidad",
+      "Lavado con suavizante de silicona"
     ]
   },
   {
-    id: 'pantalon-sol-naciente',
-    name: 'Pantalón Palazzo Sol Naciente',
-    category: 'Pantalones',
-    price: 54000,
-    originalPrice: 62000,
-    image: 'assets/product-sunset-stripes.jpg',
-    badge: 'Favorito Atelier',
-    isNew: true,
-    stock: 12,
-    active: true,
-    views: 0,
-    salesCount: 0,
-    colors: [
-      { name: 'Teja & Mostaza', hex: '#D95D39' }
+    "id": "chaleco-tweed-crema",
+    "name": "Chaleco Tweed y Lino Arena",
+    "category": "Chalecos",
+    "price": 62000,
+    "originalPrice": 72000,
+    "image": "assets/product-vest-crudo.jpg",
+    "badge": "Sastrería",
+    "isNew": true,
+    "isFeatured": true,
+    "stock": 6,
+    "active": true,
+    "views": 0,
+    "salesCount": 0,
+    "colors": [
+      {
+        "name": "Arena & Lino Crudo",
+        "hex": "#E3D5C5"
+      }
     ],
-    sizes: ['XS', 'S', 'M', 'L'],
-    description: 'Pantalón palazzo de tiro alto confeccionado en sarga de algodón y lino peinado. Estampa artesanal a rayas verticales en tonos teja, terracota, mostaza y crudo. Caída relajada y silueta fluida de espíritu mediterráneo.',
-    composition: '70% Algodón orgánico peinado, 30% Lino europeo.',
-    details: [
-      'Tiro alto con elástico invisible y cierre lateral',
-      'Bolsillos laterales sutiles',
-      'Tejido transpirable de fibra noble',
-      'Confección artesanal de autor'
+    "sizes": [
+      "S",
+      "M"
+    ],
+    "description": "Chaleco sastrero de escote en V entallado confeccionado en mezcla de tweed de lino y algodón. Abotonadura frontal con botones de carey natural y bolsillos ojal sutiles.",
+    "composition": "60% Lino europeo, 40% Algodón trama tweed.",
+    "details": [
+      "Escote en V estilizado y espalda cruzada sutil",
+      "Botones de carey sintético de alta resistencia",
+      "Forrería interna suave en batista de algodón",
+      "Ideal para combinar con palazzo o usar directo sobre la piel"
     ]
   },
   {
-    id: 'pantalon-riviera-verde',
-    name: 'Pantalón Rayas Riviera Verde',
-    category: 'Pantalones',
-    price: 54000,
-    originalPrice: null,
-    image: 'assets/product-green-stripes.jpg',
-    badge: 'Nuevo',
-    isNew: true,
-    stock: 6,
-    active: true,
-    views: 0,
-    salesCount: 0,
-    colors: [
-      { name: 'Verde Botánico & Salvia', hex: '#4A6B53' }
+    "id": "conjunto-polka-indigo",
+    "name": "Conjunto Ecléctico Lunares Índigo",
+    "category": "Conjuntos",
+    "price": 89000,
+    "originalPrice": 98000,
+    "image": "assets/product-polka-set.jpg",
+    "badge": "Edición Limitada",
+    "isNew": true,
+    "isFeatured": true,
+    "stock": 5,
+    "active": true,
+    "views": 0,
+    "salesCount": 0,
+    "colors": [
+      {
+        "name": "Índigo y Crudo",
+        "hex": "#2B3A4A"
+      }
     ],
-    sizes: ['XS', 'S', 'M', 'L'],
-    description: 'Pantalón amplio con tiro medio-alto, estampa a franjas verticales en gamas de verde bosque, salvia y marfil. Calce holgado de impronta europea que estiliza y aporta frescura natural.',
-    composition: '100% Algodón puro con acabado suave al tacto.',
-    details: [
-      'Corte palazzo clásico holgado',
-      'Pretina con presillas para cinto',
-      'Tejido fresco y liviano ideal para días templados',
-      'Lavado con proceso eco-amigable'
-    ]
-  },
-  {
-    id: 'conjunto-polka-indigo',
-    name: 'Conjunto Ecléctico Lunares Índigo',
-    category: 'Conjuntos',
-    price: 68000,
-    originalPrice: 75000,
-    image: 'assets/product-polka-dot.jpg',
-    badge: 'Dos Piezas',
-    isNew: true,
-    stock: 3,
-    active: true,
-    views: 0,
-    salesCount: 0,
-    colors: [
-      { name: 'Azul Marino & Lunares', hex: '#1D2A44' }
+    "sizes": [
+      "S",
+      "M",
+      "L"
     ],
-    sizes: ['S', 'M', 'L'],
-    description: 'Conjunto coordinado de top sin mangas con hombreras estructuradas y pantalón palazzo de tiro alto con cintura elástica sumamente confortable. Confeccionado en poplin sedoso con motivo clásico de topos marítimos.',
-    composition: '100% Viscosa vegetal de textura sedosa y tacto fresco.',
-    details: [
-      'Incluye top estructurado y pantalón amplio',
-      'Cintura elastizada con bolsillos amplios',
-      'No encoge ni pierde suavidad',
-      'Versatilidad para usar junto o por separado'
-    ]
-  },
-  {
-    id: 'conjunto-seersucker-azul',
-    name: 'Conjunto Seersucker Rayas Azules',
-    category: 'Conjuntos',
-    price: 68000,
-    originalPrice: 76000,
-    image: 'assets/product-conjunto-seersucker-azul.jpg',
-    badge: 'Nuevo',
-    isNew: true,
-    stock: 7,
-    active: true,
-    views: 0,
-    salesCount: 0,
-    colors: [
-      { name: 'Azul Francés & Blanco', hex: '#4A6FA5' }
-    ],
-    sizes: ['S', 'M', 'L'],
-    description: 'Conjunto de dos piezas confeccionado en algodón seersucker liviano a micro rayas azules y blancas. Top con volados sutiles en mangas y lazo, junto a pantalón palazzo holgado con cintura elastizada.',
-    composition: '100% Algodón textura seersucker europeo.',
-    details: [
-      'Top con terminación de volados en hombros',
-      'Pantalón palazzo tiro alto con elástico suave',
-      'Tejido fresco y texturado ideal para media estación y verano',
-      'Confección artesanal de autor'
-    ]
-  },
-  {
-    id: 'conjunto-blanco-puro',
-    name: 'Conjunto Flare Monocromo Blanco Puro',
-    category: 'Conjuntos',
-    price: 72000,
-    originalPrice: 82000,
-    image: 'assets/product-conjunto-blanco-puro.jpg',
-    badge: 'Exclusivo',
-    isNew: true,
-    stock: 6,
-    active: true,
-    views: 0,
-    salesCount: 0,
-    colors: [
-      { name: 'Blanco Puro', hex: '#FFFFFF' }
-    ],
-    sizes: ['S', 'M', 'L'],
-    description: 'Elegante conjunto monocromático de dos piezas en bengala de algodón elastizado blanco puro. Top crop sin mangas con cuello redondo y pantalón oxford flare tiro alto con pinzas que estilizan la silueta.',
-    composition: '97% Algodón peinado de alto gramaje, 3% Spandex.',
-    details: [
-      'Top crop estructurado forrado',
-      'Pantalón corte flare / oxford con caída pesada',
-      'Tiro ultra alto moldeador',
-      'Confección artesanal de autor'
-    ]
-  },
-  {
-    id: 'conjunto-rayas-celeste',
-    name: 'Conjunto Riviera Rayas Cielo',
-    category: 'Conjuntos',
-    price: 69000,
-    originalPrice: 78000,
-    image: 'assets/product-conjunto-rayas-celeste.jpg',
-    badge: 'Favorito Atelier',
-    isNew: true,
-    stock: 8,
-    active: true,
-    views: 0,
-    salesCount: 0,
-    colors: [
-      { name: 'Celeste Cielo & Marfil', hex: '#93B5CF' }
-    ],
-    sizes: ['S', 'M', 'L'],
-    description: 'Conjunto de dos piezas con estampa a rayas verticales en tonos celeste cielo y tiza. Top sin mangas con detalle de lazos laterales regulables y pantalón palazzo de cintura elastizada con calce holgado mediterráneo.',
-    composition: '70% Algodón puro, 30% Lino natural.',
-    details: [
-      'Top corto con lazos regulables laterales',
-      'Pantalón palazzo de silueta fluida',
-      'Lino y algodón fresco y transpirable',
-      'Confección artesanal de autor'
-    ]
-  },
-  {
-    id: 'pantalon-carmin-bordo',
-    name: 'Pantalón Rayas Carmín Bordó',
-    category: 'Pantalones',
-    price: 52000,
-    originalPrice: null,
-    image: 'assets/product-red-stripes.jpg',
-    badge: 'Edición Limitada',
-    isNew: false,
-    stock: 8,
-    active: true,
-    views: 0,
-    salesCount: 0,
-    colors: [
-      { name: 'Rojo Carmín & Marfil', hex: '#C23B38' }
-    ],
-    sizes: ['XS', 'S', 'M', 'L'],
-    description: 'Pantalón de silueta ancha a rayas bicolores estilo toldo de la Riviera italiana. Tiro alto estructurado con corte limpio que alarga visualmente la figura.',
-    composition: '80% Algodón orgánico, 20% Lino rústico.',
-    details: [
-      'Tiro alto con botón forrado artesanal',
-      'Caída recta y amplia',
-      'Bolsillo trasero ojal',
-      'Hecho con tintes naturales de bajo impacto'
-    ]
-  },
-  {
-    id: 'remera-sardine',
-    name: 'Remera Estampada "Sardine al Pomodoro"',
-    category: 'Remeras',
-    price: 28000,
-    originalPrice: null,
-    image: 'assets/remera-sardine.jpg',
-    modelImage: 'assets/remera-sardine-model.jpg',
-    badge: 'Nuevo',
-    isNew: true,
-    stock: 15,
-    active: true,
-    views: 0,
-    salesCount: 0,
-    colors: [
-      { name: 'Blanco Óptico', hex: '#FFFFFF' }
-    ],
-    sizes: ['S', 'M', 'L', 'XL'],
-    description: 'Remera clásica de cuello redondo en jersey de algodón 100% peinado de tacto ultrasuave. Serigrafía artesanal exclusiva "Sardine al Pomodoro" en azul cobalto y rojo tomate sobre fondo de ondas marítimas.',
-    composition: '100% Algodón puro peinado 24/1.',
-    details: [
-      'Calce clásico unisex relajado',
-      'Estampa serigráfica al agua de alta durabilidad',
-      'Cuello en ribb con costura reforzada',
-      'Prenda combinable con nuestro Pantalón Rayas Carmín'
-    ]
-  },
-  {
-    id: 'remera-picada',
-    name: 'Remera Estampada "Picada & Soda"',
-    category: 'Remeras',
-    price: 28000,
-    originalPrice: null,
-    image: 'assets/remera-picada.jpg',
-    modelImage: 'assets/remera-picada-model.jpg',
-    badge: 'Nuevo',
-    isNew: true,
-    stock: 14,
-    active: true,
-    views: 0,
-    salesCount: 0,
-    colors: [
-      { name: 'Blanco Óptico', hex: '#FFFFFF' }
-    ],
-    sizes: ['S', 'M', 'L', 'XL'],
-    description: 'Remera de algodón blanco suave con estampa de bodegón pop vintage: sifón de soda tradicional "El Burrito", banderín festivo y rodaja de cítrico sobre azulejos verde salvia.',
-    composition: '100% Algodón puro peinado 24/1.',
-    details: [
-      'Cuello redondo con refuerzo de hombro a hombro',
-      'Estampa al agua respirable que no acartona la tela',
-      'Calce cómodo para usar suelta o adentro del pantalón',
-      'Diseñada para acompañar el Pantalón Riviera Verde'
-    ]
-  },
-  {
-    id: 'remera-sifon-sol',
-    name: 'Remera Estampada "Sifón Sol Tradición"',
-    category: 'Remeras',
-    price: 28000,
-    originalPrice: null,
-    image: 'assets/remera-sifon-sol.jpg',
-    modelImage: 'assets/remera-sunset-model.jpg',
-    badge: 'Nuevo',
-    isNew: true,
-    stock: 2,
-    active: true,
-    views: 0,
-    salesCount: 0,
-    colors: [
-      { name: 'Blanco Óptico', hex: '#FFFFFF' }
-    ],
-    sizes: ['S', 'M', 'L', 'XL'],
-    description: 'Remera de algodón premium con diseño que homenajea los clásicos de siempre: sol sonriente radiante y sifón de soda enmarcado sobre un mantel cuadrillé rojo y crema.',
-    composition: '100% Algodón puro peinado 24/1.',
-    details: [
-      'Silueta fresca y relajada de espíritu bohemio',
-      'Tintas ecológicas libres de metales pesados',
-      'Acabado prelavado que previene encogimiento',
-      'Ideal en conjunto con el Pantalón Sol Naciente'
-    ]
-  },
-  {
-    id: 'remera-tomatelo-soda',
-    name: 'Remera Estampada "Tomátelo con Soda"',
-    category: 'Remeras',
-    price: 28000,
-    originalPrice: null,
-    image: 'assets/remera-tomatelo-soda.jpg',
-    badge: 'Nuevo',
-    isNew: true,
-    stock: 10,
-    active: true,
-    views: 0,
-    salesCount: 0,
-    colors: [
-      { name: 'Blanco Óptico', hex: '#FFFFFF' }
-    ],
-    sizes: ['S', 'M', 'L', 'XL'],
-    description: 'Remera blanca con motivo gráfico circular de rayos solares en rosa pastel y celeste con sifón rojo y la emblemática frase "Tomátelo con Soda". Una pieza alegre y llena de frescura.',
-    composition: '100% Algodón puro peinado 24/1.',
-    details: [
-      'Moldería estándar de calce holgado y fresco',
-      'Algodón peinado premium que respira con tu piel',
-      'Colores vibrantes sobre base blanca pura',
-      'Edición limitada de taller'
-    ]
-  },
-  {
-    id: 'chaleco-tweed-crema',
-    name: 'Chaleco Tweed & Lino Arena',
-    category: 'Chalecos',
-    price: 48000,
-    originalPrice: null,
-    image: 'assets/chaleco-tweed-crema.jpg',
-    badge: 'Nuevo',
-    isNew: true,
-    stock: 7,
-    active: true,
-    views: 0,
-    salesCount: 0,
-    colors: [
-      { name: 'Arena & Marfil', hex: '#E6DCCE' }
-    ],
-    sizes: ['S', 'M', 'L'],
-    description: 'Chaleco sastrero corto confeccionado en hilado texturado mezcla de tweed, lino y bouclé en tonos arena y marfil. Escote en V, botones símil madera natural y falsos bolsillos ribeteados.',
-    composition: '50% Lino noble, 30% Algodón rústico, 20% Fibras bouclé.',
-    details: [
-      'Corte crop con terminación artesanal desflecada',
-      'Botones de acabado madera natural',
-      'Escote en V que estiliza la línea del cuello',
-      'Prenda versátil para usar en capas o como top'
-    ]
-  },
-  {
-    id: 'chaleco-denim-indigo',
-    name: 'Chaleco Denim Sarga Índigo',
-    category: 'Chalecos',
-    price: 45000,
-    originalPrice: null,
-    image: 'assets/chaleco-denim-indigo.jpg',
-    badge: 'Exclusivo',
-    isNew: true,
-    stock: 5,
-    active: true,
-    views: 0,
-    salesCount: 0,
-    colors: [
-      { name: 'Azul Índigo Profundo', hex: '#1C2538' }
-    ],
-    sizes: ['S', 'M', 'L'],
-    description: 'Chaleco estructurado sin mangas en denim sarga de algodón índigo profundo. Escote caja con detalle de ojalillos metálicos bronce en hilera frontal y costuras sastreras.',
-    composition: '100% Algodón denim peinado de gramaje medio.',
-    details: [
-      'Detalle de ojalillos metálicos en bronce envejecido',
-      'Espalda limpia con cierre invisible lateral',
-      'Largo a la cintura ideal para pantalones de tiro alto',
-      'Calce firme y favorecedor'
-    ]
-  },
-  {
-    id: 'chaleco-gamuza-rosa',
-    name: 'Chaleco Gamuza Boho Rosa Viejo',
-    category: 'Chalecos',
-    price: 52000,
-    originalPrice: null,
-    image: 'assets/chaleco-gamuza-rosa.jpg',
-    badge: 'Favorito Atelier',
-    isNew: true,
-    stock: 4,
-    active: true,
-    views: 0,
-    salesCount: 0,
-    colors: [
-      { name: 'Rosa Viejo / Terracota Suave', hex: '#C98B8B' }
-    ],
-    sizes: ['S', 'M', 'L'],
-    description: 'Chaleco bohemio confeccionado en suave gamuza de antílope sintético en tono rosa empolvado. Cuello bote y ajuste lateral y en hombros con cordones de cuero natural cruzados.',
-    composition: '100% Gamuza ecológica ultrasuave con cordones de cuero natural.',
-    details: [
-      'Detalle de cordones laterales y en hombros regulables',
-      'Ruedo suavemente curvado',
-      'Tacto aterciopelado sumamente agradable',
-      'Perfecto para layering sobre camisas blancas y palazzos'
+    "description": "Conjunto 2 piezas de top de breteles finos y palazzo a juego en viscosa suave con estampa polka dot artesanal en azul índigo y lunares crudos.",
+    "composition": "100% Viscosa satinada de caída fluida.",
+    "details": [
+      "Top con escote recto y breteles regulables",
+      "Palazzo tiro alto con cintura elastizada",
+      "Caída vaporosa y movimiento elegante",
+      "Se vende como conjunto completo de 2 piezas"
     ]
   }
 ];
@@ -439,30 +152,6 @@ function loadProducts() {
     try {
       const parsed = JSON.parse(saved);
       if (Array.isArray(parsed) && parsed.length > 0) {
-        const existingMap = new Map(parsed.map((p, idx) => [p.id, p]));
-        let hasChanges = false;
-
-        DEFAULT_PRODUCTS.forEach(dp => {
-          if (!existingMap.has(dp.id)) {
-            parsed.unshift(dp);
-            hasChanges = true;
-          } else {
-            const found = existingMap.get(dp.id);
-            if (dp.id === 'pantalon-palazzo-moca' || dp.id === 'pantalon-palazzo-animalier') {
-              if (JSON.stringify(found.sizes) !== JSON.stringify(dp.sizes)) {
-                found.sizes = dp.sizes;
-                hasChanges = true;
-              }
-              if (found.image !== dp.image) {
-                found.image = dp.image;
-                hasChanges = true;
-              }
-            }
-          }
-        });
-        if (hasChanges) {
-          localStorage.setItem('evangelina_products', JSON.stringify(parsed));
-        }
         return parsed;
       }
     } catch (e) {
@@ -2733,4 +2422,24 @@ document.addEventListener('DOMContentLoaded', () => {
       openAdminModal();
     }
   });
+});
+
+
+// Real-time synchronization when Admin Panel modifies products or CMS configuration
+window.addEventListener('storage', function(e) {
+  if (e.key === 'evangelina_products') {
+    PRODUCTS = loadProducts();
+    if (typeof renderProducts === 'function') renderProducts();
+  }
+  if (e.key === 'evangelina_admin_config' || e.key === 'evangelina_config') {
+    adminConfig = JSON.parse(localStorage.getItem('evangelina_admin_config')) || defaultAdminConfig;
+    if (typeof applyAdminConfig === 'function') applyAdminConfig();
+  }
+});
+
+window.addEventListener('evangelina:products-updated', function(e) {
+  if (e.detail && Array.isArray(e.detail)) {
+    PRODUCTS = e.detail;
+    if (typeof renderProducts === 'function') renderProducts();
+  }
 });

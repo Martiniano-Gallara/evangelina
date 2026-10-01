@@ -73,6 +73,7 @@
       <nav class="nav-desktop-centered" aria-label="Navegación principal">
         <ul class="nav-list">
           <li><a href="#coleccion" class="nav-link active">Colección</a></li>
+          <li><a href="#sobre-nosotras" class="nav-link">Sobre Nosotras</a></li>
           <li><a href="#como-medirse" class="nav-link" id="nav-how-to-measure">Cómo Medirse</a></li>
         </ul>
       </nav>
@@ -93,6 +94,7 @@
     </div>
     <nav class="mobile-nav">
       <a href="#coleccion" class="mobile-nav-link">Nueva Colección</a>
+      <a href="#sobre-nosotras" class="mobile-nav-link">Sobre Nosotras</a>
       <a href="#como-medirse" class="mobile-nav-link">Cómo Medirse & Talles</a>
       <a href="#contacto" class="mobile-nav-link">Contacto</a>
       <a href="admin.html" class="mobile-nav-link" style="color: var(--bronze-hover); font-weight: 600;">⚙️ Panel Admin</a>
@@ -196,6 +198,60 @@
         <!-- Products Grid -->
         <div class="products-grid" id="products-grid">
           <!-- Populated dynamically by app.js with real items only -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Sobre Nosotras (Eva & Ana) -->
+    <section class="about-us-section" id="sobre-nosotras">
+      <div class="container about-us-container">
+        <div class="about-us-grid">
+          <div class="about-us-image-col">
+            <div class="about-us-image-frame">
+              <img src="assets/chaleco-tweed-crema.jpg" alt="Confección artesanal de autor - Evangelina Atelier" class="about-us-img" />
+            </div>
+          </div>
+          
+          <div class="about-us-text-col">
+            <span class="section-tag-gold">HISTORIA Y ESENCIA</span>
+            <h2 class="about-us-heading">Sobre Nosotras</h2>
+            <div class="about-heading-divider"></div>
+            
+
+            <div class="about-pillars-grid">
+              <div class="pillar-card">
+                <div class="pillar-icon">✨</div>
+                <div class="pillar-content">
+                  <h3 class="pillar-title">Prendas Únicas y Originales</h3>
+                  <p class="pillar-desc">Diseñamos piezas de calidad superior que no se repiten. Creaciones exclusivas pensadas para destacar tu personalidad con la máxima calidad.</p>
+                </div>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-icon">🪡</div>
+                <div class="pillar-content">
+                  <h3 class="pillar-title">Confección A Medida</h3>
+                  <p class="pillar-desc">Realizamos prendas a medida adaptadas a tu cuerpo para que te sientas plenamente cómoda, favorecida y hermosa en todo momento.</p>
+                </div>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-icon">❤️</div>
+                <div class="pillar-content">
+                  <h3 class="pillar-title">Hecho con Mucho Amor</h3>
+                  <p class="pillar-desc">Ponemos nuestro corazón, dedicación y cuidado artesanal en cada costura y detalle. Cada diseño transmite la calidez del trabajo hecho a mano.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="about-authors-sign">
+              <p class="sign-quote">"Nuestra misión es que cada prenda se convierta en tu favorita y sientas el amor con el que fue hecha."</p>
+              <div class="sign-footer">
+                <span class="authors-name">Eva & Ana</span>
+                <span class="authors-role">Creadoras & Diseñadoras de Evangelina Atelier</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -473,11 +529,7 @@
         <span>Subtotal</span>
         <span class="cart-subtotal-val" id="cart-subtotal">$0</span>
       </div>
-      <div class="cart-summary-line shipping-line">
-        <span>Envío estimado</span>
-        <span id="cart-shipping-val">Calculado en el checkout</span>
-      </div>
-      <p class="cart-installments-text">Hasta 3 o 6 cuotas sin interés con tarjetas seleccionadas.</p>
+
       
       <div id="cart-summary-actions">
         <button class="btn btn-primary btn-checkout" id="checkout-btn" onclick="toggleCartCheckoutForm(true)">
