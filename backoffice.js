@@ -70,15 +70,22 @@
     }
 
     async loadAll() {
-      this.products = await this.loadKey(STORE_KEYS.PRODUCTS, 'data/products.json', []);
-      if (Array.isArray(this.products) && this.products.length !== 4) {
-        try {
-          const res = await fetch('data/products.json');
-          if (res.ok) {
-            this.products = await res.json();
+      try {
+        const res = await fetch('data/products.json');
+        if (res.ok) {
+          const remoteProds = await res.json();
+          const localProds = JSON.parse(localStorage.getItem(STORE_KEYS.PRODUCTS) || '[]');
+          if (!Array.isArray(localProds) || localProds.length < remoteProds.length) {
+            this.products = remoteProds;
             localStorage.setItem(STORE_KEYS.PRODUCTS, JSON.stringify(this.products));
+          } else {
+            this.products = localProds;
           }
-        } catch (e) {}
+        } else {
+          this.products = await this.loadKey(STORE_KEYS.PRODUCTS, 'data/products.json', []);
+        }
+      } catch (e) {
+        this.products = await this.loadKey(STORE_KEYS.PRODUCTS, 'data/products.json', []);
       }
       this.orders = await this.loadKey(STORE_KEYS.ORDERS, 'data/orders.json', []);
       this.agenda = await this.loadKey(STORE_KEYS.AGENDA, 'data/agenda.json', []);

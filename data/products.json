@@ -127,10 +127,136 @@
     "description": "Conjunto 2 piezas de top de breteles finos y palazzo a juego en viscosa suave con estampa polka dot artesanal en azul índigo y lunares crudos.",
     "composition": "100% Viscosa satinada de caída fluida.",
     "details": [
-      "Top con escote recto y breteles regulables",
-      "Palazzo tiro alto con cintura elastizada",
       "Caída vaporosa y movimiento elegante",
       "Se vende como conjunto completo de 2 piezas"
+    ]
+  },
+  {
+    "id": "remera-musculosa-vitamin-sea",
+    "name": "Musculosa Vitamin Sea & Estrella de Mar",
+    "category": "Remeras",
+    "price": 34000,
+    "originalPrice": 39000,
+    "image": "assets/remera-musculosa-starfish.jpg",
+    "badge": "Nuevo · Única",
+    "isNew": true,
+    "isFeatured": true,
+    "stock": 1,
+    "active": true,
+    "views": 0,
+    "salesCount": 0,
+    "colors": [
+      {
+        "name": "Crudo & Carmín",
+        "hex": "#F5EFE6"
+      }
+    ],
+    "sizes": [
+      "Único"
+    ],
+    "description": "Musculosa de algodón puro premium color crudo natural con estampa ilustrada exclusiva de estrella de mar y marco marinero 'Vitamin Sea'. Edición exclusiva de 1 sola unidad en Talle Único.",
+    "composition": "100% Algodón puro esmerilado ultra fresco.",
+    "details": [
+      "Corte musculosa escote redondo",
+      "Estampa artística gráfica marinera",
+      "Talle Único adaptable (S a L)",
+      "Pieza única de colección nueva"
+    ]
+  },
+  {
+    "id": "remera-empanada-argentina",
+    "name": "Remera Ilustrada Empanada Argentina",
+    "category": "Remeras",
+    "price": 35000,
+    "originalPrice": 40000,
+    "image": "assets/remera-empanada-argentina.jpg",
+    "badge": "Nuevo · Única",
+    "isNew": true,
+    "isFeatured": true,
+    "stock": 1,
+    "active": true,
+    "views": 0,
+    "salesCount": 0,
+    "colors": [
+      {
+        "name": "Blanco Puro",
+        "hex": "#FFFFFF"
+      }
+    ],
+    "sizes": [
+      "Único"
+    ],
+    "description": "Remera de algodón con estampa tipo póster gastronómico de la tradicional Empanada Argentina sobre mesa de cocina. Edición exclusiva de 1 sola unidad en Talle Único.",
+    "composition": "100% Algodón peinado suave 24/1.",
+    "details": [
+      "Cuello redondo clásico reforzado",
+      "Estampa serigráfica vintage exclusiva",
+      "Talle Único adaptable (S a L)",
+      "Stock limitado a 1 sola unidad"
+    ]
+  },
+  {
+    "id": "remera-sol-naciente-mar",
+    "name": "Remera Ilustrada Sol Naciente & Mar",
+    "category": "Remeras",
+    "price": 35000,
+    "originalPrice": 40000,
+    "image": "assets/remera-sol-mar.jpg",
+    "badge": "Nuevo · Única",
+    "isNew": true,
+    "isFeatured": true,
+    "stock": 1,
+    "active": true,
+    "views": 0,
+    "salesCount": 0,
+    "colors": [
+      {
+        "name": "Blanco Puro",
+        "hex": "#FFFFFF"
+      }
+    ],
+    "sizes": [
+      "Único"
+    ],
+    "description": "Remera de algodón blanco con ilustración de atardecer en el mar, olas azules y reflejo del sol naciente. Edición exclusiva de 1 sola unidad en Talle Único.",
+    "composition": "100% Algodón puro peinado suave.",
+    "details": [
+      "Corte recto relajado",
+      "Estampa artística botánica costera",
+      "Talle Único adaptable (S a L)",
+      "Prenda nueva de edición limitada"
+    ]
+  },
+  {
+    "id": "remera-cangrejos-azules",
+    "name": "Remera Ilustrada Cangrejos Azules",
+    "category": "Remeras",
+    "price": 34000,
+    "originalPrice": 39000,
+    "image": "assets/remera-cangrejos.jpg",
+    "badge": "Nuevo · Única",
+    "isNew": true,
+    "isFeatured": true,
+    "stock": 1,
+    "active": true,
+    "views": 0,
+    "salesCount": 0,
+    "colors": [
+      {
+        "name": "Blanco & Azul Mar",
+        "hex": "#FFFFFF"
+      }
+    ],
+    "sizes": [
+      "Único"
+    ],
+    "description": "Remera corte boxy de algodón blanco con estampa marina de cangrejos en tonos coral y marco azul sobre fondo de agua. Edición exclusiva de 1 sola unidad en Talle Único.",
+    "composition": "100% Algodón puro peinado.",
+    "details": [
+      "Corte cómodo de verano",
+      "Estampa de autor de temática marina",
+      "Talle Único (S a L)",
+      "1 sola unidad disponible en stock"
     ]
   }
 ]
