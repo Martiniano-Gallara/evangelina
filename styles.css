@@ -700,6 +700,11 @@ input, select, textarea {
   height: 100%;
   object-fit: cover;
   object-position: right center;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  filter: contrast(1.03) brightness(1.01) saturate(1.02);
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .hero-overlay {
