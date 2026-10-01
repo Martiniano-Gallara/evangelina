@@ -302,7 +302,9 @@
       }
       const heroMobileHitbox = document.querySelector('.hero-mobile-hitbox');
       if (heroMobileHitbox) {
+        const bText = content.hero.btnPrimary?.text || content.hero.primaryBtnText || 'Ver Colección';
         const bLink = content.hero.btnPrimary?.link || content.hero.primaryBtnLink || '#coleccion';
+        heroMobileHitbox.innerHTML = `<span>${bText}</span><span class="pill-arrow">→</span>`;
         heroMobileHitbox.setAttribute('href', bLink);
         heroMobileHitbox.onclick = function(e) {
           if (typeof window.scrollToCollection === 'function') {
