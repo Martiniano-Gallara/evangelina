@@ -5824,53 +5824,13 @@ body.admin-page .admin-login-screen {
   pointer-events: none;
 }
 
-/* Floating Hint Badge in Quick View */
 .zoom-hint-badge {
-  position: absolute;
-  bottom: 14px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(30, 24, 20, 0.82);
-  color: #FAF7F2;
-  font-size: 0.72rem;
-  letter-spacing: 0.03em;
-  padding: 6px 14px;
-  border-radius: 20px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
-  pointer-events: none;
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  z-index: 5;
-  white-space: nowrap;
-}
-
-.zoom-viewer-wrap:hover .zoom-hint-badge {
-  opacity: 0.2;
+  display: none !important;
 }
 
 /* Expand Button (Opens Lightbox Fullscreen) */
 .zoom-expand-btn {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  right: auto;
-  background: rgba(255, 255, 255, 0.94);
-  border: 1px solid var(--border-medium);
-  border-radius: 50%;
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  z-index: 6;
-  color: var(--text-main);
+  display: none !important;
 }
 
 .zoom-expand-btn:hover {
