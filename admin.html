@@ -139,11 +139,6 @@
               <span class="nav-badge" id="badge-agenda-count">3</span>
             </button>
 
-            <button type="button" class="nav-item" data-tab="cms" onclick="switchBackofficeTab('cms')">
-              <span class="nav-icon">✍️</span>
-              <span class="nav-label">Contenido de la Tienda</span>
-            </button>
-
             <button type="button" class="nav-item" data-tab="custom" onclick="switchBackofficeTab('custom')">
               <span class="nav-icon">✂️</span>
               <span class="nav-label">Personalizados</span>
@@ -311,7 +306,7 @@
               <div class="dash-card">
                 <div class="dash-card-header">
                   <div>
-                    <h3 class="dash-card-title">📈 Evolución y Proyección de Facturación</h3>
+                    <h3 class="dash-card-title">Evolución y Proyección de Facturación</h3>
                     <span class="dash-item-meta" style="display:block; margin-top: 0.2rem;">Tendencia mensual de ingresos y cumplimiento de metas</span>
                   </div>
                   <span class="badge-subtle">+24.8% vs período anterior</span>
@@ -324,7 +319,7 @@
               <div class="dash-card">
                 <div class="dash-card-header">
                   <div>
-                    <h3 class="dash-card-title">⚡ Embudo de Conversión E-Commerce</h3>
+                    <h3 class="dash-card-title">Embudo de Conversión E-Commerce</h3>
                     <span class="dash-item-meta" style="display:block; margin-top: 0.2rem;">Del primer impacto a la compra confirmada</span>
                   </div>
                   <span class="badge-subtle">Funnel 3.8%</span>
@@ -339,7 +334,7 @@
             <div class="analytics-grid-3">
               <div class="dash-card">
                 <div class="dash-card-header">
-                  <h3 class="dash-card-title">👗 Ventas por Categoría</h3>
+                  <h3 class="dash-card-title">Ventas por Categoría</h3>
                   <span class="badge-subtle">Volumen</span>
                 </div>
                 <div id="dash-category-stats" class="cat-stat-list">
@@ -349,7 +344,7 @@
 
               <div class="dash-card">
                 <div class="dash-card-header">
-                  <h3 class="dash-card-title">📱 Canales & Dispositivos</h3>
+                  <h3 class="dash-card-title">Canales & Dispositivos</h3>
                   <span class="badge-subtle">Tráfico</span>
                 </div>
                 <div id="dash-channel-stats" class="channels-stat-list">
@@ -359,7 +354,7 @@
 
               <div class="dash-card">
                 <div class="dash-card-header">
-                  <h3 class="dash-card-title">💳 Métodos de Pago & Envíos</h3>
+                  <h3 class="dash-card-title">Métodos de Pago & Envíos</h3>
                   <span class="badge-subtle">Finanzas</span>
                 </div>
                 <div id="dash-payment-stats" class="payments-stat-list">
@@ -372,7 +367,7 @@
             <div class="dash-card stats-table-card">
               <div class="dash-card-header">
                 <div>
-                  <h3 class="dash-card-title">📊 Desempeño Comercial por Prenda</h3>
+                  <h3 class="dash-card-title">Desempeño Comercial por Prenda</h3>
                   <span class="dash-item-meta" style="display:block; margin-top: 0.2rem;">Métricas de rotación, facturación y tasa de éxito del catálogo</span>
                 </div>
                 <span class="badge-subtle">Métricas del Catálogo</span>
@@ -401,7 +396,7 @@
             <!-- Analytics Row 4: Live Activity & Operational Log -->
             <div class="dash-card" style="margin-top: 1.5rem;">
               <div class="dash-card-header">
-                <h3 class="dash-card-title">🕒 Resumen de Actividad Reciente & Auditoría</h3>
+                <h3 class="dash-card-title">Resumen de Actividad Reciente & Auditoría</h3>
                 <span class="badge-subtle">En Vivo</span>
               </div>
               <div id="dash-activity-log" class="activity-timeline">
@@ -539,185 +534,7 @@
             </div>
           </section>
 
-          <!-- ==========================================
-               PANEL 5: CONTENIDO DE LA TIENDA (CMS)
-               ========================================== -->
-          <section id="panel-cms" class="backoffice-panel">
-            <div class="panel-header">
-              <div>
-                <h2 class="panel-title">Contenido de la Tienda (CMS)</h2>
-                <p class="panel-subtitle">Edita textos, títulos, hero, pilares e historia de las hermanas sin tocar código.</p>
-              </div>
-              <div class="panel-actions">
-                <button type="button" class="btn btn-primary" onclick="saveCMSContent()">💾 Guardar y Publicar Cambios</button>
-              </div>
-            </div>
-
-            <!-- CMS Sub-Tabs Navigation -->
-            <div class="cms-tabs-bar">
-              <button type="button" class="cms-tab-btn active" data-cmstab="hero" onclick="switchCMSTab('hero')">🌟 Hero Principal</button>
-              <button type="button" class="cms-tab-btn" data-cmstab="banner" onclick="switchCMSTab('banner')">📢 Banner Superior</button>
-              <button type="button" class="cms-tab-btn" data-cmstab="pillars" onclick="switchCMSTab('pillars')">🌿 Pilares de Marca</button>
-              <button type="button" class="cms-tab-btn" data-cmstab="story" onclick="switchCMSTab('story')">👭 Historia de las Hermanas</button>
-            </div>
-
-            <!-- CMS Sub-Panel 1: Hero -->
-            <div id="cms-sub-hero" class="cms-subpanel active">
-              <div class="admin-section-box">
-                <h3 class="section-box-title">Portada Hero Principal</h3>
-                <div class="form-group">
-                  <label for="cms-hero-title">Título Principal (Línea Superior)</label>
-                  <input type="text" id="cms-hero-title" placeholder="DISEÑO ÚNICO HECHO A MANO" />
-                </div>
-                <div class="form-group">
-                  <label for="cms-hero-tagline">Bajada / Slogan (Línea Inferior)</label>
-                  <input type="text" id="cms-hero-tagline" placeholder="Prendas que no se repiten" />
-                </div>
-                <div class="form-group">
-                  <label for="cms-hero-desc">Descripción Editorial</label>
-                  <textarea id="cms-hero-desc" rows="3" placeholder="Párrafo de bienvenida..."></textarea>
-                </div>
-
-                <div class="form-row-2">
-                  <div class="form-group">
-                    <label for="cms-hero-btn1-text">Botón Primario (Texto)</label>
-                    <input type="text" id="cms-hero-btn1-text" placeholder="Ver Colección" />
-                  </div>
-                  <div class="form-group">
-                    <label for="cms-hero-btn1-link">Botón Primario (Enlace)</label>
-                    <input type="text" id="cms-hero-btn1-link" placeholder="#coleccion" />
-                  </div>
-                </div>
-
-                <div class="form-row-2">
-                  <div class="form-group">
-                    <label for="cms-hero-btn2-text">Botón Secundario (Texto)</label>
-                    <input type="text" id="cms-hero-btn2-text" placeholder="Leer Editorial" />
-                  </div>
-                  <div class="form-group">
-                    <label for="cms-hero-btn2-link">Botón Secundario (Enlace)</label>
-                    <input type="text" id="cms-hero-btn2-link" placeholder="#editorial" />
-                  </div>
-                </div>
-
-                <div class="form-row-2">
-                  <div class="form-group">
-                    <label for="cms-hero-img-desktop">Foto de Fondo (Computadora / Panorámica)</label>
-                    <input type="text" id="cms-hero-img-desktop" placeholder="assets/hero-sunset-desktop.jpg" />
-                  </div>
-                  <div class="form-group">
-                    <label for="cms-hero-img-mobile">Foto de Fondo (Celulares / Vertical)</label>
-                    <input type="text" id="cms-hero-img-mobile" placeholder="assets/hero-sunset-mobile.jpg" />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CMS Sub-Panel 2: Banner Superior -->
-            <div id="cms-sub-banner" class="cms-subpanel">
-              <div class="admin-section-box">
-                <div class="admin-toggle-row">
-                  <div>
-                    <strong style="display: block; font-size: 0.95rem; color: var(--text-main);">Activar Banner Superior</strong>
-                    <span style="font-size: 0.785rem; color: var(--text-secondary);">Muestra aviso de envíos gratis o promociones arriba de la cabecera.</span>
-                  </div>
-                  <label class="switch">
-                    <input type="checkbox" id="cms-banner-enable" />
-                    <span class="slider"></span>
-                  </label>
-                </div>
-
-                <div style="margin-top: 1.25rem;">
-                  <div class="form-group">
-                    <label for="cms-banner-text">Texto del Anuncio</label>
-                    <input type="text" id="cms-banner-text" placeholder="🌿 Envíos sin cargo superando los $80.000" />
-                  </div>
-
-                  <div class="form-row-2">
-                    <div class="form-group">
-                      <label for="cms-banner-bg">Color de Fondo</label>
-                      <input type="color" id="cms-banner-bg" value="#F3ECE4" style="height: 38px; width: 60px; padding: 2px; cursor: pointer;" />
-                    </div>
-                    <div class="form-group">
-                      <label for="cms-banner-color">Color de Texto</label>
-                      <input type="color" id="cms-banner-color" value="#6B5A4B" style="height: 38px; width: 60px; padding: 2px; cursor: pointer;" />
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="cms-banner-link">Enlace al hacer clic</label>
-                    <input type="text" id="cms-banner-link" placeholder="#coleccion" />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CMS Sub-Panel 3: Pilares de Marca -->
-            <div id="cms-sub-pillars" class="cms-subpanel">
-              <div class="admin-section-box">
-                <h3 class="section-box-title">Los 4 Pilares de Atelier</h3>
-                <div id="cms-pillars-editor-container" class="pillars-editor-grid">
-                  <!-- Injected via JS -->
-                </div>
-              </div>
-            </div>
-
-            <!-- CMS Sub-Panel 4: Historia de las Hermanas -->
-            <div id="cms-sub-story" class="cms-subpanel">
-              <div class="admin-section-box">
-                <h3 class="section-box-title">Historia de las Hermanas Fundadoras</h3>
-                <div class="form-group">
-                  <label for="cms-story-title">Título de la Sección</label>
-                  <input type="text" id="cms-story-title" placeholder="El Alma de Evangelina Atelier" />
-                </div>
-                <div class="form-group">
-                  <label for="cms-story-quote">Cita Destacada</label>
-                  <input type="text" id="cms-story-quote" placeholder="Creemos en la belleza de lo auténtico..." />
-                </div>
-                <div class="form-group">
-                  <label for="cms-story-p1">Párrafo 1 (Origen e identidad)</label>
-                  <textarea id="cms-story-p1" rows="3"></textarea>
-                </div>
-                <div class="form-group">
-                  <label for="cms-story-p2">Párrafo 2 (Filosofía de confección)</label>
-                  <textarea id="cms-story-p2" rows="3"></textarea>
-                </div>
-                <div class="form-row-2">
-                  <div class="form-group">
-                    <label for="cms-story-author">Firmado Por</label>
-                    <input type="text" id="cms-story-author" placeholder="Ana y Eva" />
-                  </div>
-                  <div class="form-group">
-                    <label for="cms-story-role">Rol / Cargo</label>
-                    <input type="text" id="cms-story-role" placeholder="Hermanas & Creadoras del Atelier" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="cms-story-image">Foto de la Sección</label>
-                  <input type="text" id="cms-story-image" placeholder="assets/product-sunset-stripes.jpg" />
-                </div>
-              </div>
-            </div>
-
-            <!-- CMS Sub-Panel 5: Manifiesto Editorial -->
-            <div id="cms-sub-editorial" class="cms-subpanel">
-              <div class="admin-section-box">
-                <h3 class="section-box-title">Manifiesto Editorial</h3>
-                <div class="form-group">
-                  <label for="cms-editorial-subtitle">Subtítulo</label>
-                  <input type="text" id="cms-editorial-subtitle" placeholder="Manifiesto del Atelier" />
-                </div>
-                <div class="form-group">
-                  <label for="cms-editorial-title">Título Principal</label>
-                  <input type="text" id="cms-editorial-title" placeholder="El Arte de Vestir con Calma" />
-                </div>
-                <div class="form-group">
-                  <label for="cms-editorial-p1">Cita / Manifiesto</label>
-                  <textarea id="cms-editorial-p1" rows="3"></textarea>
-                </div>
-              </div>
-            </div>
-          </section>
+          
 
           <!-- ==========================================
                PANEL 6: GALERÍA MULTIMEDIA
