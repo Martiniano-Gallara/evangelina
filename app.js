@@ -2164,7 +2164,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <circle cx="190" cy="20" r="8" fill="#8E7058"/>
 
   <!-- Torso Silhouette Outline & Fill -->
-  <path d="M172 45 C176 56 177 65 177 75 C145 78 122 95 106 122 C98 136 100 155 102 175 C105 198 120 230 135 255 C146 272 153 295 156 345 L224 345 C227 295 234 272 245 255 C260 230 275 198 278 175 C280 155 282 136 274 122 C258 95 235 78 203 75 C203 65 204 56 208 45 Z" 
+  <path d="M172 45 C176 56 177 65 177 75 C145 78 122 92 108 120 C98 138 100 160 106 185 C116 215 132 232 135 242 C138 252 124 270 116 295 C106 325 114 345 148 350 L232 350 C266 345 274 325 264 295 C256 270 242 252 245 242 C248 232 264 215 274 185 C280 160 282 138 272 120 C258 92 235 78 203 75 C203 65 204 56 208 45 Z" 
         fill="url(#mannequinGrad)" stroke="#9E7B5C" stroke-width="2.5" filter="url(#shadow)"/>
 
   <!-- Atelier Seams / Princess Lines -->
@@ -2298,13 +2298,13 @@ document.addEventListener('DOMContentLoaded', () => {
   <line x1="190" y1="360" x2="190" y2="420" stroke="#8E7058" stroke-width="6" stroke-linecap="round"/>
   <ellipse cx="190" cy="418" rx="42" ry="7" fill="#6E533F"/>
 
-  <!-- Upper Neck / Chest -->
-  <ellipse cx="190" cy="38" rx="18" ry="6" fill="#8E7058"/>
-  <rect x="182" y="22" width="16" height="16" rx="3" fill="#A88B73"/>
+  <!-- Upper Neck Cap (Real Dress Form Wood Top) -->
+  <ellipse cx="190" cy="46" rx="20" ry="7" fill="#B38B59" stroke="#805C33" stroke-width="1"/>
+  <rect x="176" y="34" width="28" height="12" rx="4" fill="#C9A26B" stroke="#805C33" stroke-width="1"/>
 
-  <!-- Mannequin Torso with Accented Waist Indentation -->
-  <path d="M174 40 C177 50 178 60 178 68 C150 72 128 88 114 115 C108 130 110 155 116 180 C122 205 136 218 136 226 C136 234 125 255 118 280 C108 315 115 350 148 375 L232 375 C265 350 272 315 262 280 C255 255 244 234 244 226 C244 218 258 205 264 180 C270 155 272 130 266 115 C252 88 230 72 202 68 C202 60 203 50 206 40 Z" 
-        fill="url(#mannequinGrad2)" stroke="#9E7B5C" stroke-width="2.5" filter="url(#shadow2)"/>
+  <!-- Mannequin Torso with Real Dress Form Proportions (Broad Shoulders, Bust, Natural Waist & Hips) -->
+  <path d="M 176,46 C 172,60 166,75 142,88 C 118,102 98,135 106,170 C 114,200 134,220 138,230 C 142,240 126,265 112,295 C 98,328 108,365 145,372 L 235,372 C 272,365 282,328 268,295 C 254,265 238,240 242,230 C 246,220 266,200 274,170 C 282,135 262,102 238,88 C 214,75 208,60 204,46 Z" 
+        fill="url(#mannequinGrad2)" stroke="#8A674B" stroke-width="2" filter="url(#shadow2)"/>
 
   <!-- Princess Seams & Center Line -->
   <path d="M148 72 C146 130 152 185 160 226 C168 270 162 320 165 375" fill="none" stroke="#D3BFAD" stroke-width="1.2" stroke-dasharray="4 3"/>
@@ -2424,7 +2424,7 @@ document.addEventListener('DOMContentLoaded', () => {
   </g>
 
   <!-- Lower Body & Hips Silhouette -->
-  <path d="M148 45 C142 80 128 130 112 175 C98 215 106 255 125 290 C138 315 152 345 158 375 L222 375 C228 345 242 315 255 290 C274 255 282 215 268 175 C252 130 238 80 232 45 Z" 
+  <path d="M148 45 C142 80 125 125 110 165 C95 205 104 250 122 288 C136 315 150 345 156 375 L224 375 C230 345 244 315 258 288 C276 250 285 205 270 165 C255 125 238 80 232 45 Z" 
         fill="url(#mannequinGrad3)" stroke="#9E7B5C" stroke-width="2.5" filter="url(#shadow3)"/>
 
   <!-- Center division & leg seams -->
