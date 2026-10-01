@@ -6573,7 +6573,11 @@ body.admin-page .admin-login-screen {
     grid-template-columns: repeat(2, 1fr);
   }
   .sheet-drawing-viewport {
-    min-h@media (max-width: 520px) {
+    min-height: 250px;
+  }
+}
+
+@media (max-width: 520px) {
   .measure-sheet-card {
     padding: 1.15rem 0.85rem;
     max-width: 95vw;
@@ -6629,8 +6633,7 @@ body.admin-page .admin-login-screen {
   .sheet-esc-hint {
     display: none;
   }
-}    display: none;
-  }
+}
 /* ==========================================================================
    PRENDAS PERSONALIZADAS (A MEDIDA) — BESPOKE DOSSIER STYLING
    ========================================================================== */
