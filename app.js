@@ -431,51 +431,7 @@ const DEFAULT_PRODUCTS = [
   }
 ];
 
-const DEFAULT_ORDERS = [
-  {
-    id: 'EV-1028',
-    date: '2026-09-22T18:30:00.000Z',
-    customer: {
-      name: 'Camila Rodríguez',
-      phone: '+54 9 11 4821-9988',
-      address: 'Palermo, CABA'
-    },
-    items: [
-      { productId: 'pantalon-sol-naciente', name: 'Pantalón Palazzo Sol Naciente', price: 54000, quantity: 1, selectedSize: 'S', selectedColor: 'Teja & Mostaza' },
-      { productId: 'conjunto-polka-indigo', name: 'Conjunto Ecléctico Lunares Índigo', price: 68000, quantity: 1, selectedSize: 'M', selectedColor: 'Azul Marino & Lunares' }
-    ],
-    total: 122000,
-    status: 'En preparación'
-  },
-  {
-    id: 'EV-1027',
-    date: '2026-09-21T14:15:00.000Z',
-    customer: {
-      name: 'Lucía Fernández',
-      phone: '+54 9 11 3902-1144',
-      address: 'Palermo Soho, CABA'
-    },
-    items: [
-      { productId: 'chaleco-tweed-crema', name: 'Chaleco Tweed & Lino Arena', price: 48000, quantity: 1, selectedSize: 'S', selectedColor: 'Arena & Marfil' }
-    ],
-    total: 48000,
-    status: 'Enviado'
-  },
-  {
-    id: 'EV-1026',
-    date: '2026-09-19T11:00:00.000Z',
-    customer: {
-      name: 'Mariana Rossi',
-      phone: '+54 9 351 678-9012',
-      address: 'Barrio Jardín, Córdoba'
-    },
-    items: [
-      { productId: 'pantalon-riviera-verde', name: 'Pantalón Rayas Riviera Verde', price: 54000, quantity: 1, selectedSize: 'M', selectedColor: 'Verde Botánico & Salvia' }
-    ],
-    total: 54000,
-    status: 'Entregado'
-  }
-];
+const DEFAULT_ORDERS = [];
 
 function loadProducts() {
   const saved = localStorage.getItem('evangelina_products');
