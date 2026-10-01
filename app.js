@@ -1080,8 +1080,9 @@ function submitCartCheckout() {
 
   // Build WhatsApp message
   const itemsText = orderItems.map(i => `• ${i.quantity}x ${i.name} (Talle ${i.selectedSize}) - $${(i.price * i.quantity).toLocaleString('es-AR')}`).join('\n');
-  const waMsg = `✨ *Nuevo Pedido en Evangelina Atelier* ✨\n\n*Orden:* #${orderId}\n*Cliente:* ${name}\n*Tel:* ${phone}\n*Dirección:* ${address || 'A convenir'}\n\n*Prendas:*\n${itemsText}\n\n*Total:* $${orderTotal.toLocaleString('es-AR')}\n\n¡Hola! Acabo de registrar mi orden en la tienda web. Aguardo confirmación para coordinar el pago.`;
-  const waUrl = `https://wa.me/5491100000000?text=${encodeURIComponent(waMsg)}`;
+  const waMsg = `✨ *Nuevo Pedido en Evangelina Atelier* ✨\n\n*Orden:* #${orderId}\n*Cliente:* ${name}\n*Tel:* ${phone}\n*Dirección:* ${address || 'A convenir'}\n\n*Prendas:*\n${itemsText}\n\n*Total:* $${orderTotal.toLocaleString('es-AR')}\n\n¡Hola! Acabo de registrar mi pedido en la tienda web. Aguardo confirmación para coordinar el pago.`;
+  const waNum = (adminConfig && adminConfig.whatsappNumber ? adminConfig.whatsappNumber : '5491148209900').replace(/[^0-9]/g, '');
+  const waUrl = `https://wa.me/${waNum}?text=${encodeURIComponent(waMsg)}`;
   window.open(waUrl, '_blank');
 
   showToast(`🎉 ¡Pedido <strong>#${orderId}</strong> registrado con éxito! Abrimos WhatsApp.`);
