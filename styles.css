@@ -7159,10 +7159,9 @@ body.admin-page .admin-login-screen {
 }
 
 .about-us-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.15fr;
-  gap: 3.5rem;
-  align-items: center;
+  display: block;
+  max-width: 820px;
+  margin: 0 auto;
 }
 
 .about-us-image-frame {
