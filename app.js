@@ -47,7 +47,7 @@ const DEFAULT_PRODUCTS = [
     "category": "Remeras",
     "price": 32000,
     "originalPrice": 38000,
-    "image": "assets/product-sardine.jpg",
+    "image": "assets/remera-sardine.jpg",
     "badge": "Más Vendido",
     "isNew": false,
     "isFeatured": true,
@@ -81,7 +81,7 @@ const DEFAULT_PRODUCTS = [
     "category": "Chalecos",
     "price": 62000,
     "originalPrice": 72000,
-    "image": "assets/product-vest-crudo.jpg",
+    "image": "assets/chaleco-tweed-crema.jpg",
     "badge": "Sastrería",
     "isNew": true,
     "isFeatured": true,
@@ -114,7 +114,7 @@ const DEFAULT_PRODUCTS = [
     "category": "Conjuntos",
     "price": 89000,
     "originalPrice": 98000,
-    "image": "assets/product-polka-set.jpg",
+    "image": "assets/product-polka-dot.jpg",
     "badge": "Edición Limitada",
     "isNew": true,
     "isFeatured": true,
@@ -151,16 +151,39 @@ function loadProducts() {
   if (saved) {
     try {
       const parsed = JSON.parse(saved);
-      if (Array.isArray(parsed) && parsed.length > 0) {
+      if (Array.isArray(parsed) && parsed.length >= 8) {
         return parsed;
       }
     } catch (e) {
       console.error('Error cargando productos de localStorage', e);
     }
   }
-  localStorage.setItem('evangelina_products', JSON.stringify(DEFAULT_PRODUCTS));
   return [...DEFAULT_PRODUCTS];
 }
+
+async function syncProductsFromData() {
+  try {
+    const res = await fetch('data/products.json');
+    if (res.ok) {
+      const dataProds = await res.json();
+      if (Array.isArray(dataProds) && dataProds.length > 0) {
+        const saved = localStorage.getItem('evangelina_products');
+        let current = [];
+        if (saved) {
+          try { current = JSON.parse(saved); } catch (e) {}
+        }
+        if (!Array.isArray(current) || current.length < dataProds.length) {
+          PRODUCTS = dataProds;
+          localStorage.setItem('evangelina_products', JSON.stringify(PRODUCTS));
+          if (typeof renderProducts === 'function') {
+            renderProducts();
+          }
+        }
+      }
+    }
+  } catch (e) {}
+}
+syncProductsFromData();
 
 function saveProducts() {
   localStorage.setItem('evangelina_products', JSON.stringify(PRODUCTS));

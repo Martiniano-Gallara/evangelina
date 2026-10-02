@@ -25,9 +25,9 @@
   };
 
   const DEFAULT_MEDIA = [
-    { id: 'm-hero-1', title: 'Editorial Lino & Seda Primavera', url: 'assets/hero-model.jpg', category: 'hero', date: '2026-09-01' },
-    { id: 'm-hero-mobile', title: 'Hero Mobile Vertical', url: 'assets/hero-model.jpg', category: 'hero', date: '2026-09-01' },
-    { id: 'm-story-1', title: 'Retrato de Hermanas y Confección', url: 'assets/story-atelier.jpg', category: 'story', date: '2026-08-15' },
+    { id: 'm-hero-1', title: 'Editorial Lino & Seda Primavera', url: 'assets/hero-sunset-desktop.jpg', category: 'hero', date: '2026-09-01' },
+    { id: 'm-hero-mobile', title: 'Hero Mobile Vertical', url: 'assets/hero-sunset-mobile.jpg', category: 'hero', date: '2026-09-01' },
+    { id: 'm-story-1', title: 'Retrato de Hermanas y Confección', url: 'assets/about-atelier.jpg', category: 'story', date: '2026-08-15' },
     { id: 'm-prod-1', title: 'Pantalón Palazzo Sol Naciente', url: 'assets/product-sunset-stripes.jpg', category: 'products', date: '2026-08-20' },
     { id: 'm-prod-2', title: 'Pantalón Riviera Verde', url: 'assets/product-green-stripes.jpg', category: 'products', date: '2026-08-20' },
     { id: 'm-prod-3', title: 'Conjunto Lunares Índigo', url: 'assets/product-polka-dot.jpg', category: 'products', date: '2026-08-20' },
