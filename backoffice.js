@@ -74,13 +74,8 @@
         const res = await fetch('data/products.json');
         if (res.ok) {
           const remoteProds = await res.json();
-          const localProds = JSON.parse(localStorage.getItem(STORE_KEYS.PRODUCTS) || '[]');
-          if (!Array.isArray(localProds) || localProds.length < remoteProds.length) {
-            this.products = remoteProds;
-            localStorage.setItem(STORE_KEYS.PRODUCTS, JSON.stringify(this.products));
-          } else {
-            this.products = localProds;
-          }
+          this.products = remoteProds;
+          localStorage.setItem(STORE_KEYS.PRODUCTS, JSON.stringify(this.products));
         } else {
           this.products = await this.loadKey(STORE_KEYS.PRODUCTS, 'data/products.json', []);
         }
