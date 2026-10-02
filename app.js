@@ -167,10 +167,17 @@ async function syncProductsFromData() {
     if (res.ok) {
       const dataProds = await res.json();
       if (Array.isArray(dataProds) && dataProds.length > 0) {
-        PRODUCTS = dataProds;
-        localStorage.setItem('evangelina_products', JSON.stringify(PRODUCTS));
-        if (typeof renderProducts === 'function') {
-          renderProducts();
+        const saved = localStorage.getItem('evangelina_products');
+        let current = [];
+        if (saved) {
+          try { current = JSON.parse(saved); } catch (e) {}
+        }
+        if (!Array.isArray(current) || current.length < dataProds.length) {
+          PRODUCTS = dataProds;
+          localStorage.setItem('evangelina_products', JSON.stringify(PRODUCTS));
+          if (typeof renderProducts === 'function') {
+            renderProducts();
+          }
         }
       }
     }
