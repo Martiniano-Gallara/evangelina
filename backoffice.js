@@ -2244,8 +2244,8 @@
     const cfg = store.config || {};
     setVal('cfg-store-name', cfg.name || 'Evangelina Atelier');
     setVal('cfg-store-tagline', cfg.tagline || 'Diseño de Autor & Alta Costura Bohemia');
-    setVal('cfg-whatsapp-num', cfg.whatsappNumber || '+5491138402948');
-    setVal('cfg-whatsapp-display', cfg.whatsappDisplay || '+54 9 11 3840-2948');
+    setVal('cfg-whatsapp-num', cfg.whatsappNumber || '+5493576577248');
+    setVal('cfg-whatsapp-display', cfg.whatsappDisplay || '+54 9 3576 57-7248');
     setVal('cfg-instagram', cfg.instagram || '@evangelina.atelier');
     setVal('cfg-email', cfg.email || 'contacto@evangelinaatelier.com');
     setVal('cfg-address', cfg.address || 'Atelier Boutique');
