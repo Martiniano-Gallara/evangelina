@@ -74,13 +74,22 @@
         const res = await fetch('data/products.json');
         if (res.ok) {
           const remoteProds = await res.json();
-          const localProds = JSON.parse(localStorage.getItem(STORE_KEYS.PRODUCTS) || '[]');
+          let localProds = [];
+          try { localProds = JSON.parse(localStorage.getItem(STORE_KEYS.PRODUCTS) || '[]'); } catch (e) {}
+          
           if (!Array.isArray(localProds) || localProds.length < remoteProds.length) {
             this.products = remoteProds;
-            localStorage.setItem(STORE_KEYS.PRODUCTS, JSON.stringify(this.products));
           } else {
-            this.products = localProds;
+            // Repair image URLs in cached products if broken or missing
+            this.products = localProds.map(lp => {
+              const match = remoteProds.find(rp => rp.id === lp.id);
+              if (match && match.image) {
+                lp.image = match.image;
+              }
+              return lp;
+            });
           }
+          localStorage.setItem(STORE_KEYS.PRODUCTS, JSON.stringify(this.products));
         } else {
           this.products = await this.loadKey(STORE_KEYS.PRODUCTS, 'data/products.json', []);
         }

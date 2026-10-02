@@ -174,10 +174,18 @@ async function syncProductsFromData() {
         }
         if (!Array.isArray(current) || current.length < dataProds.length) {
           PRODUCTS = dataProds;
-          localStorage.setItem('evangelina_products', JSON.stringify(PRODUCTS));
-          if (typeof renderProducts === 'function') {
-            renderProducts();
-          }
+        } else {
+          PRODUCTS = current.map(cp => {
+            const match = dataProds.find(dp => dp.id === cp.id);
+            if (match && match.image) {
+              cp.image = match.image;
+            }
+            return cp;
+          });
+        }
+        localStorage.setItem('evangelina_products', JSON.stringify(PRODUCTS));
+        if (typeof renderProducts === 'function') {
+          renderProducts();
         }
       }
     }
