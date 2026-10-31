@@ -141,6 +141,154 @@ const DEFAULT_PRODUCTS = [
       "Caída vaporosa y movimiento elegante",
       "Se vende como conjunto completo de 2 piezas"
     ]
+  },
+  {
+    "id": "remera-musculosa-vitamin-sea",
+    "name": "Musculosa Vitamin Sea & Estrella de Mar",
+    "category": "Remeras",
+    "price": 34000,
+    "originalPrice": 39000,
+    "image": "assets/remera-musculosa-starfish.jpg",
+    "badge": "Nuevo Ingreso",
+    "isNew": true,
+    "isFeatured": true,
+    "stock": 10,
+    "active": true,
+    "views": 0,
+    "salesCount": 0,
+    "colors": [
+      {
+        "name": "Crudo & Carmín",
+        "hex": "#F5EFE6"
+      }
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "description": "Musculosa fresca de corte holgado confeccionada en algodón puro esmerilado con caída suave. Estampa festoneada en tonos carmín y fucsia con estrella de mar y leyenda 'Vitamin Sea'. Ideal para días de sol y playa.",
+    "composition": "100% Algodón puro esmerilado con caída suave.",
+    "details": [
+      "Corte musculosa con escote redondo y sisa relajada",
+      "Estampa exclusiva al agua de temática marina",
+      "Talles reales del XS al XXL",
+      "Confección artesanal de autor para la nueva temporada"
+    ]
+  },
+  {
+    "id": "remera-empanada-argentina",
+    "name": "Remera Ilustrada Empanada Argentina",
+    "category": "Remeras",
+    "price": 35000,
+    "originalPrice": 40000,
+    "image": "assets/remera-empanada-argentina.jpg",
+    "badge": "Nuevo Ingreso",
+    "isNew": true,
+    "isFeatured": true,
+    "stock": 10,
+    "active": true,
+    "views": 0,
+    "salesCount": 0,
+    "colors": [
+      {
+        "name": "Blanco Puro",
+        "hex": "#FFFFFF"
+      }
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "description": "Remera de jersey de algodón peinado con ilustración de afiche culinario tradicional 'Empanada Argentina: Simple, buena comida, buen día' sobre mesa de cocina en mantel cuadrillé celeste.",
+    "composition": "100% Algodón peinado premium 24/1.",
+    "details": [
+      "Cuello redondo reforzado con ribete al tono",
+      "Estampa artística gráfica de afiche gastronómico",
+      "Talles del XS al XXL con calce contemporáneo",
+      "Nuevo ingreso de la colección cápsula cultural"
+    ]
+  },
+  {
+    "id": "remera-sol-naciente-mar",
+    "name": "Remera Ilustrada Sol Naciente & Olas",
+    "category": "Remeras",
+    "price": 35000,
+    "originalPrice": 40000,
+    "image": "assets/remera-sol-mar.jpg",
+    "badge": "Nuevo Ingreso",
+    "isNew": true,
+    "isFeatured": true,
+    "stock": 10,
+    "active": true,
+    "views": 0,
+    "salesCount": 0,
+    "colors": [
+      {
+        "name": "Blanco Puro",
+        "hex": "#FFFFFF"
+      }
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "description": "Remera blanca de silueta relajada con estampa artística de paisaje costero: sol naciente terracota con destellos y olas marinas en capas azules fluidas.",
+    "composition": "100% Algodón puro peinado de textura sedosa.",
+    "details": [
+      "Corte regular unisex con caída ligera",
+      "Estampa en serigrafía suave y transpirable",
+      "Talles del XS al XXL",
+      "Diseño de autor inspirado en el amanecer costero"
+    ]
+  },
+  {
+    "id": "remera-cangrejos-azules",
+    "name": "Remera Ilustrada Cangrejos del Mar",
+    "category": "Remeras",
+    "price": 34000,
+    "originalPrice": 39000,
+    "image": "assets/remera-cangrejos.jpg",
+    "badge": "Nuevo Ingreso",
+    "isNew": true,
+    "isFeatured": true,
+    "stock": 10,
+    "active": true,
+    "views": 0,
+    "salesCount": 0,
+    "colors": [
+      {
+        "name": "Blanco & Azul",
+        "hex": "#FFFFFF"
+      }
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "description": "Remera confeccionada en algodón puro peinado de tacto suave, con diseño estampado de dos cangrejitos color coral rodeados por ondas marinas y un marco cuadrillé celeste.",
+    "composition": "100% Algodón puro peinado.",
+    "details": [
+      "Cuello redondo clásico con terminación impecable",
+      "Estampa marina veraniega de autor",
+      "Talles del XS al XXL",
+      "Prenda fresca y versátil para toda la temporada"
+    ]
   }
 ];
 
@@ -152,7 +300,13 @@ function loadProducts() {
     try {
       const parsed = JSON.parse(saved);
       if (Array.isArray(parsed) && parsed.length >= 8) {
-        return parsed;
+        return parsed.map(p => {
+          const def = DEFAULT_PRODUCTS.find(dp => dp.id === p.id);
+          if (def && (p.sizes?.includes("Único") || p.stock === 1)) {
+            return { ...p, sizes: def.sizes, badge: def.badge, stock: def.stock, image: def.image };
+          }
+          return p;
+        });
       }
     } catch (e) {
       console.error('Error cargando productos de localStorage', e);
@@ -172,17 +326,31 @@ async function syncProductsFromData() {
         if (saved) {
           try { current = JSON.parse(saved); } catch (e) {}
         }
-        if (!Array.isArray(current) || current.length < dataProds.length) {
-          PRODUCTS = dataProds;
-        } else {
-          PRODUCTS = current.map(cp => {
-            const match = dataProds.find(dp => dp.id === cp.id);
-            if (match && match.image) {
-              cp.image = match.image;
+        
+        const mergedMap = new Map();
+        dataProds.forEach(dp => mergedMap.set(dp.id, dp));
+        
+        if (Array.isArray(current) && current.length > 0) {
+          current.forEach(cp => {
+            if (mergedMap.has(cp.id)) {
+              const base = mergedMap.get(cp.id);
+              mergedMap.set(cp.id, {
+                ...base,
+                ...cp,
+                name: base.name,
+                image: base.image,
+                sizes: (cp.sizes && !cp.sizes.includes('Único')) ? cp.sizes : base.sizes,
+                badge: base.badge || cp.badge,
+                isNew: base.isNew !== undefined ? base.isNew : cp.isNew,
+                isFeatured: base.isFeatured !== undefined ? base.isFeatured : cp.isFeatured,
+                stock: (cp.stock && cp.stock > 1) ? cp.stock : base.stock
+              });
+            } else {
+              mergedMap.set(cp.id, cp);
             }
-            return cp;
           });
         }
+        PRODUCTS = Array.from(mergedMap.values());
         localStorage.setItem('evangelina_products', JSON.stringify(PRODUCTS));
         if (typeof renderProducts === 'function') {
           renderProducts();
@@ -307,6 +475,17 @@ function renderProducts() {
     const catName = activeCategory === 'all' ? 'la colección' : activeCategory;
     productCountLabel.textContent = `Mostrando ${filtered.length} ${filtered.length === 1 ? 'prenda' : 'prendas'} en ${catName}`;
   }
+
+  // Update category pills count badges dynamically
+  document.querySelectorAll('.filter-pill').forEach(pill => {
+    const filterKey = pill.dataset.filter;
+    if (filterKey === 'all') {
+      pill.textContent = `Todos (${PRODUCTS.filter(p => p.active !== false).length})`;
+    } else {
+      const cnt = PRODUCTS.filter(p => p.active !== false && p.category.toLowerCase() === filterKey.toLowerCase()).length;
+      pill.textContent = `${filterKey} (${cnt})`;
+    }
+  });
 
   if (resetFiltersBtn) {
     resetFiltersBtn.style.display = activeCategory === 'all' ? 'none' : 'inline-block';
@@ -1288,6 +1467,8 @@ function openInfoModal(type) {
             <tr><td><strong>S</strong></td><td>86 - 90</td><td>66 - 72</td><td>92 - 98</td></tr>
             <tr><td><strong>M</strong></td><td>90 - 96</td><td>72 - 78</td><td>98 - 104</td></tr>
             <tr><td><strong>L</strong></td><td>96 - 104</td><td>78 - 86</td><td>104 - 112</td></tr>
+            <tr><td><strong>XL</strong></td><td>104 - 112</td><td>86 - 94</td><td>112 - 120</td></tr>
+            <tr><td><strong>XXL</strong></td><td>112 - 120</td><td>94 - 104</td><td>120 - 128</td></tr>
           </tbody>
         </table>
         <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.75rem;">
@@ -1548,7 +1729,9 @@ document.addEventListener('DOMContentLoaded', () => {
         ['XS', '34 - 36', '62 - 66', '88 - 92', '104 cm', '33 cm'],
         ['S', '36 - 38', '66 - 72', '92 - 98', '105 cm', '34 cm'],
         ['M', '40 - 42', '72 - 78', '98 - 104', '106 cm', '35 cm'],
-        ['L', '44', '78 - 86', '104 - 112', '107 cm', '36 cm']
+        ['L', '44', '78 - 86', '104 - 112', '107 cm', '36 cm'],
+        ['XL', '46 - 48', '86 - 94', '112 - 120', '108 cm', '37 cm'],
+        ['XXL', '50 - 52', '94 - 104', '120 - 128', '109 cm', '38 cm']
       ],
       note: 'Nuestros palazzos cuentan con pretina anatómica y elástico sutil posterior que concede hasta 5 cm de elasticidad y confort natural sin perder la estructura sastrera.'
     },
@@ -1556,9 +1739,12 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'Chalecos',
       headers: ['Talle', 'Busto (cm)', 'Cintura (cm)', 'Largo Prenda', 'Hombros'],
       rows: [
+        ['XS', '80 - 84', '62 - 66', '45 cm', '34 cm'],
         ['S', '84 - 88', '66 - 72', '47 cm', '36 cm'],
         ['M', '89 - 94', '72 - 78', '49 cm', '38 cm'],
-        ['L', '95 - 102', '78 - 86', '51 cm', '40 cm']
+        ['L', '95 - 102', '78 - 86', '51 cm', '40 cm'],
+        ['XL', '103 - 110', '86 - 94', '53 cm', '42 cm'],
+        ['XXL', '111 - 118', '94 - 102', '55 cm', '44 cm']
       ],
       note: 'El chaleco de gamuza rosa cuenta con cordones de cuero laterales regulables para adaptar el calce a tu silueta o usarlo abierto sobre camisas.'
     },
@@ -1566,10 +1752,12 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'Remeras Estampadas',
       headers: ['Talle', 'Ancho Sisa a Sisa', 'Contorno Pecho', 'Largo Total', 'Hombro a Hombro'],
       rows: [
+        ['XS', '45 cm', '90 cm', '61 cm', '39 cm'],
         ['S', '48 cm', '96 cm', '63 cm', '41 cm'],
         ['M', '51 cm', '102 cm', '65 cm', '43 cm'],
         ['L', '54 cm', '108 cm', '67 cm', '45 cm'],
-        ['XL', '57 cm', '114 cm', '69 cm', '47 cm']
+        ['XL', '57 cm', '114 cm', '69 cm', '47 cm'],
+        ['XXL', '60 cm', '120 cm', '71 cm', '49 cm']
       ],
       note: 'Corte recto relajado unisex de tacto suave. Para lucir la estética oversize relajada del atelier, te sugerimos optar por un talle superior.'
     },
@@ -1577,13 +1765,59 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'Conjuntos 2 Piezas',
       headers: ['Talle', 'Top Busto (cm)', 'Top Largo', 'Palazzo Cintura (cm)', 'Palazzo Cadera (cm)'],
       rows: [
+        ['XS', '82 - 85', '46 cm', '62 - 66', '88 - 92'],
         ['S', '86 - 90', '48 cm', '66 - 72', '92 - 96'],
         ['M', '91 - 96', '50 cm', '72 - 78', '97 - 103'],
-        ['L', '97 - 103', '52 cm', '78 - 85', '104 - 110']
+        ['L', '97 - 103', '52 cm', '78 - 85', '104 - 110'],
+        ['XL', '104 - 110', '54 cm', '86 - 94', '111 - 118'],
+        ['XXL', '111 - 118', '56 cm', '95 - 104', '119 - 128']
       ],
       note: 'El conjunto incluye ambas piezas coordinadas en poplin sedoso. El top incorpora hombreras sutiles desmontables que estilizan la postura.'
     }
   };
+
+  function formatTableHeader(h) {
+    if (h === 'Equivalencia AR/EU') {
+      return '<span class="th-desktop">Equiv. </span><span>AR/EU</span>';
+    }
+    if (h === 'Cintura (cm)') {
+      return '<span>Cintura</span><small>(cm)</small>';
+    }
+    if (h === 'Cadera (cm)') {
+      return '<span>Cadera</span><small>(cm)</small>';
+    }
+    if (h === 'Busto (cm)') {
+      return '<span>Busto</span><small>(cm)</small>';
+    }
+    if (h === 'Largo Total') {
+      return '<span>Largo</span><span class="th-desktop"> Total</span>';
+    }
+    if (h === 'Contorno Pecho') {
+      return '<span>Pecho</span><small>(cm)</small>';
+    }
+    if (h === 'Ancho Sisa a Sisa') {
+      return '<span>Sisa a Sisa</span>';
+    }
+    if (h === 'Hombro a Hombro') {
+      return '<span>Hombros</span>';
+    }
+    if (h === 'Top Busto (cm)') {
+      return '<span>Top Busto</span><small>(cm)</small>';
+    }
+    if (h === 'Top Largo') {
+      return '<span>Top Largo</span>';
+    }
+    if (h === 'Palazzo Cintura (cm)') {
+      return '<span>Cintura</span><small>(cm)</small>';
+    }
+    if (h === 'Palazzo Cadera (cm)') {
+      return '<span>Cadera</span><small>(cm)</small>';
+    }
+    if (h === 'Largo Prenda') {
+      return '<span>Largo</span>';
+    }
+    return h;
+  }
 
   function renderSizeTable(categoryKey) {
     const container = document.getElementById('table-container');
@@ -1591,17 +1825,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = SIZE_TABLES[categoryKey] || SIZE_TABLES.pantalones;
     
     let html = `
-      <h4 style="font-family: var(--font-editorial); font-size: 1.25rem; margin-bottom: 0.85rem; color: var(--text-main);">${data.title}</h4>
-      <table class="size-guide-table">
-        <thead>
-          <tr>${data.headers.map(h => `<th>${h}</th>`).join('')}</tr>
-        </thead>
-        <tbody>
-          ${data.rows.map(row => `
-            <tr>${row.map((cell, idx) => idx === 0 ? `<td><strong>${cell}</strong></td>` : `<td>${cell}</td>`).join('')}</tr>
-          `).join('')}
-        </tbody>
-      </table>
+      <div class="table-card-header">
+        <h4 class="table-card-title">${data.title}</h4>
+        <span class="table-card-badge">Talles XS a XXL · Medidas Reales en cm</span>
+      </div>
+      <div class="table-scroll-wrapper">
+        <table class="size-guide-table">
+          <thead>
+            <tr>${data.headers.map(h => `<th>${formatTableHeader(h)}</th>`).join('')}</tr>
+          </thead>
+          <tbody>
+            ${data.rows.map(row => `
+              <tr>${row.map((cell, idx) => idx === 0 ? `<td class="cell-size-name"><strong>${cell}</strong></td>` : `<td>${cell}</td>`).join('')}</tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
       <div class="table-garment-note">
         <strong>✨ Detalle de Confección:</strong> ${data.note}
       </div>
@@ -1666,26 +1905,45 @@ document.addEventListener('DOMContentLoaded', () => {
       if (c <= 66 && h <= 92) size = 'XS';
       else if (c <= 72 && h <= 98) size = 'S';
       else if (c <= 78 && h <= 104) size = 'M';
-      else size = 'L';
+      else if (c <= 86 && h <= 112) size = 'L';
+      else if (c <= 94 && h <= 120) size = 'XL';
+      else size = 'XXL';
 
-      if (fit === 'relax' && (c > 70 || h > 96) && size === 'S') size = 'M';
+      if (fit === 'relax') {
+        if (size === 'XS' && (c > 64 || h > 90)) size = 'S';
+        else if (size === 'S' && (c > 70 || h > 96)) size = 'M';
+        else if (size === 'M' && (c > 76 || h > 102)) size = 'L';
+        else if (size === 'L' && (c > 84 || h > 110)) size = 'XL';
+        else if (size === 'XL' && (c > 92 || h > 118)) size = 'XXL';
+      }
       fitNote = `Para Pantalones Palazzo con cintura de ${cintura || '-'} cm y cadera de ${cadera || '-'} cm.`;
       advice = 'Nuestros palazzos son de tiro alto. El talle sugerido te brindará la caída holgada y estilizada perfecta en la botamanga.';
     } else if (category === 'chalecos') {
       const b = busto || (cintura ? cintura + 20 : 88);
-      if (b <= 88) size = 'S';
+      if (b <= 84) size = 'XS';
+      else if (b <= 88) size = 'S';
       else if (b <= 95) size = 'M';
-      else size = 'L';
+      else if (b <= 102) size = 'L';
+      else if (b <= 110) size = 'XL';
+      else size = 'XXL';
 
-      if (fit === 'relax' && b > 87 && size === 'S') size = 'M';
+      if (fit === 'relax') {
+        if (size === 'XS' && b > 82) size = 'S';
+        else if (size === 'S' && b > 87) size = 'M';
+        else if (size === 'M' && b > 94) size = 'L';
+        else if (size === 'L' && b > 101) size = 'XL';
+        else if (size === 'XL' && b > 109) size = 'XXL';
+      }
       fitNote = `Para Chalecos con busto de ${busto || '-'} cm.`;
       advice = 'Calce sastrero a la cintura. Si lo vas a usar sobre camisas de manga amplia, este talle te brindará la holgura justa en sisas.';
     } else if (category === 'remeras') {
       const b = busto || 90;
-      if (b <= 92) size = fit === 'relax' ? 'M' : 'S';
-      else if (b <= 98) size = fit === 'relax' ? 'L' : 'M';
-      else if (b <= 106) size = 'L';
-      else size = 'XL';
+      if (b <= 88) size = fit === 'relax' ? 'S' : 'XS';
+      else if (b <= 94) size = fit === 'relax' ? 'M' : 'S';
+      else if (b <= 100) size = fit === 'relax' ? 'L' : 'M';
+      else if (b <= 108) size = fit === 'relax' ? 'XL' : 'L';
+      else if (b <= 116) size = fit === 'relax' ? 'XXL' : 'XL';
+      else size = 'XXL';
 
       fitNote = `Para Remeras Estampadas con contorno de pecho de ${busto || '-'} cm.`;
       advice = 'Confeccionadas en puro algodón peinado. La moldería relajada te dará frescura y comodidad durante todo el día.';
@@ -1695,34 +1953,46 @@ document.addEventListener('DOMContentLoaded', () => {
       let count = 0;
       if (busto) {
         count++;
-        if (busto <= 86) score += 1;
-        else if (busto <= 92) score += 2;
-        else if (busto <= 98) score += 3;
-        else score += 4;
+        if (busto <= 84) score += 1;
+        else if (busto <= 90) score += 2;
+        else if (busto <= 96) score += 3;
+        else if (busto <= 104) score += 4;
+        else if (busto <= 112) score += 5;
+        else score += 6;
       }
       if (cintura) {
         count++;
         if (cintura <= 66) score += 1;
         else if (cintura <= 72) score += 2;
-        else if (cintura <= 79) score += 3;
-        else score += 4;
+        else if (cintura <= 78) score += 3;
+        else if (cintura <= 86) score += 4;
+        else if (cintura <= 94) score += 5;
+        else score += 6;
       }
       if (cadera) {
         count++;
         if (cadera <= 92) score += 1;
         else if (cadera <= 98) score += 2;
-        else if (cadera <= 105) score += 3;
-        else score += 4;
+        else if (cadera <= 104) score += 3;
+        else if (cadera <= 112) score += 4;
+        else if (cadera <= 120) score += 5;
+        else score += 6;
       }
 
       const avg = count > 0 ? score / count : 2;
-      if (avg <= 1.3) size = 'XS';
-      else if (avg <= 2.3) size = 'S';
-      else if (avg <= 3.3) size = 'M';
-      else size = 'L';
+      if (avg <= 1.4) size = 'XS';
+      else if (avg <= 2.4) size = 'S';
+      else if (avg <= 3.4) size = 'M';
+      else if (avg <= 4.4) size = 'L';
+      else if (avg <= 5.4) size = 'XL';
+      else size = 'XXL';
 
-      if (fit === 'relax' && (size === 'XS' || size === 'S') && avg >= 2.0) {
-        size = size === 'XS' ? 'S' : 'M';
+      if (fit === 'relax') {
+        if (size === 'XS' && avg >= 1.2) size = 'S';
+        else if (size === 'S' && avg >= 2.0) size = 'M';
+        else if (size === 'M' && avg >= 3.0) size = 'L';
+        else if (size === 'L' && avg >= 4.0) size = 'XL';
+        else if (size === 'XL' && avg >= 5.0) size = 'XXL';
       }
 
       fitNote = `Calce sugerido para silueta general del Atelier (${fit === 'relax' ? 'Estilo Más Holgado / Oversized' : 'Estilo Más Al Cuerpo'}).`;

@@ -41,7 +41,11 @@
     { id: 'm-prod-11', title: 'Pantalón Palazzo Animalier Safari', url: 'assets/product-palazzo-animalier.jpg', category: 'products', date: '2026-09-24' },
     { id: 'm-prod-12', title: 'Conjunto Seersucker Rayas Azules', url: 'assets/product-conjunto-seersucker-azul.jpg', category: 'products', date: '2026-09-24' },
     { id: 'm-prod-13', title: 'Conjunto Flare Monocromo Blanco Puro', url: 'assets/product-conjunto-blanco-puro.jpg', category: 'products', date: '2026-09-24' },
-    { id: 'm-prod-14', title: 'Conjunto Riviera Rayas Cielo', url: 'assets/product-conjunto-rayas-celeste.jpg', category: 'products', date: '2026-09-24' }
+    { id: 'm-prod-14', title: 'Conjunto Riviera Rayas Cielo', url: 'assets/product-conjunto-rayas-celeste.jpg', category: 'products', date: '2026-09-24' },
+    { id: 'm-prod-15', title: 'Musculosa Vitamin Sea & Estrella de Mar', url: 'assets/remera-musculosa-starfish.jpg', category: 'products', date: '2026-10-02' },
+    { id: 'm-prod-16', title: 'Remera Empanada Argentina', url: 'assets/remera-empanada-argentina.jpg', category: 'products', date: '2026-10-02' },
+    { id: 'm-prod-17', title: 'Remera Sol Naciente & Olas', url: 'assets/remera-sol-mar.jpg', category: 'products', date: '2026-10-02' },
+    { id: 'm-prod-18', title: 'Remera Cangrejos del Mar', url: 'assets/remera-cangrejos.jpg', category: 'products', date: '2026-10-02' }
   ];
 
   class BackofficeStore {
@@ -80,11 +84,14 @@
           if (!Array.isArray(localProds) || localProds.length < remoteProds.length) {
             this.products = remoteProds;
           } else {
-            // Repair image URLs in cached products if broken or missing
+            // Repair image URLs and sizes in cached products if out of sync
             this.products = localProds.map(lp => {
               const match = remoteProds.find(rp => rp.id === lp.id);
-              if (match && match.image) {
-                lp.image = match.image;
+              if (match) {
+                if (match.image) lp.image = match.image;
+                if (match.sizes && (!lp.sizes || lp.sizes.includes('Único'))) lp.sizes = match.sizes;
+                if (match.badge && lp.badge === 'Nuevo · Única') lp.badge = match.badge;
+                if (match.stock && (!lp.stock || lp.stock <= 1)) lp.stock = match.stock;
               }
               return lp;
             });
@@ -440,13 +447,16 @@
       }
     }
 
+    const topBar = document.getElementById('backoffice-topbar') || document.querySelector('.backoffice-topbar');
     if (isAuth) {
+      if (topBar) topBar.style.display = 'flex';
       if (loginView) loginView.style.display = 'none';
       if (dashView) dashView.style.display = 'flex';
       store.updateBadges();
       renderCurrentTab();
     } else {
-      if (loginView) loginView.style.display = 'block';
+      if (topBar) topBar.style.display = 'none';
+      if (loginView) loginView.style.display = 'flex';
       if (dashView) dashView.style.display = 'none';
       if (passInput) {
         passInput.value = '';
@@ -555,8 +565,10 @@
     sessionStorage.removeItem(STORE_KEYS.AUTH);
     const loginView = document.getElementById('admin-login-view');
     const dashView = document.getElementById('admin-dashboard-view');
+    const topBar = document.getElementById('backoffice-topbar') || document.querySelector('.backoffice-topbar');
+    if (topBar) topBar.style.display = 'none';
     if (dashView) dashView.style.display = 'none';
-    if (loginView) loginView.style.display = 'block';
+    if (loginView) loginView.style.display = 'flex';
     showToast('Sesión de administración cerrada');
   }
 
@@ -1111,7 +1123,14 @@
       setVal('edit-product-orig-price', p.originalPrice || '');
       setVal('edit-product-stock', p.stock);
       setVal('edit-product-badge', p.badge || '');
-      setVal('edit-product-sizes', Array.isArray(p.sizes) ? p.sizes.join(', ') : (p.sizes || 'XS, S, M, L'));
+      const sizesContainer = document.getElementById('edit-product-sizes');
+      const currentSizes = Array.isArray(p.sizes) ? p.sizes : (p.sizes || 'XS, S, M, L').split(',').map(s => s.trim());
+      if (sizesContainer) {
+        sizesContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+          cb.checked = currentSizes.includes(cb.value);
+        });
+      }
+      setVal('edit-product-sizes', currentSizes.join(', '));
       setVal('edit-product-colors-text', Array.isArray(p.colors) ? p.colors.map(c => c.name || c).join(', ') : '');
       setVal('edit-product-image', p.image || '');
       setVal('edit-product-model-image', p.modelImage || '');
@@ -1125,6 +1144,12 @@
       if (form) form.reset();
       setVal('edit-product-id', '');
       setVal('edit-product-stock', '5');
+      const sizesContainer = document.getElementById('edit-product-sizes');
+      if (sizesContainer) {
+        sizesContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+          cb.checked = ['XS', 'S', 'M', 'L'].includes(cb.value);
+        });
+      }
       setVal('edit-product-sizes', 'XS, S, M, L');
       setVal('edit-product-image', 'assets/hero-model.jpg');
       setCheckbox('edit-product-featured', true);
@@ -1194,8 +1219,17 @@
       alert('Por favor ingrese al menos el nombre de la prenda y un precio válido.');
       return;
     }
-
-    const sizes = sizesRaw.split(',').map(s => s.trim()).filter(Boolean);
+    let sizes = [];
+    const sizesContainer = document.getElementById('edit-product-sizes');
+    if (sizesContainer && sizesContainer.querySelectorAll('input[type="checkbox"]').length > 0) {
+      sizes = Array.from(sizesContainer.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value);
+    }
+    if (sizes.length === 0 && sizesRaw) {
+      sizes = sizesRaw.split(',').map(s => s.trim()).filter(Boolean);
+    }
+    if (sizes.length === 0) {
+      sizes = ['S', 'M', 'L'];
+    }
     const colors = colorsRaw.split(',').map(c => ({ name: c.trim(), hex: '#9E7B5C' })).filter(c => c.name);
 
     let productObj;

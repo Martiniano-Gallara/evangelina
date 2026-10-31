@@ -138,10 +138,10 @@
     "price": 34000,
     "originalPrice": 39000,
     "image": "assets/remera-musculosa-starfish.jpg",
-    "badge": "Nuevo · Única",
+    "badge": "Nuevo Ingreso",
     "isNew": true,
     "isFeatured": true,
-    "stock": 1,
+    "stock": 10,
     "active": true,
     "views": 0,
     "salesCount": 0,
@@ -152,15 +152,20 @@
       }
     ],
     "sizes": [
-      "Único"
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
     ],
-    "description": "Musculosa de algodón puro premium color crudo natural con estampa ilustrada exclusiva de estrella de mar y marco marinero 'Vitamin Sea'. Edición exclusiva de 1 sola unidad en Talle Único.",
-    "composition": "100% Algodón puro esmerilado ultra fresco.",
+    "description": "Musculosa fresca de corte holgado confeccionada en algodón puro esmerilado con caída suave. Estampa festoneada en tonos carmín y fucsia con estrella de mar y leyenda 'Vitamin Sea'. Ideal para días de sol y playa.",
+    "composition": "100% Algodón puro esmerilado con caída suave.",
     "details": [
-      "Corte musculosa escote redondo",
-      "Estampa artística gráfica marinera",
-      "Talle Único adaptable (S a L)",
-      "Pieza única de colección nueva"
+      "Corte musculosa con escote redondo y sisa relajada",
+      "Estampa exclusiva al agua de temática marina",
+      "Talles reales del XS al XXL",
+      "Confección artesanal de autor para la nueva temporada"
     ]
   },
   {
@@ -170,10 +175,10 @@
     "price": 35000,
     "originalPrice": 40000,
     "image": "assets/remera-empanada-argentina.jpg",
-    "badge": "Nuevo · Única",
+    "badge": "Nuevo Ingreso",
     "isNew": true,
     "isFeatured": true,
-    "stock": 1,
+    "stock": 10,
     "active": true,
     "views": 0,
     "salesCount": 0,
@@ -184,28 +189,33 @@
       }
     ],
     "sizes": [
-      "Único"
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
     ],
-    "description": "Remera de algodón con estampa tipo póster gastronómico de la tradicional Empanada Argentina sobre mesa de cocina. Edición exclusiva de 1 sola unidad en Talle Único.",
-    "composition": "100% Algodón peinado suave 24/1.",
+    "description": "Remera de jersey de algodón peinado con ilustración de afiche culinario tradicional 'Empanada Argentina: Simple, buena comida, buen día' sobre mesa de cocina en mantel cuadrillé celeste.",
+    "composition": "100% Algodón peinado premium 24/1.",
     "details": [
-      "Cuello redondo clásico reforzado",
-      "Estampa serigráfica vintage exclusiva",
-      "Talle Único adaptable (S a L)",
-      "Stock limitado a 1 sola unidad"
+      "Cuello redondo reforzado con ribete al tono",
+      "Estampa artística gráfica de afiche gastronómico",
+      "Talles del XS al XXL con calce contemporáneo",
+      "Nuevo ingreso de la colección cápsula cultural"
     ]
   },
   {
     "id": "remera-sol-naciente-mar",
-    "name": "Remera Ilustrada Sol Naciente & Mar",
+    "name": "Remera Ilustrada Sol Naciente & Olas",
     "category": "Remeras",
     "price": 35000,
     "originalPrice": 40000,
     "image": "assets/remera-sol-mar.jpg",
-    "badge": "Nuevo · Única",
+    "badge": "Nuevo Ingreso",
     "isNew": true,
     "isFeatured": true,
-    "stock": 1,
+    "stock": 10,
     "active": true,
     "views": 0,
     "salesCount": 0,
@@ -216,47 +226,57 @@
       }
     ],
     "sizes": [
-      "Único"
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
     ],
-    "description": "Remera de algodón blanco con ilustración de atardecer en el mar, olas azules y reflejo del sol naciente. Edición exclusiva de 1 sola unidad en Talle Único.",
-    "composition": "100% Algodón puro peinado suave.",
+    "description": "Remera blanca de silueta relajada con estampa artística de paisaje costero: sol naciente terracota con destellos y olas marinas en capas azules fluidas.",
+    "composition": "100% Algodón puro peinado de textura sedosa.",
     "details": [
-      "Corte recto relajado",
-      "Estampa artística botánica costera",
-      "Talle Único adaptable (S a L)",
-      "Prenda nueva de edición limitada"
+      "Corte regular unisex con caída ligera",
+      "Estampa en serigrafía suave y transpirable",
+      "Talles del XS al XXL",
+      "Diseño de autor inspirado en el amanecer costero"
     ]
   },
   {
     "id": "remera-cangrejos-azules",
-    "name": "Remera Ilustrada Cangrejos Azules",
+    "name": "Remera Ilustrada Cangrejos del Mar",
     "category": "Remeras",
     "price": 34000,
     "originalPrice": 39000,
     "image": "assets/remera-cangrejos.jpg",
-    "badge": "Nuevo · Única",
+    "badge": "Nuevo Ingreso",
     "isNew": true,
     "isFeatured": true,
-    "stock": 1,
+    "stock": 10,
     "active": true,
     "views": 0,
     "salesCount": 0,
     "colors": [
       {
-        "name": "Blanco & Azul Mar",
+        "name": "Blanco & Azul",
         "hex": "#FFFFFF"
       }
     ],
     "sizes": [
-      "Único"
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
     ],
-    "description": "Remera corte boxy de algodón blanco con estampa marina de cangrejos en tonos coral y marco azul sobre fondo de agua. Edición exclusiva de 1 sola unidad en Talle Único.",
+    "description": "Remera confeccionada en algodón puro peinado de tacto suave, con diseño estampado de dos cangrejitos color coral rodeados por ondas marinas y un marco cuadrillé celeste.",
     "composition": "100% Algodón puro peinado.",
     "details": [
-      "Corte cómodo de verano",
-      "Estampa de autor de temática marina",
-      "Talle Único (S a L)",
-      "1 sola unidad disponible en stock"
+      "Cuello redondo clásico con terminación impecable",
+      "Estampa marina veraniega de autor",
+      "Talles del XS al XXL",
+      "Prenda fresca y versátil para toda la temporada"
     ]
   }
 ]

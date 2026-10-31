@@ -2848,7 +2848,7 @@ body.admin-page .backoffice-window {
 }
 
 body.admin-page .admin-login-screen {
-  background: linear-gradient(135deg, var(--bg-sand) 0%, var(--bg-body) 100%);
+  background: radial-gradient(circle at 50% 30%, #FAF6F0 0%, #F5EDE4 60%, #EFE6DC 100%);
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
@@ -2856,9 +2856,11 @@ body.admin-page .admin-login-screen {
   flex: 1 1 auto !important;
   width: 100% !important;
   height: 100% !important;
-  min-height: calc(100vh - 70px) !important;
-  padding: 2rem 1rem !important;
+  min-height: 100vh !important;
+  min-height: 100dvh !important;
+  padding: 2rem 1.25rem !important;
   box-sizing: border-box !important;
+  overflow-y: auto !important;
 }
 
 /* Fullscreen Window Overlay */
@@ -3030,28 +3032,79 @@ body.admin-page .admin-login-screen {
 
 /* Login Screen */
 .admin-login-screen {
+  position: relative;
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem 1rem;
+  padding: 2rem 1.25rem;
   overflow-y: auto;
   width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
   box-sizing: border-box;
 }
 
 .admin-login-card {
-  max-width: 480px;
+  max-width: 450px;
   width: 100%;
   margin: auto !important;
   background-color: #FFFFFF;
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  padding: 2.75rem 2.25rem;
-  box-shadow: 0 16px 45px rgba(50, 40, 30, 0.09);
+  border-radius: 18px;
+  padding: 2.25rem 2rem;
+  box-shadow: 0 20px 50px rgba(45, 36, 28, 0.1), 0 4px 14px rgba(45, 36, 28, 0.04);
   text-align: center;
   box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+}
+
+.login-close-btn {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 10;
+  text-decoration: none;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  transition: all var(--transition-fast);
+}
+
+.login-close-btn:hover {
+  background: #FFFFFF;
+  color: var(--text-main);
+  transform: scale(1.06);
+}
+
+.login-card-footer {
+  margin-top: 1.35rem;
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.login-back-store-link {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: color var(--transition-fast);
+}
+
+.login-back-store-link:hover {
+  color: var(--bronze-primary);
 }
 
 .admin-login-icon {
@@ -7038,69 +7091,197 @@ body.admin-page .admin-login-screen {
   border: 1px solid rgba(120, 113, 108, 0.3);
 }
 
-/* Size Tables Mobile Optimization */
-.table-responsive {
+/* ==========================================
+   SIZE GUIDE TABLES — RESPONSIVE & MOBILE
+   ========================================== */
+.table-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.85rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.table-card-title {
+  font-family: var(--font-editorial);
+  font-size: 1.3rem;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.table-card-badge {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  background-color: #F8F3EC;
+  border: 1px solid var(--border-medium);
+  padding: 0.25rem 0.65rem;
+  border-radius: 12px;
+  color: var(--text-secondary);
+}
+
+.table-scroll-wrapper {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  border: 1px solid #DFD5C8;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--border-subtle);
   background: #FFFFFF;
+  margin-bottom: 0.25rem;
 }
 
 .size-guide-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.8125rem;
+  font-size: 0.825rem;
   text-align: center;
+  background-color: #FFFFFF;
 }
 
 .size-guide-table th {
-  background-color: var(--bg-sand-light);
+  background-color: #F6EFE7;
   color: var(--text-main);
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 0.6875rem;
-  letter-spacing: 0.05em;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
   padding: 0.75rem 0.5rem;
-  border-bottom: 1px solid var(--border-medium);
-  white-space: nowrap;
+  border-bottom: 1.5px solid #DFD5C8;
+  border-right: 1px solid #EFE6DC;
+  vertical-align: middle;
+}
+
+.size-guide-table th:last-child {
+  border-right: none;
+}
+
+.size-guide-table th small {
+  display: block;
+  font-size: 0.625rem;
+  text-transform: none;
+  font-weight: normal;
+  color: var(--text-muted);
+  margin-top: 1px;
 }
 
 .size-guide-table td {
   padding: 0.75rem 0.5rem;
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px solid #EFE6DC;
+  border-right: 1px solid #F5EFE9;
   color: var(--text-secondary);
-  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  vertical-align: middle;
 }
 
-.size-guide-table tr:last-child td {
+.size-guide-table td:last-child {
+  border-right: none;
+}
+
+.size-guide-table td.cell-size-name {
+  color: var(--text-main);
+  font-weight: 700;
+  background-color: #FAF6F0;
+  font-size: 0.85rem;
+}
+
+.size-guide-table tbody tr:last-child td {
   border-bottom: none;
 }
 
+.size-guide-table tbody tr:hover td {
+  background-color: #F8F3EC;
+}
+
+.size-guide-table tbody tr:hover td.cell-size-name {
+  background-color: #F2E9DE;
+}
+
+.th-desktop {
+  display: inline;
+}
+
+/* Mobile Adjustments for Size Tables (< 640px) */
 @media (max-width: 640px) {
-  .size-guide-table {
-    font-size: 0.75rem;
-  }
-  .size-guide-table th {
-    padding: 0.6rem 0.35rem;
-    font-size: 0.625rem;
-    letter-spacing: 0.02em;
-  }
-  .size-guide-table td {
-    padding: 0.6rem 0.35rem;
-  }
+  /* 2x2 grid for category pills so NO button is clipped */
   .tables-category-nav {
-    display: flex;
-    overflow-x: auto;
-    gap: 0.5rem;
-    padding-bottom: 0.5rem;
-    -webkit-overflow-scrolling: touch;
-    flex-wrap: nowrap;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.45rem !important;
+    padding-bottom: 0.85rem !important;
+    margin-bottom: 1rem !important;
+    overflow-x: visible !important;
+    flex-wrap: wrap !important;
   }
+
   .table-cat-pill {
-    flex-shrink: 0;
-    white-space: nowrap;
+    width: 100% !important;
+    padding: 0.55rem 0.35rem !important;
+    font-size: 0.68rem !important;
+    text-align: center !important;
+    white-space: normal !important;
+    line-height: 1.25 !important;
+    border-radius: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .measure-tab-content {
+    padding: 1.15rem 0.65rem !important;
+  }
+
+  .table-card-header {
+    margin-bottom: 0.65rem !important;
+  }
+
+  .table-card-title {
+    font-size: 1.15rem !important;
+  }
+
+  .table-card-badge {
+    font-size: 0.65rem !important;
+    padding: 0.2rem 0.5rem !important;
+  }
+
+  .size-guide-table {
+    font-size: 0.72rem !important;
+    table-layout: auto !important;
+  }
+
+  .size-guide-table th {
+    padding: 0.55rem 0.22rem !important;
+    font-size: 0.64rem !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.01em !important;
+  }
+
+  .size-guide-table th small {
+    font-size: 0.56rem !important;
+    margin-top: 1px !important;
+  }
+
+  .size-guide-table td {
+    padding: 0.52rem 0.15rem !important;
+    font-size: 0.6875rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .size-guide-table td.cell-size-name {
+    font-size: 0.75rem !important;
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
+  }
+
+  .th-desktop {
+    display: none !important;
+  }
+
+  .table-garment-note {
+    font-size: 0.75rem !important;
+    padding: 0.75rem 0.85rem !important;
+    margin-top: 0.85rem !important;
+    line-height: 1.45 !important;
   }
 }
 
@@ -7109,13 +7290,13 @@ body.admin-page .admin-login-screen {
   .admin-login-screen,
   body.admin-page .admin-login-screen {
     padding: 1.25rem 0.85rem !important;
-    min-height: calc(100dvh - 60px) !important;
+    min-height: 100dvh !important;
   }
 
   .admin-login-card {
     padding: 1.85rem 1.25rem !important;
-    border-radius: 14px !important;
-    box-shadow: 0 8px 30px rgba(50, 40, 30, 0.08) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 10px 30px rgba(50, 40, 30, 0.09) !important;
   }
 
   .admin-login-icon {

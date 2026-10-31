@@ -25,8 +25,8 @@
   <div class="modal-overlay backoffice-overlay" id="admin-modal-overlay">
     <div class="backoffice-window" id="admin-modal-card">
       
-      <!-- Top Action Bar -->
-      <header class="backoffice-topbar">
+      <!-- Top Action Bar (Shown only when authenticated) -->
+      <header class="backoffice-topbar" id="backoffice-topbar" style="display: none;">
         <div class="backoffice-brand">
           <img src="assets/logo.png" alt="Evangelina Atelier" class="backoffice-logo-mini" />
           <div>
@@ -36,13 +36,6 @@
         </div>
 
         <div class="backoffice-top-actions">
-          <!-- GitHub Connection Badge -->
-          <div class="backoffice-status-pill" id="backoffice-status-pill">
-            <span class="status-pulse local" id="backoffice-status-dot"></span>
-            <span id="backoffice-status-text">Modo Local (Navegador)</span>
-          </div>
-
-
           <!-- Store preview button -->
           <a href="index.html" class="btn-top-bar" title="Volver a la tienda online" style="text-decoration: none;">
             <span>🏪</span> <span>Ver Tienda</span>
@@ -58,20 +51,16 @@
         </div>
       </header>
 
-      <!-- 1. LOGIN VIEW (Unauthenticated state) -->
+      <!-- 1. LOGIN VIEW (Unauthenticated state - Centered in screen) -->
       <div id="admin-login-view" class="admin-login-screen">
+        <a href="index.html" class="login-close-btn" aria-label="Volver a la tienda" title="Volver a la tienda">✕</a>
         <div class="admin-login-card">
           <div class="admin-login-icon">🗝️</div>
           <span class="admin-badge">Atelier Backoffice</span>
           <h2 class="admin-login-title">Acceso de Administración</h2>
-          <p class="admin-login-sub">Ingresa para gestionar productos, pedidos, agenda, contenidos CMS y sincronización con GitHub.</p>
+          <p class="admin-login-sub">Ingresa con tu clave de Atelier para gestionar productos, pedidos, agenda y catálogo.</p>
 
-          <div class="login-tabs">
-            <button type="button" class="login-tab-btn active" id="tab-login-pass" onclick="switchLoginAuthMode('pass')">Clave de Atelier</button>
-            <button type="button" class="login-tab-btn" id="tab-login-github" onclick="switchLoginAuthMode('github')">Token de GitHub (PAT)</button>
-          </div>
-
-          <!-- Mode A: Password -->
+          <!-- Password Form -->
           <form id="admin-login-form" class="admin-auth-form" onsubmit="event.preventDefault(); handleAdminLogin();">
             <div class="form-group">
               <label for="admin-pass-input">Contraseña de Administrador</label>
@@ -87,26 +76,11 @@
             </div>
           </form>
 
-          <!-- Mode B: GitHub Token -->
-          <form id="admin-github-login-form" class="admin-auth-form" style="display: none;" onsubmit="event.preventDefault(); handleGitHubLogin();">
-            <div class="form-group">
-              <label for="gh-login-token">Personal Access Token (PAT) *</label>
-              <input type="password" id="gh-login-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" required />
-              <span class="input-helper">Requiere permisos de repositorio (repo scope). Se guarda únicamente en sessionStorage.</span>
-            </div>
-            <div class="form-row-2">
-              <div class="form-group">
-                <label for="gh-login-owner">Usuario / Organización *</label>
-                <input type="text" id="gh-login-owner" placeholder="martingallara" required />
-              </div>
-              <div class="form-group">
-                <label for="gh-login-repo">Repositorio *</label>
-                <input type="text" id="gh-login-repo" placeholder="evangelina-atelier" required />
-              </div>
-            </div>
-            <div id="gh-login-error" class="admin-error-text" style="display: none;"></div>
-            <button type="submit" class="btn btn-primary btn-block" style="padding: 0.9rem;">Conectar con GitHub</button>
-          </form>
+          <div class="login-card-footer">
+            <a href="index.html" class="login-back-store-link">
+              ← Volver a la tienda online
+            </a>
+          </div>
         </div>
       </div>
 
@@ -797,6 +771,7 @@
             <label><input type="checkbox" value="M" checked /> M</label>
             <label><input type="checkbox" value="L" checked /> L</label>
             <label><input type="checkbox" value="XL" /> XL</label>
+            <label><input type="checkbox" value="XXL" /> XXL</label>
             <label><input type="checkbox" value="A Medida" /> A Medida</label>
           </div>
         </div>
